@@ -1,0 +1,17 @@
+services:
+  oracle:
+    build: . # This tells Docker to build from the Dockerfile in this directory
+    ports:
+      - '1521:1521'
+    environment:
+      - ORACLE_PWD=AUTHID
+      - ORACLE_SID=FREE
+      - ORACLE_PDB=FREEPDB1
+    healthcheck:
+      # INI BAGIAN KUNCINYA
+      # Perintah ini secara spesifik mencoba terhubung ke PDB 'AUTHIDCORE'.
+      # Spring akan menunggu sampai perintah ini berhasil.
+      test: ["CMD-SHELL", "echo 'SELECT 1 FROM DUAL;' | sqlplus -S system/${ORACLE_PWD}@//localhost:1521/${ORACLE_PDB}"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
