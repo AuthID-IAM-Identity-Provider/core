@@ -1,5 +1,6 @@
 package io.authid.core.shared.components.database.factory;
 
+import net.datafaker.Faker;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public abstract class Factory<T> {
+    private final Faker faker = new Faker();
     private int count = 1;
     private final List<Function<T, T>> states = new ArrayList<>();
     private final List<Consumer<T>> afterMakingCallbacks = new ArrayList<>();
