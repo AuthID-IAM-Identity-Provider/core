@@ -1,0 +1,104 @@
+databaseChangeLog:
+- changeSet:
+    id: 1752426926548-1
+    author: elhakimdev99 (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: permissionPK
+            name: id
+            type: raw(16)
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: TIMESTAMP(6)
+        - column:
+            name: created_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: updated_at
+            type: TIMESTAMP(6)
+        - column:
+            name: updated_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: code
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: description
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: display_name
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: group
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: guard_name
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: is_locked
+            type: NUMBER(1, 0)
+        - column:
+            name: name
+            type: VARCHAR2(255 CHAR)
+        tableName: permission
+- changeSet:
+    id: 1752426926548-2
+    author: elhakimdev99 (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: rolePK
+            name: id
+            type: raw(16)
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: TIMESTAMP(6)
+        - column:
+            name: created_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: updated_at
+            type: TIMESTAMP(6)
+        - column:
+            name: updated_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: code
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: description
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: display_name
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: group
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: guard_name
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: is_locked
+            type: NUMBER(1, 0)
+        - column:
+            name: name
+            type: VARCHAR2(255 CHAR)
+        tableName: role
+

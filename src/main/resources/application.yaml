@@ -1,6 +1,50 @@
 spring:
+  main:
+    allow-bean-definition-overriding=true:
+  server:
+    port: 8080
+  devtools:
+    restart:
+      enabled: true
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/AUTHIDCOREDEV
+    username: authid_core_app
+    password: authid_core_app202507130433
+    driver-class-name: oracle.jdbc.OracleDriver
+    type: oracle.ucp.jdbc.PoolDataSource
+    oracle.ucp:
+      connection-pool-name: connectionPoolName1
+      initial-pool-size: 1
+      min-pool-size: 1
+      max-pool-size: 2
+      connection-factory-class-name: oracle.jdbc.pool.OracleConnectionPoolDataSource
   application:
     name: io.authid.core
+  cache:
+    driver: file
   docker:
     compose:
       enabled: false
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        archive.autodetection: class
+        format_sql: true
+        ddl-auto: none
+        dialect: org.hibernate.dialect.OracleDialect
+        hql:
+          bulk_id_strategy: org.hibernate.hql.spi.id.inline.InlineIdsSubSelectValueListBulkIdStrategy
+        session:
+          events:
+            auto_enable_filters: false
+
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+  logging:
+    level:
+      org.hibernate.boot.model.source.internal.annotations: DEBUG
+      org.hibernate.jpa.internal.util.LogHelper: DEBUG
