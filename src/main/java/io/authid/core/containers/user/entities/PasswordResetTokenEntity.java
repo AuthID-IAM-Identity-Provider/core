@@ -10,14 +10,10 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "password_reset_tokens", indexes = {
-        @Index(name = "idx_user_id_status", columnList = "userId, status"),
-        @Index(name = "idx_token_hash", columnList = "tokenHash"),
-        @Index(name = "idx_expires_at", columnList = "expiresAt"),
-        @Index(name = "idx_status_expires", columnList = "status, expiresAt")
+        @Index(name = "idx_expires_at", columnList = "expires_at")
 })
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class PasswordResetTokenEntity extends BaseEntity<UUID> {
@@ -29,7 +25,6 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    @Builder.Default
     private PasswordResetTokenStatus status = PasswordResetTokenStatus.PENDING;
 
     @Column(name = "expires_at", nullable = false)
@@ -54,17 +49,14 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
 
     // Security fields
     @Column(name = "attempt_count", nullable = false)
-    @Builder.Default
     private Integer attemptCount = 0;
 
     @Column(name = "max_attempts", nullable = false)
-    @Builder.Default
     private Integer maxAttempts = 3;
 
     @Column(name = "blocked_until")
     private Instant blockedUntil;
 
     @Column(name = "hash_algorithm", length = 20)
-    @Builder.Default
     private String hashAlgorithm = "SHA256";
 }

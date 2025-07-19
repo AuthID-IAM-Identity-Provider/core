@@ -1,0 +1,334 @@
+databaseChangeLog:
+- changeSet:
+    id: 1752966325475-1
+    author: elhakimdev99 (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: password_reset_tokensPK
+            name: id
+            type: raw(16)
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: TIMESTAMP(6)
+        - column:
+            name: created_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: updated_at
+            type: TIMESTAMP(6)
+        - column:
+            name: updated_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: attempt_count
+            type: NUMBER(10, 0)
+        - column:
+            name: blocked_until
+            type: TIMESTAMP(6)
+        - column:
+            name: completed_at
+            type: TIMESTAMP(6)
+        - column:
+            constraints:
+              nullable: false
+            name: expires_at
+            type: TIMESTAMP(6)
+        - column:
+            name: hash_algorithm
+            type: VARCHAR2(20 CHAR)
+        - column:
+            name: ip_address_completion
+            type: VARCHAR2(45 CHAR)
+        - column:
+            name: ip_address_request
+            type: VARCHAR2(45 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: max_attempts
+            type: NUMBER(10, 0)
+        - column:
+            constraints:
+              nullable: false
+            name: status
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: token_hash
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: user_agent_completion
+            type: CLOB
+        - column:
+            name: user_agent_request
+            type: CLOB
+        - column:
+            constraints:
+              nullable: false
+            name: user_id
+            type: raw(16)
+        tableName: password_reset_tokens
+- changeSet:
+    id: 1752966325475-2
+    author: elhakimdev99 (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: usersPK
+            name: id
+            type: raw(16)
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: TIMESTAMP(6)
+        - column:
+            name: created_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: updated_at
+            type: TIMESTAMP(6)
+        - column:
+            name: updated_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: email
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: email_verified_at
+            type: TIMESTAMP(6)
+        - column:
+            name: failed_login_attempts
+            type: NUMBER(10, 0)
+        - column:
+            name: last_activity_at
+            type: TIMESTAMP(6)
+        - column:
+            name: last_login_at
+            type: TIMESTAMP(6)
+        - column:
+            name: last_login_ip
+            type: VARCHAR2(45 CHAR)
+        - column:
+            name: locked_until
+            type: TIMESTAMP(6)
+        - column:
+            name: login_count
+            type: NUMBER(10, 0)
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: password
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: password_changed_at
+            type: TIMESTAMP(6)
+        - column:
+            name: remember_token
+            type: VARCHAR2(100 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: status
+            type: VARCHAR2(255 CHAR)
+        - column:
+            name: two_factor_confirmed_at
+            type: TIMESTAMP(6)
+        - column:
+            name: two_factor_recovery_codes
+            type: JSON
+        - column:
+            name: two_factor_secret
+            type: VARCHAR2(255 CHAR)
+        tableName: users
+- changeSet:
+    id: 1752966325475-3
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: token_hash
+        indexName: password_reset_tokens_SCSX_IX
+        tableName: password_reset_tokens
+        unique: true
+- changeSet:
+    id: 1752966325475-4
+    author: elhakimdev99 (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: token_hash
+        constraintName: UC_PASSWORD_RESET_TOKENSTOKEN_HASH_COL
+        forIndexName: password_reset_tokens_SCSX_IX
+        tableName: password_reset_tokens
+- changeSet:
+    id: 1752966325475-5
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: email
+        indexName: idx_email
+        tableName: users
+- changeSet:
+    id: 1752966325475-6
+    author: elhakimdev99 (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: email
+        constraintName: UC_USERSEMAIL_COL
+        forIndexName: idx_email
+        tableName: users
+- changeSet:
+    id: 1752966325475-7
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: last_login_at
+        - column:
+            name: last_activity_at
+        indexName: idx_activity_tracking
+        tableName: users
+- changeSet:
+    id: 1752966325475-8
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: email
+        - column:
+            name: status
+        indexName: idx_email_status
+        tableName: users
+- changeSet:
+    id: 1752966325475-9
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: email_verified_at
+        indexName: idx_email_verified
+        tableName: users
+- changeSet:
+    id: 1752966325475-10
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: expires_at
+        indexName: idx_expires_at
+        tableName: password_reset_tokens
+- changeSet:
+    id: 1752966325475-11
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: failed_login_attempts
+        indexName: idx_failed_attempts
+        tableName: users
+- changeSet:
+    id: 1752966325475-12
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: last_activity_at
+        indexName: idx_last_activity
+        tableName: users
+- changeSet:
+    id: 1752966325475-13
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: last_login_at
+        indexName: idx_last_login
+        tableName: users
+- changeSet:
+    id: 1752966325475-14
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: locked_until
+        indexName: idx_locked_until
+        tableName: users
+- changeSet:
+    id: 1752966325475-15
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: password_changed_at
+        indexName: idx_password_changed
+        tableName: users
+- changeSet:
+    id: 1752966325475-16
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: failed_login_attempts
+        - column:
+            name: locked_until
+        indexName: idx_security_check
+        tableName: users
+- changeSet:
+    id: 1752966325475-17
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: status
+        indexName: idx_status
+        tableName: users
+- changeSet:
+    id: 1752966325475-18
+    author: elhakimdev99 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: two_factor_confirmed_at
+        indexName: idx_two_factor
+        tableName: users
+
