@@ -59,4 +59,87 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
 
     @Column(name = "hash_algorithm", length = 20)
     private String hashAlgorithm = "SHA256";
+
+    @Column(name = "hash_iterations", nullable = false)
+    private Integer hashIterations;
+
+    @Column(name = "hash_salt", columnDefinition = "TEXT")
+    private String hashSalt;
+
+    @Column(name = "hash_key", columnDefinition = "TEXT")
+    private String hashKey;
+
+    @Column(name = "hash_iv", columnDefinition = "TEXT")
+    private String hashIv;
+
+    @Column(name = "hash_tag", columnDefinition = "TEXT")
+    private String hashTag;
+
+    // ----------------------------
+    // Business Logic - Token Status
+    // ----------------------------
+
+    public boolean isExpired() {
+        return Instant.now().isAfter(expiresAt) || attemptCount >= maxAttempts;
+    }
+
+    public boolean isUsable() {
+        return status.isUsable() && !isExpired();
+    }
+
+    public boolean isBlockedNow() {
+        return blockedUntil != null && Instant.now().isBefore(blockedUntil);
+    }
+
+    public void cancel() {
+        if (!status.isFinal()) {
+            this.status = PasswordResetTokenStatus.CANCELLED;
+        }
+    }
+
+    // ----------------------------
+    // Business Logic - Completion
+    // ----------------------------
+
+    public void complete(String ipAddress, String userAgent) {
+        if (!isUsable()) {
+            throw new IllegalStateException("Cannot complete an unusable token");
+        }
+        this.status = PasswordResetTokenStatus.COMPLETED;
+        this.ipAddressCompletion = ipAddress;
+        this.userAgentCompletion = userAgent;
+        this.completedAt = Instant.now();
+    }
+
+    // ----------------------------
+    // Business Logic - Attempts
+    // ----------------------------
+
+    public void incrementAttempt() {
+        this.attemptCount++;
+    }
+
+    public void registerFailedAttempt(int blockMinutes) {
+        incrementAttempt();
+        if (attemptCount >= maxAttempts) {
+            this.status = PasswordResetTokenStatus.EXPIRED;
+        } else {
+            blockTemporarily(blockMinutes);
+        }
+    }
+
+    // ----------------------------
+    // Business Logic - Blocking
+    // ----------------------------
+
+    public void blockTemporarily(int minutes) {
+        this.blockedUntil = Instant.now().plusSeconds(minutes * 60L);
+    }
+
+    // ----------------------------
+    // Business Logic - Expiration
+    // ----------------------------
+    public void expire() {
+        this.status = PasswordResetTokenStatus.EXPIRED;
+    }
 }
