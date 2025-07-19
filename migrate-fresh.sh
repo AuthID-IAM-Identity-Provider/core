@@ -39,7 +39,7 @@ SNAPSHOT_FILENAME="${TIMESTAMP}_initial_schema_snapshot.yaml"
 SNAPSHOT_FULL_PATH="${CHANGELOG_DIR}/${SNAPSHOT_FILENAME}"
 
 # Jalankan diff untuk membuat file snapshot tunggal
-mvn compile liquibase:diff -Dliquibase.diffChangeLogFile="$SNAPSHOT_FULL_PATH"
+mvn compile process-resources liquibase:diff -Dliquibase.diffChangeLogFile="$SNAPSHOT_FULL_PATH" -X
 if [ $? -ne 0 ] || [ ! -f "$SNAPSHOT_FULL_PATH" ]; then
     echo "❌ Gagal membuat snapshot skema."; exit 1;
 fi
@@ -51,7 +51,7 @@ echo "✅ Snapshot skema baru berhasil dibuat dan didaftarkan."
 
 # --- LANGKAH 5: Terapkan perubahan ke database (AUTO PERSIST) ---
 echo "🚀 [5/6] Menerapkan perubahan ke database (liquibase:update)..."
-mvn process-resources liquibase:update
+mvn compile process-resources liquibase:update -X
 if [ $? -ne 0 ]; then echo "❌ Gagal menerapkan perubahan ke database."; exit 1; fi
 echo "✅ [5/6] Tabel berhasil dibuat di database."
 

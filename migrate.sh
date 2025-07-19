@@ -26,6 +26,7 @@ echo "✍️  [1/4] Membuat file changelog..."
 mvn compile liquibase:diff -Dliquibase.diffChangeLogFile="$FULL_PATH"
 
 # Periksa apakah perintah Maven berhasil dan file baru telah dibuat
+# shellcheck disable=SC2181
 if [ $? -ne 0 ] || [ ! -f "$FULL_PATH" ]; then
     echo "❌ Error: Gagal membuat file changelog. Proses dibatalkan."
     exit 1
@@ -41,7 +42,8 @@ echo "✅ Master changelog berhasil diperbarui."
 # 5. Terapkan perubahan ke database
 echo "🚀 [3/4] Menerapkan perubahan ke database..."
 # Gunakan 'process-resources' agar file YAML baru disalin ke target/classes
-mvn process-resources liquibase:update
+mvn compile process-resources liquibase:update
+# shellcheck disable=SC2181
 if [ $? -ne 0 ]; then
     echo "❌ Error: Gagal menerapkan perubahan ke database."
     exit 1

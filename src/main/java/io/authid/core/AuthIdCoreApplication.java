@@ -10,7 +10,7 @@ import org.springframework.data.domain.AuditorAware;
 @SpringBootApplication
 @EntityScan(basePackages = {
 		"io.authid.core.containers",
-		"io.authid.core.containers.authorization.domain.entities",
+		"io.authid.core.containers.user.entities",
 })
 public class AuthIdCoreApplication {
 
