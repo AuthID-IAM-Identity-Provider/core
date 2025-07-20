@@ -1,13 +1,17 @@
 package io.authid.core.containers.user.enums;
 
+import io.authid.core.shared.components.i18n.I18n;
+import lombok.Getter;
+
+@Getter
 public enum DeviceStatus {
-    ACTIVE("Aktif", "Perangkat aktif dan digunakan", "green", true),
-    TRUSTED("Dipercaya", "Perangkat telah dipercaya oleh pengguna", "blue", true),
-    UNTRUSTED("Tidak Dipercaya", "Perangkat tidak dipercaya oleh pengguna", "yellow", true),
-    EXPIRED("Kedaluwarsa", "Token atau sesi perangkat telah habis", "orange", false),
-    REVOKED("Dicabut", "Akses perangkat dicabut", "gray", false),
-    SUSPICIOUS("Mencurigakan", "Aktivitas mencurigakan terdeteksi", "red", false),
-    BLOCKED("Diblokir", "Perangkat diblokir oleh sistem", "black", false);
+    ACTIVE(I18n.extract("device.active.label"), I18n.extract("device.active.description"), "green", true),
+    TRUSTED(I18n.extract("device.trusted.label"), I18n.extract("device.trusted.description"), "blue", true),
+    UNTRUSTED(I18n.extract("device.untrusted.label"), I18n.extract("device.untrusted.description"), "yellow", true),
+    EXPIRED(I18n.extract("device.expired.label"), I18n.extract("device.expired.description"), "orange", false),
+    REVOKED(I18n.extract("device.revoked.label"), I18n.extract("device.revoked.description"), "gray", false),
+    SUSPICIOUS(I18n.extract("device.suspicious.label"), I18n.extract("device.suspicious.description"), "red", false),
+    BLOCKED(I18n.extract("device.blocked.label"), I18n.extract("device.blocked.description"), "black", false);
 
     private final String label;
     private final String description;
@@ -20,11 +24,6 @@ public enum DeviceStatus {
         this.color = color;
         this.usable = usable;
     }
-
-    public String getLabel() { return label; }
-    public String getDescription() { return description; }
-    public String getColor() { return color; }
-    public boolean isUsable() { return usable; }
 
     public boolean isTrusted() {
         return this == TRUSTED;

@@ -1,0 +1,15 @@
+{
+  "io.authid.core.containers.user.enums.DeviceStatus.device.active.label" : "Active",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.active.description" : "The device is active and ready for use",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.trusted.description" : "This device has been marked as trusted and does not require additional verification",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.untrusted.label" : "Untrusted",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.untrusted.description" : "This device has not been marked as trusted and may require additional verification",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.expired.label" : "Expired",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.expired.description" : "The device session has expired and needs to be renewed",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.revoked.label" : "Revoked",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.revoked.description" : "Device access has been manually revoked by the user or administrator",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.suspicious.label" : "Suspicious",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.suspicious.description" : "This device shows suspicious activity and may require investigation",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.blocked.label" : "Blocked",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.blocked.description" : "The device has been blocked for security reasons"
+}

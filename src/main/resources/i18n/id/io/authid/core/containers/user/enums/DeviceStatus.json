@@ -1,0 +1,16 @@
+{
+  "io.authid.core.containers.user.enums.DeviceStatus.device.active.label" : "Aktif",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.active.description" : "Perangkat aktif dan siap untuk digunakan",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.trusted.label" : "Terpercaya",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.trusted.description" : "Perangkat ini telah ditandai sebagai perangkat yang tepercaya dan tidak memerlukan verifikasi tambahan",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.untrusted.label" : "Tidak Terpercaya",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.untrusted.description" : "Perangkat ini belum ditandai sebagai perangkat tepercaya dan mungkin memerlukan verifikasi tambahan",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.expired.label" : "Kadaluwarsa",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.expired.description" : "Sesi perangkat telah kadaluwarsa dan perlu diperbarui",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.revoked.label" : "Dicabut",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.revoked.description" : "Akses perangkat telah dicabut secara manual oleh pengguna atau administrator",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.suspicious.label" : "Mencurigakan",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.suspicious.description" : "Perangkat ini menunjukkan aktivitas yang mencurigakan dan mungkin memerlukan penyelidikan",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.blocked.label" : "Diblokir",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.blocked.description" : "Perangkat telah diblokir karena alasan keamanan"
+}
