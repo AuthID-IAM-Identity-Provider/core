@@ -11,5 +11,6 @@
   "io.authid.core.containers.user.enums.DeviceStatus.device.suspicious.label" : "Suspicious",
   "io.authid.core.containers.user.enums.DeviceStatus.device.suspicious.description" : "This device shows suspicious activity and may require investigation",
   "io.authid.core.containers.user.enums.DeviceStatus.device.blocked.label" : "Blocked",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.blocked.description" : "The device has been blocked for security reasons"
+  "io.authid.core.containers.user.enums.DeviceStatus.device.blocked.description" : "The device has been blocked for security reasons",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.trusted.label" : ""
 }

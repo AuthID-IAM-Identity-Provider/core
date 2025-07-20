@@ -1,21 +1,23 @@
 package io.authid.core.containers.user.enums;
 
+import io.authid.core.shared.components.i18n.I18n;
+
 public enum UserStatus {
     // Active states
-    ACTIVE("Aktif", "Akun aktif dan dapat digunakan", "green", true, true, false),
-    INCOMPLETE_PROFILE("Belum Lengkap", "Profil belum lengkap", "orange", true, false, false),
-    PENDING_VERIFICATION("Menunggu Verifikasi", "Akun belum diverifikasi", "yellow", false, false, false),
-    INACTIVE("Tidak Aktif", "Akun dinonaktifkan oleh pengguna", "gray", false, false, false),
+    ACTIVE(I18n.extract("user.status.active.label"), I18n.extract("user.status.active.description"), "green", true, true, false),
+    INCOMPLETE_PROFILE(I18n.extract("user.status.incomplete.profile.label"), I18n.extract("user.status.incomplete.profile.description"), "orange", true, false, false),
+    PENDING_VERIFICATION(I18n.extract("user.status.pending.verification.label"), I18n.extract("user.status.pending.verification.description"), "yellow", false, false, false),
+    INACTIVE(I18n.extract("user.status.inactive.label"), I18n.extract("user.status.inactive.description"), "gray", false, false, false),
 
     // System-related states
-    LOCKED("Terkunci", "Akun terkunci karena keamanan", "red", false, false, false),
-    DORMANT("Dormant", "Akun tidak aktif dalam waktu lama", "gray", false, false, false),
-    DEACTIVATED("Dinonaktifkan", "Akun dinonaktifkan oleh pengguna", "gray", false, false, false),
+    LOCKED(I18n.extract("user.status.locked.label"), I18n.extract("user.status.locked.description"), "red", false, false, false),
+    DORMANT(I18n.extract("user.status.dormant.label"), I18n.extract("user.status.dormant.description"), "gray", false, false, false),
+    DEACTIVATED(I18n.extract("user.status.deactivated.label"), I18n.extract("user.status.deactivated.description"), "gray", false, false, false),
 
     // Admin/system actions
-    SUSPENDED("Ditangguhkan", "Akun ditangguhkan oleh sistem", "red", false, false, false),
-    BANNED("Diblokir", "Akun diblokir permanen", "red", false, false, true),
-    DELETED("Dihapus", "Akun dihapus secara permanen", "black", false, false, true);
+    SUSPENDED(I18n.extract("user.status.suspended.label"), I18n.extract("user.status.suspended.description"), "red", false, false, false),
+    BANNED(I18n.extract("user.status.banned.label"), I18n.extract("user.status.banned.description"), "red", false, false, true),
+    DELETED(I18n.extract("user.status.deleted.label"), I18n.extract("user.status.deleted.description"), "black", false, false, true);
 
     private final boolean canLogin;
     private final boolean canPerformActions;

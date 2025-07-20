@@ -1,0 +1,22 @@
+{
+  "io.authid.core.containers.user.enums.UserStatus.user.status.active.label" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.active.description" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.incomplete.profile.label" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.incomplete.profile.description" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.pending.verification.label" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.pending.verification.description" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.inactive.label" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.inactive.description" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.locked.label" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.locked.description" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.dormant.label" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.dormant.description" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.deactivated.label" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.deactivated.description" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.suspended.label" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.suspended.description" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.banned.label" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.banned.description" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.deleted.label" : "",
+  "io.authid.core.containers.user.enums.UserStatus.user.status.deleted.description" : ""
+}

@@ -1,6 +1,4 @@
 databaseChangeLog:
 
   - include:
-      file: db/changelog/2025_07_20_060504_initial_schema_snapshot.yaml
-  - include:
-      file: db/changelog/2025_07_20_065722_add_devices_table.yaml
+      file: db/changelog/2025_07_20_150234_initial_schema_snapshot.yaml

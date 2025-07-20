@@ -1,14 +1,15 @@
 package io.authid.core.containers.user.enums;
 
+import io.authid.core.shared.components.i18n.I18n;
 import lombok.Getter;
 
 @Getter
 public enum DeviceType {
-    MOBILE("Mobile", "Perangkat bergerak seperti smartphone atau tablet", "smartphone"),
-    DESKTOP("Desktop", "Komputer desktop atau laptop", "monitor"),
-    TABLET("Tablet", "Perangkat tablet", "tablet"),
-    WEARABLE("Wearable", "Perangkat wearable seperti smartwatch", "watch"),
-    UNKNOWN("Tidak Dikenal", "Jenis perangkat tidak teridentifikasi", "help");
+    MOBILE(I18n.extract("device.mobile.label"), I18n.extract("device.mobile.description"), "smartphone"),
+    DESKTOP(I18n.extract("device.desktop.label"), I18n.extract("device.desktop.description"), "monitor"),
+    TABLET(I18n.extract("device.tablet.label"), I18n.extract("device.tablet.description"), "tablet"),
+    WEARABLE(I18n.extract("device.wearable.label"), I18n.extract("device.wearable.description"), "watch"),
+    UNKNOWN(I18n.extract("device.unknown.label"), I18n.extract("device.unknown.description"), "help");
 
     private final String label;
     private final String description;
