@@ -44,7 +44,40 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.yaml
-  logging:
-    level:
-      org.hibernate.boot.model.source.internal.annotations: DEBUG
-      org.hibernate.jpa.internal.util.LogHelper: DEBUG
+
+logging:
+  # FILE LOGGING CONFIGURATION INSIDE SPRING ENV
+  # All logs at the specified level or higher will also be written to this file.
+  pattern:
+    console: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} - %logger{0} - %msg%n"
+    file: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} - %logger{0} - %msg%n"
+
+  # FILE ROTATION (LOGBACK SPECIFIC)
+  # This section activates and configures log rotation.
+  logback:
+    rollingpolicy:
+      # The file to write to. Using logging.file.name is overridden by this.
+      file-name: "logs/application.log"
+
+      # Pattern for archived log files. %d is the date, %i is the index for same-day archives.
+      file-name-pattern: "logs/archived/application-%d{yyyy-MM-dd}.%i.log.gz"
+
+      # The maximum size of a single log file before it's rotated.
+      max-file-size: 10MB
+
+      # The maximum number of days to keep archived log files.
+      max-history: 14
+
+      # The maximum total size of all archived log files. Oldest are deleted first.
+      total-size-cap: 200MB
+
+      # Cleans history on startup.
+      clean-history-on-start: true
+
+  # LOG LEVELS
+  level:
+    org.hibernate.boot.model.source.internal.annotations: DEBUG
+    org.hibernate.jpa.internal.util.LogHelper: DEBUG
+    root: INFO
+    org.springframework.web: WARN # Less verbose for production.
+    io.authid: INFO              # Your application package.

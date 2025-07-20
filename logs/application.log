@@ -1,0 +1,530 @@
+[INFO ] 2025-07-20 20:15:04.455 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.DeviceStatus
+[INFO ] 2025-07-20 20:15:04.459 - I18nAutoExtractorRunner - 🌐 Extracting for: id
+[INFO ] 2025-07-20 20:15:04.666 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:15:04.666 - I18nAutoExtractorRunner - 🌐 Extracting for: en
+[INFO ] 2025-07-20 20:15:04.669 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:15:04.670 - I18nAutoExtractorRunner - 🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:15:04.673 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:15:04.674 - I18nAutoExtractorRunner - 🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:15:04.677 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:15:04.680 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.DeviceType
+[INFO ] 2025-07-20 20:15:04.684 - I18nAutoExtractorRunner - 🌐 Extracting for: id
+[INFO ] 2025-07-20 20:15:04.688 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:15:04.689 - I18nAutoExtractorRunner - 🌐 Extracting for: en
+[INFO ] 2025-07-20 20:15:04.692 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:15:04.692 - I18nAutoExtractorRunner - 🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:15:04.695 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:15:04.696 - I18nAutoExtractorRunner - 🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:15:04.704 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:15:04.707 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO ] 2025-07-20 20:15:04.707 - I18nAutoExtractorRunner - 🌐 Extracting for: id
+[INFO ] 2025-07-20 20:15:04.711 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+    [INFO ] 2025-07-20 20:15:04.712 - I18nAutoExtractorRunner - 🌐 Extracting for: en
+[INFO ] 2025-07-20 20:15:04.716 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:15:04.716 - I18nAutoExtractorRunner - 🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:15:04.720 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:15:04.721 - I18nAutoExtractorRunner - 🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:15:04.724 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:15:04.726 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.UserStatus
+[INFO ] 2025-07-20 20:15:04.727 - I18nAutoExtractorRunner - 🌐 Extracting for: id
+[INFO ] 2025-07-20 20:15:04.732 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:15:04.734 - I18nAutoExtractorRunner - 🌐 Extracting for: en
+[INFO ] 2025-07-20 20:15:04.738 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:15:04.741 - I18nAutoExtractorRunner - 🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:15:04.744 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:15:04.746 - I18nAutoExtractorRunner - 🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:15:04.749 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:15:04.771 - I18nAutoExtractorRunner - 🔍 io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO ] 2025-07-20 20:15:04.772 - I18nAutoExtractorRunner - 🌐 Extracting for: id
+[INFO ] 2025-07-20 20:15:04.773 - I18nAutoExtractorRunner - 🌐 Extracting for: en
+[INFO ] 2025-07-20 20:15:04.775 - I18nAutoExtractorRunner - 🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:15:04.776 - I18nAutoExtractorRunner - 🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:15:04.778 - I18nAutoExtractorRunner - ✅ All classes processed.
+[INFO ] 2025-07-20 20:21:12.803 - I18nAutoExtractorRunner -  Found 4 locales
+[INFO ] 2025-07-20 20:21:12.808 - I18nAutoExtractorRunner -  Get base package for extractions: io.authid.core 
+[INFO ] 2025-07-20 20:21:13.292 - I18nAutoExtractorRunner -  Found 30 classes
+[INFO ] 2025-07-20 20:21:13.296 - I18nAutoExtractorRunner -  Processing classes...
+[INFO ] 2025-07-20 20:21:13.299 - I18nAutoExtractorRunner -  Processing : io.authid.core.AuthIdCoreApplication
+[INFO ] 2025-07-20 20:21:13.304 - I18nAutoExtractorRunner -  Processing : io.authid.core.containers.user.entities.PasswordResetTokenEntity
+[INFO ] 2025-07-20 20:21:13.307 - I18nAutoExtractorRunner -  Processing : io.authid.core.containers.user.entities.UserDevice
+[INFO ] 2025-07-20 20:21:13.311 - I18nAutoExtractorRunner -  Processing : io.authid.core.containers.user.entities.UserEntity
+[INFO ] 2025-07-20 20:21:13.314 - I18nAutoExtractorRunner -  Processing : io.authid.core.containers.user.enums.DeviceStatus
+[INFO ] 2025-07-20 20:21:13.315 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.DeviceStatus
+[INFO ] 2025-07-20 20:21:13.317 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:21:13.601 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:21:13.602 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:21:13.605 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:21:13.610 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:21:13.615 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:21:13.616 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:21:13.619 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:21:13.621 - I18nAutoExtractorRunner -  Processing : io.authid.core.containers.user.enums.DeviceType
+[INFO ] 2025-07-20 20:21:13.624 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.DeviceType
+[INFO ] 2025-07-20 20:21:13.624 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:21:13.630 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:21:13.631 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:21:13.636 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:21:13.636 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:21:13.639 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:21:13.639 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:21:13.647 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:21:13.652 - I18nAutoExtractorRunner -  Processing : io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO ] 2025-07-20 20:21:13.654 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO ] 2025-07-20 20:21:13.655 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:21:13.664 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:21:13.666 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:21:13.670 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:21:13.671 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:21:13.678 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:21:13.679 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:21:13.706 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:21:13.708 - I18nAutoExtractorRunner -  Processing : io.authid.core.containers.user.enums.UserStatus
+[INFO ] 2025-07-20 20:21:13.709 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.UserStatus
+[INFO ] 2025-07-20 20:21:13.709 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:21:13.712 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:21:13.715 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:21:13.725 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:21:13.726 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:21:13.731 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:21:13.732 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:21:13.736 - I18nExtractorUtils - ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:21:13.743 - I18nAutoExtractorRunner -  Processing : io.authid.core.containers.user.repositories.PasswordResetTokenRepository
+[INFO ] 2025-07-20 20:21:13.748 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.cache.CacheManager
+[INFO ] 2025-07-20 20:21:13.750 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.cache.drivers.FileCacheDriver
+[INFO ] 2025-07-20 20:21:13.752 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.cache.drivers.InMemoryCacheDriver
+[INFO ] 2025-07-20 20:21:13.753 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.cache.drivers.RedisCacheDriver
+[INFO ] 2025-07-20 20:21:13.756 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.configurations.AuditorAwareImpl
+[INFO ] 2025-07-20 20:21:13.760 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.contracts.SoftDeletable
+[INFO ] 2025-07-20 20:21:13.763 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.factory.Factory
+[INFO ] 2025-07-20 20:21:13.765 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.factory.HasFactory
+[INFO ] 2025-07-20 20:21:13.766 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.model.BaseEntity
+[INFO ] 2025-07-20 20:21:13.767 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.repository.BaseRepository
+[INFO ] 2025-07-20 20:21:13.769 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.seeder.CallableSeeder
+[INFO ] 2025-07-20 20:21:13.773 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.seeder.DatabaseSeeder
+[INFO ] 2025-07-20 20:21:13.774 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.seeder.Seeder
+[INFO ] 2025-07-20 20:21:13.780 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.transformer.contracts.Mapper
+[INFO ] 2025-07-20 20:21:13.783 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.transformer.mapper.EntityMapper
+[INFO ] 2025-07-20 20:21:13.786 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.database.transformer.resource.EntityResource
+[INFO ] 2025-07-20 20:21:13.787 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.exception.GlobalTranslatableException
+[INFO ] 2025-07-20 20:21:13.789 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.i18n.I18n
+[INFO ] 2025-07-20 20:21:13.791 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO ] 2025-07-20 20:21:13.792 - I18nAutoExtractorRunner - 🔍 io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO ] 2025-07-20 20:21:13.793 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:21:13.794 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:21:13.796 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:21:13.797 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:21:13.798 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.i18n.I18nExtractor
+[INFO ] 2025-07-20 20:21:13.800 - I18nAutoExtractorRunner -  Processing : io.authid.core.shared.components.i18n.I18nExtractorUtils
+[INFO ] 2025-07-20 20:21:13.801 - I18nAutoExtractorRunner -  ✅ All classes processed.
+[INFO ] 2025-07-20 20:23:35.558 - I18nAutoExtractorRunner -  Found 4 locales
+[INFO ] 2025-07-20 20:23:35.562 - I18nAutoExtractorRunner -  Get base package for extractions: io.authid.core 
+[INFO ] 2025-07-20 20:23:36.005 - I18nAutoExtractorRunner -  Found 30 classes
+[INFO ] 2025-07-20 20:23:36.005 - I18nAutoExtractorRunner -  Processing classes...
+[INFO ] 2025-07-20 20:23:36.007 - I18nAutoExtractorRunner -  Loading class : io.authid.core.AuthIdCoreApplication
+[INFO ] 2025-07-20 20:23:36.011 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.entities.PasswordResetTokenEntity
+[INFO ] 2025-07-20 20:23:36.013 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.entities.UserDevice
+[INFO ] 2025-07-20 20:23:36.016 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.entities.UserEntity
+[INFO ] 2025-07-20 20:23:36.017 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.DeviceStatus
+[INFO ] 2025-07-20 20:23:36.018 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.DeviceStatus
+[INFO ] 2025-07-20 20:23:36.019 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:23:36.313 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:23:36.313 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:23:36.315 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:23:36.315 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:23:36.317 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:23:36.317 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:23:36.319 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:23:36.320 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.DeviceType
+[INFO ] 2025-07-20 20:23:36.321 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.DeviceType
+[INFO ] 2025-07-20 20:23:36.322 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:23:36.324 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:23:36.325 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:23:36.327 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:23:36.328 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:23:36.330 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:23:36.330 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:23:36.333 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:23:36.334 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO ] 2025-07-20 20:23:36.335 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO ] 2025-07-20 20:23:36.336 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:23:36.338 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:23:36.339 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:23:36.343 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:23:36.344 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:23:36.347 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:23:36.347 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:23:36.349 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:23:36.351 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.UserStatus
+[INFO ] 2025-07-20 20:23:36.352 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.UserStatus
+[INFO ] 2025-07-20 20:23:36.353 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:23:36.356 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:23:36.357 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:23:36.359 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:23:36.360 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:23:36.364 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:23:36.365 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:23:36.368 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:23:36.372 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.repositories.PasswordResetTokenRepository
+[INFO ] 2025-07-20 20:23:36.373 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.CacheManager
+[INFO ] 2025-07-20 20:23:36.375 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.drivers.FileCacheDriver
+[INFO ] 2025-07-20 20:23:36.377 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.drivers.InMemoryCacheDriver
+[INFO ] 2025-07-20 20:23:36.378 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.drivers.RedisCacheDriver
+[INFO ] 2025-07-20 20:23:36.380 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.configurations.AuditorAwareImpl
+[INFO ] 2025-07-20 20:23:36.381 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.contracts.SoftDeletable
+[INFO ] 2025-07-20 20:23:36.383 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.factory.Factory
+[INFO ] 2025-07-20 20:23:36.386 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.factory.HasFactory
+[INFO ] 2025-07-20 20:23:36.387 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.model.BaseEntity
+[INFO ] 2025-07-20 20:23:36.387 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.repository.BaseRepository
+[INFO ] 2025-07-20 20:23:36.388 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.seeder.CallableSeeder
+[INFO ] 2025-07-20 20:23:36.389 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.seeder.DatabaseSeeder
+[INFO ] 2025-07-20 20:23:36.390 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.seeder.Seeder
+[INFO ] 2025-07-20 20:23:36.391 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.transformer.contracts.Mapper
+[INFO ] 2025-07-20 20:23:36.392 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.transformer.mapper.EntityMapper
+[INFO ] 2025-07-20 20:23:36.395 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.transformer.resource.EntityResource
+[INFO ] 2025-07-20 20:23:36.396 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.exception.GlobalTranslatableException
+[INFO ] 2025-07-20 20:23:36.397 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18n
+[INFO ] 2025-07-20 20:23:36.398 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO ] 2025-07-20 20:23:36.398 - I18nAutoExtractorRunner - 🔍 io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO ] 2025-07-20 20:23:36.398 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:23:36.399 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:23:36.400 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:23:36.401 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:23:36.402 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18nExtractor
+[INFO ] 2025-07-20 20:23:36.404 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18nExtractorUtils
+[INFO ] 2025-07-20 20:23:36.406 - I18nAutoExtractorRunner -  ✅ All classes processed.
+[INFO ] 2025-07-20 20:24:57.827 - I18nAutoExtractorRunner -  Found 4 locales
+[INFO ] 2025-07-20 20:24:57.832 - I18nAutoExtractorRunner -  Get base package for extractions: io.authid.core 
+[INFO ] 2025-07-20 20:24:58.413 - I18nAutoExtractorRunner -  Found 30 classes
+[INFO ] 2025-07-20 20:24:58.413 - I18nAutoExtractorRunner -  Processing classes...
+[INFO ] 2025-07-20 20:24:58.416 - I18nAutoExtractorRunner -  Loading class : io.authid.core.AuthIdCoreApplication
+[INFO ] 2025-07-20 20:24:58.422 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.entities.PasswordResetTokenEntity
+[INFO ] 2025-07-20 20:24:58.424 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.entities.UserDevice
+[INFO ] 2025-07-20 20:24:58.426 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.entities.UserEntity
+[INFO ] 2025-07-20 20:24:58.429 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.DeviceStatus
+[INFO ] 2025-07-20 20:24:58.431 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.DeviceStatus
+[INFO ] 2025-07-20 20:24:58.433 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:24:58.722 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:24:58.723 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:24:58.725 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:24:58.726 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:24:58.729 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:24:58.730 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:24:58.733 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:24:58.737 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.DeviceType
+[INFO ] 2025-07-20 20:24:58.738 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.DeviceType
+[INFO ] 2025-07-20 20:24:58.739 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:24:58.741 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:24:58.742 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:24:58.745 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:24:58.746 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:24:58.748 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:24:58.749 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:24:58.752 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:24:58.753 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO ] 2025-07-20 20:24:58.755 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO ] 2025-07-20 20:24:58.755 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:24:58.760 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:24:58.762 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:24:58.765 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:24:58.766 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:24:58.768 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:24:58.769 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:24:58.772 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:24:58.774 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.UserStatus
+[INFO ] 2025-07-20 20:24:58.776 - I18nAutoExtractorRunner - 🔍 io.authid.core.containers.user.enums.UserStatus
+[INFO ] 2025-07-20 20:24:58.777 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:24:58.782 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:24:58.783 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:24:58.788 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:24:58.789 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:24:58.792 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:24:58.792 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:24:58.795 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:24:58.803 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.repositories.PasswordResetTokenRepository
+[INFO ] 2025-07-20 20:24:58.806 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.CacheManager
+[INFO ] 2025-07-20 20:24:58.807 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.drivers.FileCacheDriver
+[INFO ] 2025-07-20 20:24:58.809 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.drivers.InMemoryCacheDriver
+[INFO ] 2025-07-20 20:24:58.810 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.drivers.RedisCacheDriver
+[INFO ] 2025-07-20 20:24:58.811 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.configurations.AuditorAwareImpl
+[INFO ] 2025-07-20 20:24:58.813 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.contracts.SoftDeletable
+[INFO ] 2025-07-20 20:24:58.815 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.factory.Factory
+[INFO ] 2025-07-20 20:24:58.816 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.factory.HasFactory
+[INFO ] 2025-07-20 20:24:58.817 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.model.BaseEntity
+[INFO ] 2025-07-20 20:24:58.818 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.repository.BaseRepository
+[INFO ] 2025-07-20 20:24:58.821 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.seeder.CallableSeeder
+[INFO ] 2025-07-20 20:24:58.823 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.seeder.DatabaseSeeder
+[INFO ] 2025-07-20 20:24:58.824 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.seeder.Seeder
+[INFO ] 2025-07-20 20:24:58.825 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.transformer.contracts.Mapper
+[INFO ] 2025-07-20 20:24:58.827 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.transformer.mapper.EntityMapper
+[INFO ] 2025-07-20 20:24:58.829 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.transformer.resource.EntityResource
+[INFO ] 2025-07-20 20:24:58.831 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.exception.GlobalTranslatableException
+[INFO ] 2025-07-20 20:24:58.832 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18n
+[INFO ] 2025-07-20 20:24:58.833 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO ] 2025-07-20 20:24:58.834 - I18nAutoExtractorRunner - 🔍 io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO ] 2025-07-20 20:24:58.834 - I18nAutoExtractorRunner -  🌐 Extracting for: id
+[INFO ] 2025-07-20 20:24:58.836 - I18nAutoExtractorRunner -  🌐 Extracting for: en
+[INFO ] 2025-07-20 20:24:58.837 - I18nAutoExtractorRunner -  🌐 Extracting for: fr
+[INFO ] 2025-07-20 20:24:58.838 - I18nAutoExtractorRunner -  🌐 Extracting for: ar
+[INFO ] 2025-07-20 20:24:58.839 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18nExtractor
+[INFO ] 2025-07-20 20:24:58.840 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18nExtractorUtils
+[INFO ] 2025-07-20 20:24:58.842 - I18nAutoExtractorRunner -  ✅ All classes processed.
+[INFO ] 2025-07-20 20:27:41.266 - I18nAutoExtractorRunner -  Found 4 locales
+[INFO ] 2025-07-20 20:27:41.271 - I18nAutoExtractorRunner -  Get base package for extractions: io.authid.core 
+[INFO ] 2025-07-20 20:27:41.941 - I18nAutoExtractorRunner -  Found 30 classes
+[INFO ] 2025-07-20 20:27:41.942 - I18nAutoExtractorRunner -  Processing classes...
+[INFO ] 2025-07-20 20:27:41.944 - I18nAutoExtractorRunner -  Loading class : io.authid.core.AuthIdCoreApplication
+[INFO ] 2025-07-20 20:27:41.950 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.entities.PasswordResetTokenEntity
+[INFO ] 2025-07-20 20:27:41.952 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.entities.UserDevice
+[INFO ] 2025-07-20 20:27:41.953 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.entities.UserEntity
+[INFO ] 2025-07-20 20:27:41.955 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.DeviceStatus
+[INFO ] 2025-07-20 20:27:41.957 - I18nAutoExtractorRunner -  Processing Extract class : io.authid.core.containers.user.enums.DeviceStatus 
+[INFO ] 2025-07-20 20:27:41.958 - I18nAutoExtractorRunner -  Extracting for: id
+[INFO ] 2025-07-20 20:27:42.272 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:27:42.273 - I18nAutoExtractorRunner -  Extracting for: en
+[INFO ] 2025-07-20 20:27:42.276 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:27:42.277 - I18nAutoExtractorRunner -  Extracting for: fr
+[INFO ] 2025-07-20 20:27:42.280 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:27:42.281 - I18nAutoExtractorRunner -  Extracting for: ar
+[INFO ] 2025-07-20 20:27:42.284 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:27:42.285 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.DeviceType
+[INFO ] 2025-07-20 20:27:42.286 - I18nAutoExtractorRunner -  Processing Extract class : io.authid.core.containers.user.enums.DeviceType 
+[INFO ] 2025-07-20 20:27:42.287 - I18nAutoExtractorRunner -  Extracting for: id
+[INFO ] 2025-07-20 20:27:42.289 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:27:42.290 - I18nAutoExtractorRunner -  Extracting for: en
+[INFO ] 2025-07-20 20:27:42.292 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:27:42.293 - I18nAutoExtractorRunner -  Extracting for: fr
+[INFO ] 2025-07-20 20:27:42.296 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:27:42.297 - I18nAutoExtractorRunner -  Extracting for: ar
+[INFO ] 2025-07-20 20:27:42.302 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:27:42.304 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO ] 2025-07-20 20:27:42.305 - I18nAutoExtractorRunner -  Processing Extract class : io.authid.core.containers.user.enums.PasswordResetTokenStatus 
+[INFO ] 2025-07-20 20:27:42.306 - I18nAutoExtractorRunner -  Extracting for: id
+[INFO ] 2025-07-20 20:27:42.309 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:27:42.309 - I18nAutoExtractorRunner -  Extracting for: en
+[INFO ] 2025-07-20 20:27:42.312 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:27:42.312 - I18nAutoExtractorRunner -  Extracting for: fr
+[INFO ] 2025-07-20 20:27:42.315 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:27:42.316 - I18nAutoExtractorRunner -  Extracting for: ar
+[INFO ] 2025-07-20 20:27:42.319 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:27:42.321 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.enums.UserStatus
+[INFO ] 2025-07-20 20:27:42.322 - I18nAutoExtractorRunner -  Processing Extract class : io.authid.core.containers.user.enums.UserStatus 
+[INFO ] 2025-07-20 20:27:42.322 - I18nAutoExtractorRunner -  Extracting for: id
+[INFO ] 2025-07-20 20:27:42.326 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:27:42.327 - I18nAutoExtractorRunner -  Extracting for: en
+[INFO ] 2025-07-20 20:27:42.331 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:27:42.332 - I18nAutoExtractorRunner -  Extracting for: fr
+[INFO ] 2025-07-20 20:27:42.335 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:27:42.336 - I18nAutoExtractorRunner -  Extracting for: ar
+[INFO ] 2025-07-20 20:27:42.340 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:27:42.346 - I18nAutoExtractorRunner -  Loading class : io.authid.core.containers.user.repositories.PasswordResetTokenRepository
+[INFO ] 2025-07-20 20:27:42.348 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.CacheManager
+[INFO ] 2025-07-20 20:27:42.349 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.drivers.FileCacheDriver
+[INFO ] 2025-07-20 20:27:42.352 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.drivers.InMemoryCacheDriver
+[INFO ] 2025-07-20 20:27:42.353 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.cache.drivers.RedisCacheDriver
+[INFO ] 2025-07-20 20:27:42.355 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.configurations.AuditorAwareImpl
+[INFO ] 2025-07-20 20:27:42.357 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.contracts.SoftDeletable
+[INFO ] 2025-07-20 20:27:42.358 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.factory.Factory
+[INFO ] 2025-07-20 20:27:42.360 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.factory.HasFactory
+[INFO ] 2025-07-20 20:27:42.361 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.model.BaseEntity
+[INFO ] 2025-07-20 20:27:42.362 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.repository.BaseRepository
+[INFO ] 2025-07-20 20:27:42.364 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.seeder.CallableSeeder
+[INFO ] 2025-07-20 20:27:42.366 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.seeder.DatabaseSeeder
+[INFO ] 2025-07-20 20:27:42.367 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.seeder.Seeder
+[INFO ] 2025-07-20 20:27:42.368 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.transformer.contracts.Mapper
+[INFO ] 2025-07-20 20:27:42.370 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.transformer.mapper.EntityMapper
+[INFO ] 2025-07-20 20:27:42.372 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.database.transformer.resource.EntityResource
+[INFO ] 2025-07-20 20:27:42.374 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.exception.GlobalTranslatableException
+[INFO ] 2025-07-20 20:27:42.375 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18n
+[INFO ] 2025-07-20 20:27:42.375 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO ] 2025-07-20 20:27:42.377 - I18nAutoExtractorRunner -  Processing Extract class : io.authid.core.shared.components.i18n.I18nAutoExtractorRunner 
+[INFO ] 2025-07-20 20:27:42.377 - I18nAutoExtractorRunner -  Extracting for: id
+[INFO ] 2025-07-20 20:27:42.378 - I18nAutoExtractorRunner -  Extracting for: en
+[INFO ] 2025-07-20 20:27:42.379 - I18nAutoExtractorRunner -  Extracting for: fr
+[INFO ] 2025-07-20 20:27:42.379 - I18nAutoExtractorRunner -  Extracting for: ar
+[INFO ] 2025-07-20 20:27:42.381 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18nExtractor
+[INFO ] 2025-07-20 20:27:42.383 - I18nAutoExtractorRunner -  Loading class : io.authid.core.shared.components.i18n.I18nExtractorUtils
+[INFO ] 2025-07-20 20:27:42.384 - I18nAutoExtractorRunner -  ✅ All classes processed.
+[INFO ] 2025-07-20 20:30:13.697 - I18nAutoExtractorRunner -  Found 4 locales
+[INFO ] 2025-07-20 20:30:13.730 - I18nAutoExtractorRunner -  Get base package for extractions: io.authid.core 
+[INFO ] 2025-07-20 20:30:14.488 - I18nAutoExtractorRunner -  Found 30 classes
+[INFO ] 2025-07-20 20:30:14.489 - I18nAutoExtractorRunner -  Processing classes...
+[INFO ] 2025-07-20 20:30:14.500 - I18nAutoExtractorRunner -  Current Processing class : io.authid.core.containers.user.enums.DeviceStatus 
+[INFO ] 2025-07-20 20:30:14.501 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:30:14.815 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:30:14.816 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:30:14.820 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:30:14.822 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:30:14.825 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:30:14.826 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:30:14.830 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceStatus.json 
+[INFO ] 2025-07-20 20:30:14.832 - I18nAutoExtractorRunner -  Current Processing class : io.authid.core.containers.user.enums.DeviceType 
+[INFO ] 2025-07-20 20:30:14.843 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:30:14.846 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:30:14.847 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:30:14.850 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:30:14.851 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:30:14.854 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:30:14.855 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:30:14.860 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceType.json 
+[INFO ] 2025-07-20 20:30:14.866 - I18nAutoExtractorRunner -  Current Processing class : io.authid.core.containers.user.enums.PasswordResetTokenStatus 
+[INFO ] 2025-07-20 20:30:14.868 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:30:14.871 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:30:14.873 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:30:14.877 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:30:14.879 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:30:14.885 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:30:14.887 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:30:14.892 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json 
+[INFO ] 2025-07-20 20:30:14.897 - I18nAutoExtractorRunner -  Current Processing class : io.authid.core.containers.user.enums.UserStatus 
+[INFO ] 2025-07-20 20:30:14.900 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:30:14.910 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:30:14.911 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:30:14.918 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:30:14.919 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:30:14.925 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:30:14.926 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:30:14.931 - I18nExtractorUtils -  ℹ️ No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/UserStatus.json 
+[INFO ] 2025-07-20 20:30:14.981 - I18nAutoExtractorRunner -  Current Processing class : io.authid.core.shared.components.i18n.I18nAutoExtractorRunner 
+[INFO ] 2025-07-20 20:30:14.982 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:30:14.983 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:30:14.984 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:30:14.984 - I18nAutoExtractorRunner -  Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:30:14.986 - I18nAutoExtractorRunner -  ✅ All classes processed.
+[INFO ] 2025-07-20 20:33:25.317 - I18nAutoExtractorRunner - Found 4 locales to proceeds
+[INFO ] 2025-07-20 20:33:25.374 - I18nAutoExtractorRunner - Get base package for extractions: io.authid.core
+[INFO ] 2025-07-20 20:33:25.967 - I18nAutoExtractorRunner - Found 30 classes
+[INFO ] 2025-07-20 20:33:25.967 - I18nAutoExtractorRunner - Processing classes...
+[INFO ] 2025-07-20 20:33:25.978 - I18nAutoExtractorRunner - Current Processing class : io.authid.core.containers.user.enums.DeviceStatus
+[INFO ] 2025-07-20 20:33:25.979 - I18nAutoExtractorRunner - Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:33:26.306 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:33:26.307 - I18nAutoExtractorRunner - Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:33:26.310 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:33:26.311 - I18nAutoExtractorRunner - Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:33:26.313 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:33:26.314 - I18nAutoExtractorRunner - Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:33:26.316 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:33:26.318 - I18nAutoExtractorRunner - Current Processing class : io.authid.core.containers.user.enums.DeviceType
+[INFO ] 2025-07-20 20:33:26.318 - I18nAutoExtractorRunner - Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:33:26.325 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:33:26.326 - I18nAutoExtractorRunner - Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:33:26.328 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:33:26.330 - I18nAutoExtractorRunner - Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:33:26.333 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:33:26.334 - I18nAutoExtractorRunner - Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:33:26.337 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:33:26.339 - I18nAutoExtractorRunner - Current Processing class : io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO ] 2025-07-20 20:33:26.342 - I18nAutoExtractorRunner - Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:33:26.347 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:33:26.348 - I18nAutoExtractorRunner - Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:33:26.352 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:33:26.353 - I18nAutoExtractorRunner - Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:33:26.355 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:33:26.356 - I18nAutoExtractorRunner - Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:33:26.358 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:33:26.360 - I18nAutoExtractorRunner - Current Processing class : io.authid.core.containers.user.enums.UserStatus
+[INFO ] 2025-07-20 20:33:26.367 - I18nAutoExtractorRunner - Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:33:26.371 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:33:26.372 - I18nAutoExtractorRunner - Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:33:26.376 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:33:26.376 - I18nAutoExtractorRunner - Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:33:26.379 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:33:26.379 - I18nAutoExtractorRunner - Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:33:26.386 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:33:26.406 - I18nAutoExtractorRunner - Current Processing class : io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO ] 2025-07-20 20:33:26.406 - I18nAutoExtractorRunner - Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:33:26.408 - I18nAutoExtractorRunner - Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:33:26.409 - I18nAutoExtractorRunner - Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:33:26.410 - I18nAutoExtractorRunner - Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:33:26.411 - I18nAutoExtractorRunner - All classes processed.
+[INFO ] 2025-07-20 20:34:57.798 - I18nAutoExtractorRunner - Found 4 locales to proceeds
+[INFO ] 2025-07-20 20:34:57.821 - I18nAutoExtractorRunner - Get base package for extractions: io.authid.core
+[INFO ] 2025-07-20 20:34:58.281 - I18nAutoExtractorRunner - Found 30 classes
+[INFO ] 2025-07-20 20:34:58.282 - I18nAutoExtractorRunner - Processing classes...
+[INFO ] 2025-07-20 20:34:58.290 - I18nAutoExtractorRunner - Current Processing class : io.authid.core.containers.user.enums.DeviceStatus
+[INFO ] 2025-07-20 20:34:58.291 - I18nAutoExtractorRunner - Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:34:58.459 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:34:58.459 - I18nAutoExtractorRunner - Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:34:58.461 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:34:58.461 - I18nAutoExtractorRunner - Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:34:58.463 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:34:58.463 - I18nAutoExtractorRunner - Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:34:58.465 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO ] 2025-07-20 20:34:58.466 - I18nAutoExtractorRunner - Current Processing class : io.authid.core.containers.user.enums.DeviceType
+[INFO ] 2025-07-20 20:34:58.466 - I18nAutoExtractorRunner - Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:34:58.468 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:34:58.468 - I18nAutoExtractorRunner - Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:34:58.470 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:34:58.471 - I18nAutoExtractorRunner - Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:34:58.473 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:34:58.473 - I18nAutoExtractorRunner - Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:34:58.476 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceType.json
+[INFO ] 2025-07-20 20:34:58.477 - I18nAutoExtractorRunner - Current Processing class : io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO ] 2025-07-20 20:34:58.478 - I18nAutoExtractorRunner - Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:34:58.481 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:34:58.481 - I18nAutoExtractorRunner - Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:34:58.484 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:34:58.484 - I18nAutoExtractorRunner - Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:34:58.486 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:34:58.487 - I18nAutoExtractorRunner - Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:34:58.489 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO ] 2025-07-20 20:34:58.491 - I18nAutoExtractorRunner - Current Processing class : io.authid.core.containers.user.enums.UserStatus
+[INFO ] 2025-07-20 20:34:58.492 - I18nAutoExtractorRunner - Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:34:58.495 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:34:58.496 - I18nAutoExtractorRunner - Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:34:58.498 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:34:58.499 - I18nAutoExtractorRunner - Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:34:58.501 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:34:58.501 - I18nAutoExtractorRunner - Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:34:58.503 - I18nExtractorUtils - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/UserStatus.json
+[INFO ] 2025-07-20 20:34:58.522 - I18nAutoExtractorRunner - Current Processing class : io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO ] 2025-07-20 20:34:58.523 - I18nAutoExtractorRunner - Check and Start Extraction for locales: id Locale
+[INFO ] 2025-07-20 20:34:58.524 - I18nAutoExtractorRunner - Check and Start Extraction for locales: en Locale
+[INFO ] 2025-07-20 20:34:58.525 - I18nAutoExtractorRunner - Check and Start Extraction for locales: fr Locale
+[INFO ] 2025-07-20 20:34:58.525 - I18nAutoExtractorRunner - Check and Start Extraction for locales: ar Locale
+[INFO ] 2025-07-20 20:34:58.527 - I18nAutoExtractorRunner - All classes processed.
+[INFO] 2025-07-20 20:41:50.768 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 20 - Found 4 locales to proceeds
+[INFO] 2025-07-20 20:41:50.803 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 24 - Get base package for extractions: io.authid.core
+[INFO] 2025-07-20 20:41:51.498 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 32 - Found 30 classes
+[INFO] 2025-07-20 20:41:51.499 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 34 - Processing classes...
+[INFO] 2025-07-20 20:41:51.513 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 40 - Current Processing class : io.authid.core.containers.user.enums.DeviceStatus
+[INFO] 2025-07-20 20:41:51.514 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: id Locale
+[INFO] 2025-07-20 20:41:51.879 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO] 2025-07-20 20:41:51.881 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: en Locale
+[INFO] 2025-07-20 20:41:51.885 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO] 2025-07-20 20:41:51.886 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: fr Locale
+[INFO] 2025-07-20 20:41:51.891 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO] 2025-07-20 20:41:51.893 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: ar Locale
+[INFO] 2025-07-20 20:41:51.897 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceStatus.json
+[INFO] 2025-07-20 20:41:51.900 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 40 - Current Processing class : io.authid.core.containers.user.enums.DeviceType
+[INFO] 2025-07-20 20:41:51.901 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: id Locale
+[INFO] 2025-07-20 20:41:51.906 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/DeviceType.json
+[INFO] 2025-07-20 20:41:51.907 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: en Locale
+[INFO] 2025-07-20 20:41:51.912 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/DeviceType.json
+[INFO] 2025-07-20 20:41:51.913 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: fr Locale
+[INFO] 2025-07-20 20:41:51.918 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/DeviceType.json
+[INFO] 2025-07-20 20:41:51.920 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: ar Locale
+[INFO] 2025-07-20 20:41:51.925 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/DeviceType.json
+[INFO] 2025-07-20 20:41:51.930 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 40 - Current Processing class : io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO] 2025-07-20 20:41:51.932 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: id Locale
+[INFO] 2025-07-20 20:41:51.938 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO] 2025-07-20 20:41:51.939 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: en Locale
+[INFO] 2025-07-20 20:41:51.943 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO] 2025-07-20 20:41:51.944 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: fr Locale
+[INFO] 2025-07-20 20:41:51.947 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO] 2025-07-20 20:41:51.949 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: ar Locale
+[INFO] 2025-07-20 20:41:51.955 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/PasswordResetTokenStatus.json
+[INFO] 2025-07-20 20:41:51.957 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 40 - Current Processing class : io.authid.core.containers.user.enums.UserStatus
+[INFO] 2025-07-20 20:41:51.959 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: id Locale
+[INFO] 2025-07-20 20:41:51.964 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/id/io/authid/core/containers/user/enums/UserStatus.json
+[INFO] 2025-07-20 20:41:51.966 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: en Locale
+[INFO] 2025-07-20 20:41:51.972 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/en/io/authid/core/containers/user/enums/UserStatus.json
+[INFO] 2025-07-20 20:41:51.974 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: fr Locale
+[INFO] 2025-07-20 20:41:51.979 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/fr/io/authid/core/containers/user/enums/UserStatus.json
+[INFO] 2025-07-20 20:41:51.980 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: ar Locale
+[INFO] 2025-07-20 20:41:51.984 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/ar/io/authid/core/containers/user/enums/UserStatus.json
+[INFO] 2025-07-20 20:41:52.010 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 40 - Current Processing class : io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO] 2025-07-20 20:41:52.011 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: id Locale
+[INFO] 2025-07-20 20:41:52.013 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: en Locale
+[INFO] 2025-07-20 20:41:52.015 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: fr Locale
+[INFO] 2025-07-20 20:41:52.017 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: ar Locale
+[INFO] 2025-07-20 20:41:52.020 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 52 - All classes processed.

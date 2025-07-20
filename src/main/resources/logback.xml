@@ -1,0 +1,43 @@
+<configuration>
+
+    <!-- Enable Spring Boot color conversion -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+
+    <!-- Log pattern for console with colors -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%clr([%level]){faint,blue,yellow,red,green} %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){magenta} %clr([%thread]){faint} %clr(%logger{0}){cyan}::%clr(%M){green} - %clr(%L){yellow} - %msg%n"/>
+
+    <!-- Console Appender -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File Appender (text, no color) -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/application.log</file>
+        <encoder>
+            <pattern>[%level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{0}::%M - %L - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/archived/application-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>14</maxHistory>
+            <totalSizeCap>200MB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Root logger configuration -->
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <!-- Specific loggers -->
+    <logger name="io.authid" level="info"/>
+    <logger name="org.springframework.web" level="warn"/>
+    <logger name="org.hibernate.boot.model.source.internal.annotations" level="debug"/>
+    <logger name="org.hibernate.jpa.internal.util.LogHelper" level="debug"/>
+
+</configuration>

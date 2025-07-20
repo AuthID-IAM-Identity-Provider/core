@@ -1,9 +1,12 @@
 package io.authid.core.shared.components.i18n;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Slf4j
 public class I18nExtractor {
 
     private static final Pattern I18N_PATTERN = Pattern.compile("I18n\\.extract\\(\"([^\"]+)\"");
@@ -32,7 +35,7 @@ public class I18nExtractor {
             }
 
         } catch (Exception e) {
-            System.err.println("❌ Error extracting " + clazz.getName() + ": " + e.getMessage());
+            log.error("Error extracting class:{}: {}", clazz.getName(), e.getMessage());
         }
     }
 }

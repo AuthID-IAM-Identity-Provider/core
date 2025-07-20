@@ -3,6 +3,7 @@ package io.authid.core.shared.components.i18n;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,6 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
+@Slf4j
 public class I18nExtractorUtils {
 
     public static String readSourceForClass(Class<?> clazz) throws IOException {
@@ -36,7 +38,7 @@ public class I18nExtractorUtils {
                 try (InputStream in = Files.newInputStream(filePath)) {
                     finalMap = mapper.readValue(in, new TypeReference<Map<String, String>>() {});
                 } catch (IOException e) {
-                    System.err.println("⚠️ Gagal baca file lama: " + filePath);
+                    log.warn("Failed reading: {}", filePath);
                 }
             }
 
@@ -52,12 +54,12 @@ public class I18nExtractorUtils {
             // 🟡 Step 3: Tulis ulang file hanya jika ada perubahan
             if (hasChanges) {
                 Files.writeString(filePath, mapper.writeValueAsString(finalMap));
-                System.out.println("✅ Diperbarui: " + filePath);
+                log.info("Updated file: {}", filePath);
             } else {
-                System.out.println("ℹ️ Tidak ada key baru untuk: " + filePath);
+                log.info("No changes to write: {}", filePath);
             }
         } catch (IOException e) {
-            System.err.println("❌ Gagal menulis ke " + filePath + ": " + e.getMessage());
+            log.error("Failed writing to: {}: {}", filePath, e.getMessage());
         }
     }
 }
