@@ -32,7 +32,6 @@ public abstract class Factory<T> {
         return this;
     }
 
-
     public Factory<T> count(int count) {
         this.count = count;
         return this;

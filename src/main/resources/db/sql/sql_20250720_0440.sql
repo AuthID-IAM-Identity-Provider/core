@@ -1084,4 +1084,119 @@ CREATE TABLE password_reset_tokens (
     INDEX (status)
 );
 
+-- JOB Enums
+-- ENUM untuk tipe job
+CREATE TYPE job_type_enum AS ENUM (
+    'MANUAL',         -- dijalankan secara manual (misal dari UI)
+    'SCHEDULED',      -- dijalankan oleh scheduler
+    'SYSTEM',         -- dijalankan oleh sistem internal
+    'EVENT'           -- dijalankan karena event tertentu
+);
 
+-- ENUM untuk status eksekusi job
+CREATE TYPE job_status_enum AS ENUM (
+    'STARTING',
+    'STARTED',
+    'FAILED',
+    'COMPLETED',
+    'STOPPED'
+);
+
+-- ENUM untuk status step
+CREATE TYPE step_status_enum AS ENUM (
+    'STARTING',
+    'STARTED',
+    'FAILED',
+    'COMPLETED',
+    'SKIPPED'
+);
+
+-- ENUM untuk log level
+CREATE TYPE log_level_enum AS ENUM (
+    'TRACE',
+    'DEBUG',
+    'INFO',
+    'WARN',
+    'ERROR'
+);
+
+-- ENUM untuk parameter type (opsional tapi berguna)
+CREATE TYPE param_type_enum AS ENUM (
+    'STRING',
+    'LONG',
+    'DOUBLE',
+    'DATE',
+    'JSON'
+);
+-- JOB Table
+CREATE TABLE jobs (
+           id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+           name VARCHAR(255) NOT NULL,
+           unique_key VARCHAR(255) NOT NULL,
+           description TEXT NULL,
+           job_type job_type_enum DEFAULT 'MANUAL',
+           is_active BOOLEAN NOT NULL DEFAULT true,
+
+           created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+           updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+           CONSTRAINT uq_jobs_name_key UNIQUE (name, unique_key)
+       );
+
+CREATE TABLE job_parameters (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    job_id UUID NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
+    param_key VARCHAR(255) NOT NULL,
+    param_value TEXT NOT NULL,
+    param_type param_type_enum NOT NULL DEFAULT 'STRING',
+    is_required BOOLEAN DEFAULT false,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT uq_job_param_key UNIQUE (job_id, param_key)
+);
+CREATE TABLE job_executions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    job_id UUID NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
+    parent_execution_id UUID NULL REFERENCES job_executions(id) ON DELETE SET NULL,
+    run_id VARCHAR(100) NOT NULL,
+    status job_status_enum NOT NULL,
+    exit_code VARCHAR(100) NULL,
+    exit_message TEXT NULL,
+    triggered_by VARCHAR(100) NULL,
+    payload JSONB NULL,
+    retry_count INT DEFAULT 0,
+    host VARCHAR(100) NULL,
+
+    started_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    ended_at TIMESTAMP NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    CONSTRAINT uq_job_run_id UNIQUE (job_id, run_id)
+);
+CREATE TABLE job_steps (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    execution_id UUID NOT NULL REFERENCES job_executions(id) ON DELETE CASCADE,
+    step_name VARCHAR(255) NOT NULL,
+    status step_status_enum NOT NULL,
+    read_count INT DEFAULT 0,
+    write_count INT DEFAULT 0,
+    skip_count INT DEFAULT 0,
+    error_message TEXT NULL,
+    started_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    ended_at TIMESTAMP NULL,
+    retry_count INT DEFAULT 0,
+    duration_ms BIGINT GENERATED ALWAYS AS (EXTRACT(EPOCH FROM (ended_at - started_at)) * 1000)::BIGINT STORED,
+
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+CREATE TABLE job_logs (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    execution_id UUID NOT NULL REFERENCES job_executions(id) ON DELETE CASCADE,
+    step_id UUID NULL REFERENCES job_steps(id) ON DELETE SET NULL,
+    level log_level_enum NOT NULL DEFAULT 'INFO',
+    message TEXT NOT NULL,
+    context JSONB NULL,
+    logged_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
