@@ -1,8 +1,11 @@
-package io.authid.core.shared.components.i18n;
+package io.authid.core.shared.components.i18n.extractors;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 public class I18n {
 
     private static final Map<String, String> i18nKeys = new HashMap<>();
@@ -15,6 +18,7 @@ public class I18n {
         }
         String fullKey = base + "." + key;
         i18nKeys.putIfAbsent(fullKey, "");
+        log.info("key : {}", fullKey);
         return fullKey;
     }
 

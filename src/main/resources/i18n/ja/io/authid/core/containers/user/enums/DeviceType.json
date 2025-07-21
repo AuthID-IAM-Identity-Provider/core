@@ -1,0 +1,12 @@
+{
+  "io.authid.core.containers.user.enums.DeviceType.device.mobile.label" : "",
+  "io.authid.core.containers.user.enums.DeviceType.device.mobile.description" : "",
+  "io.authid.core.containers.user.enums.DeviceType.device.desktop.label" : "",
+  "io.authid.core.containers.user.enums.DeviceType.device.desktop.description" : "",
+  "io.authid.core.containers.user.enums.DeviceType.device.tablet.label" : "",
+  "io.authid.core.containers.user.enums.DeviceType.device.tablet.description" : "",
+  "io.authid.core.containers.user.enums.DeviceType.device.wearable.label" : "",
+  "io.authid.core.containers.user.enums.DeviceType.device.wearable.description" : "",
+  "io.authid.core.containers.user.enums.DeviceType.device.unknown.label" : "",
+  "io.authid.core.containers.user.enums.DeviceType.device.unknown.description" : ""
+}

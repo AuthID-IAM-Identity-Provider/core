@@ -1,6 +1,6 @@
 package io.authid.core.containers.user.enums;
 
-import io.authid.core.shared.components.i18n.I18n;
+import io.authid.core.shared.components.i18n.extractors.I18n;
 import lombok.Getter;
 
 @Getter
@@ -10,6 +10,10 @@ public enum DeviceType {
     TABLET(I18n.extract("device.tablet.label"), I18n.extract("device.tablet.description"), "tablet"),
     WEARABLE(I18n.extract("device.wearable.label"), I18n.extract("device.wearable.description"), "watch"),
     UNKNOWN(I18n.extract("device.unknown.label"), I18n.extract("device.unknown.description"), "help");
+
+    static {
+        I18n.setSourceClass(DeviceType.class);
+    }
 
     private final String label;
     private final String description;

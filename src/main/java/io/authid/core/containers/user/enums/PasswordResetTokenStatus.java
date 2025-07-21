@@ -1,6 +1,6 @@
 package io.authid.core.containers.user.enums;
 
-import io.authid.core.shared.components.i18n.I18n;
+import io.authid.core.shared.components.i18n.extractors.I18n;
 import lombok.Getter;
 
 @Getter
@@ -9,6 +9,10 @@ public enum PasswordResetTokenStatus {
     COMPLETED(I18n.extract("token.status.completed.label"), I18n.extract("token.status.completed.description"), "green", false, true),
     EXPIRED(I18n.extract("token.status.expired.label"), I18n.extract("token.status.expired.description"), "red", false, false),
     CANCELLED(I18n.extract("token.status.cancelled.label"), I18n.extract("token.status.cancelled.description"), "gray", false, false);
+
+    static {
+        I18n.setSourceClass(PasswordResetTokenStatus.class);
+    }
 
     private final String color;
     private final boolean isUsable;

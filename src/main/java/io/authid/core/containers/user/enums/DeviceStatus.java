@@ -1,6 +1,6 @@
 package io.authid.core.containers.user.enums;
 
-import io.authid.core.shared.components.i18n.I18n;
+import io.authid.core.shared.components.i18n.extractors.I18n;
 import lombok.Getter;
 
 @Getter
@@ -12,6 +12,10 @@ public enum DeviceStatus {
     REVOKED(I18n.extract("device.revoked.label"), I18n.extract("device.revoked.description"), "gray", false),
     SUSPICIOUS(I18n.extract("device.suspicious.label"), I18n.extract("device.suspicious.description"), "red", false),
     BLOCKED(I18n.extract("device.blocked.label"), I18n.extract("device.blocked.description"), "black", false);
+
+    static {
+        I18n.setSourceClass(DeviceStatus.class);
+    }
 
     private final String label;
     private final String description;

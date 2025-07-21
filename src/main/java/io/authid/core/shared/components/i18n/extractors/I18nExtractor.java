@@ -1,4 +1,4 @@
-package io.authid.core.shared.components.i18n;
+package io.authid.core.shared.components.i18n.extractors;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,6 +1,6 @@
 package io.authid.core.containers.user.enums;
 
-import io.authid.core.shared.components.i18n.I18n;
+import io.authid.core.shared.components.i18n.extractors.I18n;
 
 public enum UserStatus {
     // Active states
@@ -18,6 +18,10 @@ public enum UserStatus {
     SUSPENDED(I18n.extract("user.status.suspended.label"), I18n.extract("user.status.suspended.description"), "red", false, false, false),
     BANNED(I18n.extract("user.status.banned.label"), I18n.extract("user.status.banned.description"), "red", false, false, true),
     DELETED(I18n.extract("user.status.deleted.label"), I18n.extract("user.status.deleted.description"), "black", false, false, true);
+
+    static {
+        I18n.setSourceClass(UserStatus.class);
+    }
 
     private final boolean canLogin;
     private final boolean canPerformActions;

@@ -1,4 +1,4 @@
-package io.authid.core.shared.components.i18n;
+package io.authid.core.shared.components.i18n.extractors;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,0 +1,10 @@
+{
+  "io.authid.core.shared.components.jobs.enums.JobType.job.type.manual.label" : "",
+  "io.authid.core.shared.components.jobs.enums.JobType.job.type.manual.description" : "",
+  "io.authid.core.shared.components.jobs.enums.JobType.job.type.scheduled.label" : "",
+  "io.authid.core.shared.components.jobs.enums.JobType.job.type.scheduled.description" : "",
+  "io.authid.core.shared.components.jobs.enums.JobType.job.type.system.label" : "",
+  "io.authid.core.shared.components.jobs.enums.JobType.job.type.system.description" : "",
+  "io.authid.core.shared.components.jobs.enums.JobType.job.type.event.label" : "",
+  "io.authid.core.shared.components.jobs.enums.JobType.job.type.event.description" : ""
+}

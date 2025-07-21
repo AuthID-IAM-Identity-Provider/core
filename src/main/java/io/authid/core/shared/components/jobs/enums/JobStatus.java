@@ -1,6 +1,6 @@
 package io.authid.core.shared.components.jobs.enums;
 
-import io.authid.core.shared.components.i18n.I18n;
+import io.authid.core.shared.components.i18n.extractors.I18n;
 import lombok.Getter;
 
 @Getter
