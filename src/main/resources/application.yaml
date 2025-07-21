@@ -5,6 +5,8 @@ spring:
     port: 8080
   devtools:
     restart:
+      poll-interval: 2s
+      quiet-period: 1s
       enabled: true
   datasource:
     url: jdbc:oracle:thin:@//localhost:1521/AUTHIDCOREDEV

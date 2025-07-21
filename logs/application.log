@@ -2310,3 +2310,386 @@ Caused by: java.lang.IllegalArgumentException: object is not an instance of decl
 [INFO] 2025-07-22 03:24:57.153 [http-nio-8080-exec-3] TestExceptionController::testUserNotFoundException - 20 - Testing user not found exception...
 [INFO] 2025-07-22 03:24:57.156 [http-nio-8080-exec-3] I18n::extract - 21 - key : io.authid.core.containers.user.controllers.TestExceptionController.user.not.found
 [WARN] 2025-07-22 03:24:57.160 [http-nio-8080-exec-3] ExceptionHandlerExceptionResolver::logException - 247 - Resolved [io.authid.core.shared.components.exception.GlobalTranslatableException: io.authid.core.containers.user.controllers.TestExceptionController.user.not.found]
+[INFO] 2025-07-22 03:25:55.869 [SpringApplicationShutdownHook] EventDrivenConsumer::info - 174 - Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+[INFO] 2025-07-22 03:25:55.876 [SpringApplicationShutdownHook] PublishSubscribeChannel::info - 174 - Channel 'io.authid.core.errorChannel' has 0 subscriber(s).
+[INFO] 2025-07-22 03:25:55.881 [SpringApplicationShutdownHook] EventDrivenConsumer::info - 292 - stopped bean '_org.springframework.integration.errorLogger'
+[INFO] 2025-07-22 03:25:55.914 [SpringApplicationShutdownHook] LocalContainerEntityManagerFactoryBean::destroy - 650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO] 2025-07-22 03:46:52.802 [main] AnnotationConfigContextLoaderUtils::detectDefaultConfigurationClasses - 83 - Could not detect default configuration classes for test class [io.authid.core.AuthIdCoreApplicationTests]: AuthIdCoreApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[INFO] 2025-07-22 03:46:53.039 [main] SpringBootTestContextBootstrapper::getOrFindConfigurationClasses - 234 - Found @SpringBootConfiguration io.authid.core.AuthIdCoreApplication for test class io.authid.core.AuthIdCoreApplicationTests
+[INFO] 2025-07-22 03:46:53.320 [main] RestartApplicationListener::onApplicationStartingEvent - 74 - Restart disabled due to context in which it is running
+[INFO] 2025-07-22 03:46:53.796 [background-preinit] Version::<clinit> - 21 - HV000001: Hibernate Validator 8.0.1.Final
+[INFO] 2025-07-22 03:46:53.890 [main] AuthIdCoreApplicationTests::logStarting - 50 - Starting AuthIdCoreApplicationTests using Java 21.0.7 with PID 206033 (started by elhakimdev99 in /home/elhakimdev99/projects/core)
+[INFO] 2025-07-22 03:46:53.896 [main] AuthIdCoreApplicationTests::logStartupProfileInfo - 654 - No active profile set, falling back to 1 default profile: "default"
+[INFO] 2025-07-22 03:46:56.184 [main] RepositoryConfigurationDelegate::registerRepositoriesIn - 143 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO] 2025-07-22 03:46:56.365 [main] RepositoryConfigurationDelegate::registerRepositoriesIn - 211 - Finished Spring Data repository scanning in 167 ms. Found 1 JPA repository interface.
+[INFO] 2025-07-22 03:46:56.544 [main] DefaultConfiguringBeanFactoryPostProcessor::info - 292 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+[INFO] 2025-07-22 03:46:56.572 [main] DefaultConfiguringBeanFactoryPostProcessor::info - 292 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+[INFO] 2025-07-22 03:47:11.057 [main] changelog::log - 37 - Reading from AUTHID_CORE_APP.DATABASECHANGELOG
+[INFO] 2025-07-22 03:47:11.155 [main] ui::log - 37 - Database is up to date, no changesets to execute
+[INFO] 2025-07-22 03:47:11.158 [main] changelog::log - 37 - Reading from AUTHID_CORE_APP.DATABASECHANGELOG
+[INFO] 2025-07-22 03:47:11.172 [main] util::log - 37 - UPDATE SUMMARY
+[INFO] 2025-07-22 03:47:11.173 [main] util::log - 37 - Run:                          0
+[INFO] 2025-07-22 03:47:11.173 [main] util::log - 37 - Previously run:              28
+[INFO] 2025-07-22 03:47:11.174 [main] util::log - 37 - Filtered out:                 0
+[INFO] 2025-07-22 03:47:11.174 [main] util::log - 37 - -------------------------------
+[INFO] 2025-07-22 03:47:11.174 [main] util::log - 37 - Total change sets:           28
+[INFO] 2025-07-22 03:47:11.175 [main] util::log - 37 - Update summary generated
+[INFO] 2025-07-22 03:47:11.260 [main] lockservice::log - 37 - Successfully released change log lock
+[INFO] 2025-07-22 03:47:11.264 [main] command::log - 37 - Command execution complete
+[DEBUG] 2025-07-22 03:47:11.477 [main] LogHelper::logPersistenceUnitInformation - 102 - PersistenceUnitInfo [
+	name: default
+	persistence provider classname: null
+	classloader: jdk.internal.loader.ClassLoaders$AppClassLoader@639fee48
+	excludeUnlistedClasses: true
+	JTA datasource: null
+	Non JTA datasource: oracle.ucp.jdbc.PoolDataSourceImpl@4571cebe
+	Transaction type: RESOURCE_LOCAL
+	PU root URL: file:/home/elhakimdev99/projects/core/target/test-classes/
+	Shared Cache Mode: UNSPECIFIED
+	Validation Mode: AUTO
+	Jar files URLs []
+	Managed classes names [
+		io.authid.core.containers.user.entities.PasswordResetTokenEntity
+		io.authid.core.containers.user.entities.UserDevice
+		io.authid.core.containers.user.entities.UserEntity
+		io.authid.core.containers.user.entities.PasswordResetTokenEntity
+		io.authid.core.containers.user.entities.UserDevice
+		io.authid.core.containers.user.entities.UserEntity]
+	Mapping files names []
+	Properties []
+[INFO] 2025-07-22 03:47:11.544 [main] Version::logVersion - 44 - HHH000412: Hibernate ORM core version 6.5.2.Final
+[INFO] 2025-07-22 03:47:11.604 [main] RegionFactoryInitiator::initiateService - 50 - HHH000026: Second-level cache disabled
+[INFO] 2025-07-22 03:47:11.700 [main] EnversServiceImpl::configure - 76 - Envers integration enabled? : true
+[INFO] 2025-07-22 03:47:11.977 [main] SpringPersistenceUnitInfo::addTransformer - 87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+[WARN] 2025-07-22 03:47:12.040 [main] deprecation::constructDialect - 153 - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+[INFO] 2025-07-22 03:47:12.348 [main] I18n::extract - 21 - key : unknown.token.status.pending.label
+[INFO] 2025-07-22 03:47:12.348 [main] I18n::extract - 21 - key : unknown.token.status.pending.description
+[INFO] 2025-07-22 03:47:12.349 [main] I18n::extract - 21 - key : unknown.token.status.completed.label
+[INFO] 2025-07-22 03:47:12.349 [main] I18n::extract - 21 - key : unknown.token.status.completed.description
+[INFO] 2025-07-22 03:47:12.350 [main] I18n::extract - 21 - key : unknown.token.status.expired.label
+[INFO] 2025-07-22 03:47:12.350 [main] I18n::extract - 21 - key : unknown.token.status.expired.description
+[INFO] 2025-07-22 03:47:12.350 [main] I18n::extract - 21 - key : unknown.token.status.cancelled.label
+[INFO] 2025-07-22 03:47:12.351 [main] I18n::extract - 21 - key : unknown.token.status.cancelled.description
+[INFO] 2025-07-22 03:47:12.355 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.mobile.label
+[INFO] 2025-07-22 03:47:12.355 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.mobile.description
+[INFO] 2025-07-22 03:47:12.356 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.desktop.label
+[INFO] 2025-07-22 03:47:12.356 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.desktop.description
+[INFO] 2025-07-22 03:47:12.357 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.tablet.label
+[INFO] 2025-07-22 03:47:12.357 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.tablet.description
+[INFO] 2025-07-22 03:47:12.357 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.wearable.label
+[INFO] 2025-07-22 03:47:12.358 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.wearable.description
+[INFO] 2025-07-22 03:47:12.358 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.unknown.label
+[INFO] 2025-07-22 03:47:12.358 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.unknown.description
+[INFO] 2025-07-22 03:47:12.365 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.active.label
+[INFO] 2025-07-22 03:47:12.366 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.active.description
+[INFO] 2025-07-22 03:47:12.366 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.trusted.label
+[INFO] 2025-07-22 03:47:12.367 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.trusted.description
+[INFO] 2025-07-22 03:47:12.367 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.untrusted.label
+[INFO] 2025-07-22 03:47:12.367 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.untrusted.description
+[INFO] 2025-07-22 03:47:12.367 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.expired.label
+[INFO] 2025-07-22 03:47:12.368 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.expired.description
+[INFO] 2025-07-22 03:47:12.368 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.revoked.label
+[INFO] 2025-07-22 03:47:12.369 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.revoked.description
+[INFO] 2025-07-22 03:47:12.370 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.suspicious.label
+[INFO] 2025-07-22 03:47:12.370 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.suspicious.description
+[INFO] 2025-07-22 03:47:12.371 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.blocked.label
+[INFO] 2025-07-22 03:47:12.371 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.blocked.description
+[INFO] 2025-07-22 03:47:12.373 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.active.label
+[INFO] 2025-07-22 03:47:12.374 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.active.description
+[INFO] 2025-07-22 03:47:12.374 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.incomplete.profile.label
+[INFO] 2025-07-22 03:47:12.375 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.incomplete.profile.description
+[INFO] 2025-07-22 03:47:12.375 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.pending.verification.label
+[INFO] 2025-07-22 03:47:12.375 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.pending.verification.description
+[INFO] 2025-07-22 03:47:12.375 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.inactive.label
+[INFO] 2025-07-22 03:47:12.376 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.inactive.description
+[INFO] 2025-07-22 03:47:12.376 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.locked.label
+[INFO] 2025-07-22 03:47:12.376 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.locked.description
+[INFO] 2025-07-22 03:47:12.377 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.dormant.label
+[INFO] 2025-07-22 03:47:12.377 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.dormant.description
+[INFO] 2025-07-22 03:47:12.377 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deactivated.label
+[INFO] 2025-07-22 03:47:12.378 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deactivated.description
+[INFO] 2025-07-22 03:47:12.378 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.suspended.label
+[INFO] 2025-07-22 03:47:12.378 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.suspended.description
+[INFO] 2025-07-22 03:47:12.378 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.banned.label
+[INFO] 2025-07-22 03:47:12.379 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.banned.description
+[INFO] 2025-07-22 03:47:12.379 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deleted.label
+[INFO] 2025-07-22 03:47:12.379 [main] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deleted.description
+[INFO] 2025-07-22 03:47:13.399 [main] JtaPlatformInitiator::initiateService - 59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+[INFO] 2025-07-22 03:47:13.403 [main] LocalContainerEntityManagerFactoryBean::buildNativeEntityManagerFactory - 437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN] 2025-07-22 03:47:13.576 [main] JpaBaseConfiguration$JpaWebConfiguration::openEntityManagerInViewInterceptor - 236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[INFO] 2025-07-22 03:47:14.430 [main] EndpointLinksResolver::<init> - 60 - Exposing 1 endpoint beneath base path '/actuator'
+[INFO] 2025-07-22 03:47:14.563 [main] DefaultSecurityFilterChain::<init> - 54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@26f5a9d9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@431a9a71, org.springframework.security.web.context.SecurityContextHolderFilter@4e370f52, org.springframework.security.web.header.HeaderWriterFilter@5c15d1bc, org.springframework.web.filter.CorsFilter@3e62fe4d, org.springframework.security.web.authentication.logout.LogoutFilter@196e494d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@418ee41b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@10260f02, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@325e1229, org.springframework.security.web.session.SessionManagementFilter@6ddf4303, org.springframework.security.web.access.ExceptionTranslationFilter@49bf6f8c, org.springframework.security.web.access.intercept.AuthorizationFilter@a9f4621]
+[INFO] 2025-07-22 03:47:16.235 [main] EventDrivenConsumer::info - 174 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+[INFO] 2025-07-22 03:47:16.237 [main] PublishSubscribeChannel::info - 174 - Channel 'io.authid.core.errorChannel' has 1 subscriber(s).
+[INFO] 2025-07-22 03:47:16.237 [main] EventDrivenConsumer::info - 292 - started bean '_org.springframework.integration.errorLogger'
+[INFO] 2025-07-22 03:47:16.254 [main] AuthIdCoreApplicationTests::logStarted - 56 - Started AuthIdCoreApplicationTests in 22.957 seconds (process running for 25.136)
+[INFO] 2025-07-22 03:47:17.734 [SpringApplicationShutdownHook] EventDrivenConsumer::info - 174 - Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+[INFO] 2025-07-22 03:47:17.736 [SpringApplicationShutdownHook] PublishSubscribeChannel::info - 174 - Channel 'io.authid.core.errorChannel' has 0 subscriber(s).
+[INFO] 2025-07-22 03:47:17.739 [SpringApplicationShutdownHook] EventDrivenConsumer::info - 292 - stopped bean '_org.springframework.integration.errorLogger'
+[INFO] 2025-07-22 03:47:17.751 [SpringApplicationShutdownHook] LocalContainerEntityManagerFactoryBean::destroy - 650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO] 2025-07-22 03:47:37.825 [background-preinit] Version::<clinit> - 21 - HV000001: Hibernate Validator 8.0.1.Final
+[INFO] 2025-07-22 03:47:37.916 [restartedMain] AuthIdCoreApplication::logStarting - 50 - Starting AuthIdCoreApplication using Java 21.0.7 with PID 208499 (/home/elhakimdev99/projects/core/target/classes started by elhakimdev99 in /home/elhakimdev99/projects/core)
+[INFO] 2025-07-22 03:47:37.919 [restartedMain] AuthIdCoreApplication::logStartupProfileInfo - 654 - No active profile set, falling back to 1 default profile: "default"
+[INFO] 2025-07-22 03:47:38.016 [restartedMain] ChangeableUrls::logTo - 252 - The Class-Path manifest attribute in /home/elhakimdev99/.m2/repository/com/oracle/database/jdbc/ojdbc11/23.8.0.25.04/ojdbc11-23.8.0.25.04.jar referenced one or more files that do not exist: file:/home/elhakimdev99/.m2/repository/com/oracle/database/jdbc/ojdbc11/23.8.0.25.04/oraclepki.jar
+[INFO] 2025-07-22 03:47:38.018 [restartedMain] DevToolsPropertyDefaultsPostProcessor::logTo - 252 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO] 2025-07-22 03:47:38.019 [restartedMain] DevToolsPropertyDefaultsPostProcessor::logTo - 252 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO] 2025-07-22 03:47:40.113 [restartedMain] RepositoryConfigurationDelegate::registerRepositoriesIn - 143 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO] 2025-07-22 03:47:40.330 [restartedMain] RepositoryConfigurationDelegate::registerRepositoriesIn - 211 - Finished Spring Data repository scanning in 203 ms. Found 1 JPA repository interface.
+[INFO] 2025-07-22 03:47:40.491 [restartedMain] DefaultConfiguringBeanFactoryPostProcessor::info - 292 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+[INFO] 2025-07-22 03:47:40.525 [restartedMain] DefaultConfiguringBeanFactoryPostProcessor::info - 292 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+[INFO] 2025-07-22 03:47:41.944 [restartedMain] TomcatWebServer::initialize - 111 - Tomcat initialized with port 8080 (http)
+[INFO] 2025-07-22 03:47:41.960 [restartedMain] Http11NioProtocol::log - 173 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO] 2025-07-22 03:47:41.968 [restartedMain] StandardService::log - 173 - Starting service [Tomcat]
+[INFO] 2025-07-22 03:47:41.969 [restartedMain] StandardEngine::log - 173 - Starting Servlet engine: [Apache Tomcat/10.1.24]
+[INFO] 2025-07-22 03:47:42.043 [restartedMain] [/]::log - 173 - Initializing Spring embedded WebApplicationContext
+[INFO] 2025-07-22 03:47:42.044 [restartedMain] ServletWebServerApplicationContext::prepareWebApplicationContext - 296 - Root WebApplicationContext: initialization completed in 4020 ms
+[INFO] 2025-07-22 03:47:56.045 [restartedMain] changelog::log - 37 - Reading from AUTHID_CORE_APP.DATABASECHANGELOG
+[INFO] 2025-07-22 03:47:56.131 [restartedMain] ui::log - 37 - Database is up to date, no changesets to execute
+[INFO] 2025-07-22 03:47:56.136 [restartedMain] changelog::log - 37 - Reading from AUTHID_CORE_APP.DATABASECHANGELOG
+[INFO] 2025-07-22 03:47:56.156 [restartedMain] util::log - 37 - UPDATE SUMMARY
+[INFO] 2025-07-22 03:47:56.157 [restartedMain] util::log - 37 - Run:                          0
+[INFO] 2025-07-22 03:47:56.158 [restartedMain] util::log - 37 - Previously run:              28
+[INFO] 2025-07-22 03:47:56.158 [restartedMain] util::log - 37 - Filtered out:                 0
+[INFO] 2025-07-22 03:47:56.158 [restartedMain] util::log - 37 - -------------------------------
+[INFO] 2025-07-22 03:47:56.158 [restartedMain] util::log - 37 - Total change sets:           28
+[INFO] 2025-07-22 03:47:56.159 [restartedMain] util::log - 37 - Update summary generated
+[INFO] 2025-07-22 03:47:56.250 [restartedMain] lockservice::log - 37 - Successfully released change log lock
+[INFO] 2025-07-22 03:47:56.254 [restartedMain] command::log - 37 - Command execution complete
+[DEBUG] 2025-07-22 03:47:56.404 [restartedMain] LogHelper::logPersistenceUnitInformation - 102 - PersistenceUnitInfo [
+	name: default
+	persistence provider classname: null
+	classloader: org.springframework.boot.devtools.restart.classloader.RestartClassLoader@7926ba6c
+	excludeUnlistedClasses: true
+	JTA datasource: null
+	Non JTA datasource: oracle.ucp.jdbc.PoolDataSourceImpl@48163bdc
+	Transaction type: RESOURCE_LOCAL
+	PU root URL: file:/home/elhakimdev99/projects/core/target/classes/
+	Shared Cache Mode: UNSPECIFIED
+	Validation Mode: AUTO
+	Jar files URLs []
+	Managed classes names [
+		io.authid.core.containers.user.entities.PasswordResetTokenEntity
+		io.authid.core.containers.user.entities.UserDevice
+		io.authid.core.containers.user.entities.UserEntity
+		io.authid.core.containers.user.entities.PasswordResetTokenEntity
+		io.authid.core.containers.user.entities.UserDevice
+		io.authid.core.containers.user.entities.UserEntity]
+	Mapping files names []
+	Properties []
+[INFO] 2025-07-22 03:47:56.471 [restartedMain] Version::logVersion - 44 - HHH000412: Hibernate ORM core version 6.5.2.Final
+[INFO] 2025-07-22 03:47:56.514 [restartedMain] RegionFactoryInitiator::initiateService - 50 - HHH000026: Second-level cache disabled
+[INFO] 2025-07-22 03:47:56.610 [restartedMain] EnversServiceImpl::configure - 76 - Envers integration enabled? : true
+[INFO] 2025-07-22 03:47:56.939 [restartedMain] SpringPersistenceUnitInfo::addTransformer - 87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+[WARN] 2025-07-22 03:47:57.043 [restartedMain] deprecation::constructDialect - 153 - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+[INFO] 2025-07-22 03:47:57.435 [restartedMain] I18n::extract - 21 - key : unknown.token.status.pending.label
+[INFO] 2025-07-22 03:47:57.436 [restartedMain] I18n::extract - 21 - key : unknown.token.status.pending.description
+[INFO] 2025-07-22 03:47:57.438 [restartedMain] I18n::extract - 21 - key : unknown.token.status.completed.label
+[INFO] 2025-07-22 03:47:57.439 [restartedMain] I18n::extract - 21 - key : unknown.token.status.completed.description
+[INFO] 2025-07-22 03:47:57.440 [restartedMain] I18n::extract - 21 - key : unknown.token.status.expired.label
+[INFO] 2025-07-22 03:47:57.441 [restartedMain] I18n::extract - 21 - key : unknown.token.status.expired.description
+[INFO] 2025-07-22 03:47:57.442 [restartedMain] I18n::extract - 21 - key : unknown.token.status.cancelled.label
+[INFO] 2025-07-22 03:47:57.443 [restartedMain] I18n::extract - 21 - key : unknown.token.status.cancelled.description
+[INFO] 2025-07-22 03:47:57.448 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.mobile.label
+[INFO] 2025-07-22 03:47:57.450 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.mobile.description
+[INFO] 2025-07-22 03:47:57.452 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.desktop.label
+[INFO] 2025-07-22 03:47:57.453 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.desktop.description
+[INFO] 2025-07-22 03:47:57.454 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.tablet.label
+[INFO] 2025-07-22 03:47:57.455 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.tablet.description
+[INFO] 2025-07-22 03:47:57.455 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.wearable.label
+[INFO] 2025-07-22 03:47:57.455 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.wearable.description
+[INFO] 2025-07-22 03:47:57.456 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.unknown.label
+[INFO] 2025-07-22 03:47:57.456 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.unknown.description
+[INFO] 2025-07-22 03:47:57.470 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.active.label
+[INFO] 2025-07-22 03:47:57.470 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.active.description
+[INFO] 2025-07-22 03:47:57.471 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.trusted.label
+[INFO] 2025-07-22 03:47:57.471 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.trusted.description
+[INFO] 2025-07-22 03:47:57.472 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.untrusted.label
+[INFO] 2025-07-22 03:47:57.473 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.untrusted.description
+[INFO] 2025-07-22 03:47:57.474 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.expired.label
+[INFO] 2025-07-22 03:47:57.474 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.expired.description
+[INFO] 2025-07-22 03:47:57.475 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.revoked.label
+[INFO] 2025-07-22 03:47:57.476 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.revoked.description
+[INFO] 2025-07-22 03:47:57.476 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.suspicious.label
+[INFO] 2025-07-22 03:47:57.476 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.suspicious.description
+[INFO] 2025-07-22 03:47:57.477 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.blocked.label
+[INFO] 2025-07-22 03:47:57.478 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.blocked.description
+[INFO] 2025-07-22 03:47:57.482 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.active.label
+[INFO] 2025-07-22 03:47:57.484 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.active.description
+[INFO] 2025-07-22 03:47:57.485 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.incomplete.profile.label
+[INFO] 2025-07-22 03:47:57.486 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.incomplete.profile.description
+[INFO] 2025-07-22 03:47:57.487 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.pending.verification.label
+[INFO] 2025-07-22 03:47:57.488 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.pending.verification.description
+[INFO] 2025-07-22 03:47:57.488 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.inactive.label
+[INFO] 2025-07-22 03:47:57.489 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.inactive.description
+[INFO] 2025-07-22 03:47:57.490 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.locked.label
+[INFO] 2025-07-22 03:47:57.491 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.locked.description
+[INFO] 2025-07-22 03:47:57.491 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.dormant.label
+[INFO] 2025-07-22 03:47:57.491 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.dormant.description
+[INFO] 2025-07-22 03:47:57.492 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deactivated.label
+[INFO] 2025-07-22 03:47:57.494 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deactivated.description
+[INFO] 2025-07-22 03:47:57.495 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.suspended.label
+[INFO] 2025-07-22 03:47:57.495 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.suspended.description
+[INFO] 2025-07-22 03:47:57.496 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.banned.label
+[INFO] 2025-07-22 03:47:57.496 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.banned.description
+[INFO] 2025-07-22 03:47:57.496 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deleted.label
+[INFO] 2025-07-22 03:47:57.497 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deleted.description
+[INFO] 2025-07-22 03:47:59.398 [restartedMain] JtaPlatformInitiator::initiateService - 59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+[INFO] 2025-07-22 03:47:59.408 [restartedMain] LocalContainerEntityManagerFactoryBean::buildNativeEntityManagerFactory - 437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN] 2025-07-22 03:47:59.606 [restartedMain] JpaBaseConfiguration$JpaWebConfiguration::openEntityManagerInViewInterceptor - 236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[INFO] 2025-07-22 03:48:00.378 [restartedMain] EndpointLinksResolver::<init> - 60 - Exposing 1 endpoint beneath base path '/actuator'
+[INFO] 2025-07-22 03:48:00.574 [restartedMain] DefaultSecurityFilterChain::<init> - 54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@745c5147, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@18f114a5, org.springframework.security.web.context.SecurityContextHolderFilter@391bceb6, org.springframework.security.web.header.HeaderWriterFilter@44b66137, org.springframework.web.filter.CorsFilter@1310c417, org.springframework.security.web.authentication.logout.LogoutFilter@6dc0a8a1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@47505458, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2b2af15a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3bf4ae7c, org.springframework.security.web.session.SessionManagementFilter@13c95562, org.springframework.security.web.access.ExceptionTranslationFilter@1b83f120, org.springframework.security.web.access.intercept.AuthorizationFilter@32b01e79]
+[INFO] 2025-07-22 03:48:03.649 [restartedMain] OptionalLiveReloadServer::startServer - 59 - LiveReload server is running on port 35729
+[INFO] 2025-07-22 03:48:03.912 [restartedMain] EventDrivenConsumer::info - 174 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+[INFO] 2025-07-22 03:48:03.914 [restartedMain] PublishSubscribeChannel::info - 174 - Channel 'io.authid.core.errorChannel' has 1 subscriber(s).
+[INFO] 2025-07-22 03:48:03.915 [restartedMain] EventDrivenConsumer::info - 292 - started bean '_org.springframework.integration.errorLogger'
+[INFO] 2025-07-22 03:48:03.916 [restartedMain] Http11NioProtocol::log - 173 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO] 2025-07-22 03:48:03.927 [restartedMain] TomcatWebServer::start - 243 - Tomcat started on port 8080 (http) with context path '/'
+[INFO] 2025-07-22 03:48:03.957 [restartedMain] AuthIdCoreApplication::logStarted - 56 - Started AuthIdCoreApplication in 26.686 seconds (process running for 27.653)
+[INFO] 2025-07-22 03:48:50.081 [http-nio-8080-exec-1] [/]::log - 173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO] 2025-07-22 03:48:50.179 [http-nio-8080-exec-1] TestExceptionController::testUserNotFoundException - 20 - Testing user not found exception...
+[INFO] 2025-07-22 03:48:50.180 [http-nio-8080-exec-1] TestExceptionController::testUserNotFoundException - 21 - Testing user not found exception... test
+[INFO] 2025-07-22 03:48:50.181 [http-nio-8080-exec-1] I18n::extract - 21 - key : io.authid.core.containers.user.controllers.TestExceptionController.user.not.found
+[INFO] 2025-07-22 03:48:50.186 [http-nio-8080-exec-1] JsonMessageSource::loadMessagesForLocale - 50 - Loading i18n messages for locale 'id' from path pattern: classpath*:/i18n/id/**/*.json
+[INFO] 2025-07-22 03:48:50.257 [http-nio-8080-exec-1] JsonMessageSource::loadMessagesForLocale - 70 - Successfully loaded 153 message keys for locale 'id'
+[WARN] 2025-07-22 03:48:50.292 [http-nio-8080-exec-1] ExceptionHandlerExceptionResolver::logException - 247 - Resolved [io.authid.core.shared.components.exception.GlobalTranslatableException: io.authid.core.containers.user.controllers.TestExceptionController.user.not.found]
+[INFO] 2025-07-22 03:49:10.165 [http-nio-8080-exec-2] TestExceptionController::testUserNotFoundException - 20 - Testing user not found exception...
+[INFO] 2025-07-22 03:49:10.166 [http-nio-8080-exec-2] TestExceptionController::testUserNotFoundException - 21 - Testing user not found exception... test
+[INFO] 2025-07-22 03:49:10.168 [http-nio-8080-exec-2] I18n::extract - 21 - key : io.authid.core.containers.user.controllers.TestExceptionController.user.not.found
+[WARN] 2025-07-22 03:49:10.178 [http-nio-8080-exec-2] ExceptionHandlerExceptionResolver::logException - 247 - Resolved [io.authid.core.shared.components.exception.GlobalTranslatableException: io.authid.core.containers.user.controllers.TestExceptionController.user.not.found]
+[INFO] 2025-07-22 03:51:50.623 [SpringApplicationShutdownHook] EventDrivenConsumer::info - 174 - Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+[INFO] 2025-07-22 03:51:50.626 [SpringApplicationShutdownHook] PublishSubscribeChannel::info - 174 - Channel 'io.authid.core.errorChannel' has 0 subscriber(s).
+[INFO] 2025-07-22 03:51:50.632 [SpringApplicationShutdownHook] EventDrivenConsumer::info - 292 - stopped bean '_org.springframework.integration.errorLogger'
+[INFO] 2025-07-22 03:51:50.657 [SpringApplicationShutdownHook] LocalContainerEntityManagerFactoryBean::destroy - 650 - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO] 2025-07-22 03:52:42.473 [background-preinit] Version::<clinit> - 21 - HV000001: Hibernate Validator 8.0.1.Final
+[INFO] 2025-07-22 03:52:42.535 [restartedMain] AuthIdCoreApplication::logStarting - 50 - Starting AuthIdCoreApplication using Java 21.0.7 with PID 224817 (/home/elhakimdev99/projects/core/target/classes started by elhakimdev99 in /home/elhakimdev99/projects/core)
+[INFO] 2025-07-22 03:52:42.537 [restartedMain] AuthIdCoreApplication::logStartupProfileInfo - 654 - No active profile set, falling back to 1 default profile: "default"
+[INFO] 2025-07-22 03:52:42.600 [restartedMain] ChangeableUrls::logTo - 252 - The Class-Path manifest attribute in /home/elhakimdev99/.m2/repository/com/oracle/database/jdbc/ojdbc11/23.8.0.25.04/ojdbc11-23.8.0.25.04.jar referenced one or more files that do not exist: file:/home/elhakimdev99/.m2/repository/com/oracle/database/jdbc/ojdbc11/23.8.0.25.04/oraclepki.jar
+[INFO] 2025-07-22 03:52:42.601 [restartedMain] DevToolsPropertyDefaultsPostProcessor::logTo - 252 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO] 2025-07-22 03:52:42.602 [restartedMain] DevToolsPropertyDefaultsPostProcessor::logTo - 252 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO] 2025-07-22 03:52:43.862 [restartedMain] RepositoryConfigurationDelegate::registerRepositoriesIn - 143 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO] 2025-07-22 03:52:43.999 [restartedMain] RepositoryConfigurationDelegate::registerRepositoriesIn - 211 - Finished Spring Data repository scanning in 128 ms. Found 1 JPA repository interface.
+[INFO] 2025-07-22 03:52:44.130 [restartedMain] DefaultConfiguringBeanFactoryPostProcessor::info - 292 - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+[INFO] 2025-07-22 03:52:44.139 [restartedMain] DefaultConfiguringBeanFactoryPostProcessor::info - 292 - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+[INFO] 2025-07-22 03:52:44.991 [restartedMain] TomcatWebServer::initialize - 111 - Tomcat initialized with port 8080 (http)
+[INFO] 2025-07-22 03:52:45.007 [restartedMain] Http11NioProtocol::log - 173 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO] 2025-07-22 03:52:45.021 [restartedMain] StandardService::log - 173 - Starting service [Tomcat]
+[INFO] 2025-07-22 03:52:45.022 [restartedMain] StandardEngine::log - 173 - Starting Servlet engine: [Apache Tomcat/10.1.24]
+[INFO] 2025-07-22 03:52:45.157 [restartedMain] [/]::log - 173 - Initializing Spring embedded WebApplicationContext
+[INFO] 2025-07-22 03:52:45.158 [restartedMain] ServletWebServerApplicationContext::prepareWebApplicationContext - 296 - Root WebApplicationContext: initialization completed in 2555 ms
+[INFO] 2025-07-22 03:52:59.569 [restartedMain] changelog::log - 37 - Reading from AUTHID_CORE_APP.DATABASECHANGELOG
+[INFO] 2025-07-22 03:52:59.659 [restartedMain] ui::log - 37 - Database is up to date, no changesets to execute
+[INFO] 2025-07-22 03:52:59.665 [restartedMain] changelog::log - 37 - Reading from AUTHID_CORE_APP.DATABASECHANGELOG
+[INFO] 2025-07-22 03:52:59.684 [restartedMain] util::log - 37 - UPDATE SUMMARY
+[INFO] 2025-07-22 03:52:59.686 [restartedMain] util::log - 37 - Run:                          0
+[INFO] 2025-07-22 03:52:59.686 [restartedMain] util::log - 37 - Previously run:              28
+[INFO] 2025-07-22 03:52:59.686 [restartedMain] util::log - 37 - Filtered out:                 0
+[INFO] 2025-07-22 03:52:59.687 [restartedMain] util::log - 37 - -------------------------------
+[INFO] 2025-07-22 03:52:59.687 [restartedMain] util::log - 37 - Total change sets:           28
+[INFO] 2025-07-22 03:52:59.689 [restartedMain] util::log - 37 - Update summary generated
+[INFO] 2025-07-22 03:52:59.826 [restartedMain] lockservice::log - 37 - Successfully released change log lock
+[INFO] 2025-07-22 03:52:59.830 [restartedMain] command::log - 37 - Command execution complete
+[DEBUG] 2025-07-22 03:52:59.962 [restartedMain] LogHelper::logPersistenceUnitInformation - 102 - PersistenceUnitInfo [
+	name: default
+	persistence provider classname: null
+	classloader: org.springframework.boot.devtools.restart.classloader.RestartClassLoader@30401d21
+	excludeUnlistedClasses: true
+	JTA datasource: null
+	Non JTA datasource: oracle.ucp.jdbc.PoolDataSourceImpl@2eba8fff
+	Transaction type: RESOURCE_LOCAL
+	PU root URL: file:/home/elhakimdev99/projects/core/target/classes/
+	Shared Cache Mode: UNSPECIFIED
+	Validation Mode: AUTO
+	Jar files URLs []
+	Managed classes names [
+		io.authid.core.containers.user.entities.PasswordResetTokenEntity
+		io.authid.core.containers.user.entities.UserDevice
+		io.authid.core.containers.user.entities.UserEntity
+		io.authid.core.containers.user.entities.PasswordResetTokenEntity
+		io.authid.core.containers.user.entities.UserDevice
+		io.authid.core.containers.user.entities.UserEntity]
+	Mapping files names []
+	Properties []
+[INFO] 2025-07-22 03:53:00.036 [restartedMain] Version::logVersion - 44 - HHH000412: Hibernate ORM core version 6.5.2.Final
+[INFO] 2025-07-22 03:53:00.099 [restartedMain] RegionFactoryInitiator::initiateService - 50 - HHH000026: Second-level cache disabled
+[INFO] 2025-07-22 03:53:00.425 [restartedMain] EnversServiceImpl::configure - 76 - Envers integration enabled? : true
+[INFO] 2025-07-22 03:53:00.918 [restartedMain] SpringPersistenceUnitInfo::addTransformer - 87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+[WARN] 2025-07-22 03:53:01.045 [restartedMain] deprecation::constructDialect - 153 - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+[INFO] 2025-07-22 03:53:01.466 [restartedMain] I18n::extract - 21 - key : unknown.token.status.pending.label
+[INFO] 2025-07-22 03:53:01.467 [restartedMain] I18n::extract - 21 - key : unknown.token.status.pending.description
+[INFO] 2025-07-22 03:53:01.468 [restartedMain] I18n::extract - 21 - key : unknown.token.status.completed.label
+[INFO] 2025-07-22 03:53:01.469 [restartedMain] I18n::extract - 21 - key : unknown.token.status.completed.description
+[INFO] 2025-07-22 03:53:01.470 [restartedMain] I18n::extract - 21 - key : unknown.token.status.expired.label
+[INFO] 2025-07-22 03:53:01.472 [restartedMain] I18n::extract - 21 - key : unknown.token.status.expired.description
+[INFO] 2025-07-22 03:53:01.472 [restartedMain] I18n::extract - 21 - key : unknown.token.status.cancelled.label
+[INFO] 2025-07-22 03:53:01.473 [restartedMain] I18n::extract - 21 - key : unknown.token.status.cancelled.description
+[INFO] 2025-07-22 03:53:01.478 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.mobile.label
+[INFO] 2025-07-22 03:53:01.479 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.mobile.description
+[INFO] 2025-07-22 03:53:01.480 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.desktop.label
+[INFO] 2025-07-22 03:53:01.480 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.desktop.description
+[INFO] 2025-07-22 03:53:01.481 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.tablet.label
+[INFO] 2025-07-22 03:53:01.482 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.tablet.description
+[INFO] 2025-07-22 03:53:01.483 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.wearable.label
+[INFO] 2025-07-22 03:53:01.486 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.wearable.description
+[INFO] 2025-07-22 03:53:01.487 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.unknown.label
+[INFO] 2025-07-22 03:53:01.488 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.PasswordResetTokenStatus.device.unknown.description
+[INFO] 2025-07-22 03:53:01.507 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.active.label
+[INFO] 2025-07-22 03:53:01.508 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.active.description
+[INFO] 2025-07-22 03:53:01.508 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.trusted.label
+[INFO] 2025-07-22 03:53:01.509 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.trusted.description
+[INFO] 2025-07-22 03:53:01.510 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.untrusted.label
+[INFO] 2025-07-22 03:53:01.511 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.untrusted.description
+[INFO] 2025-07-22 03:53:01.512 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.expired.label
+[INFO] 2025-07-22 03:53:01.513 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.expired.description
+[INFO] 2025-07-22 03:53:01.514 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.revoked.label
+[INFO] 2025-07-22 03:53:01.515 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.revoked.description
+[INFO] 2025-07-22 03:53:01.515 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.suspicious.label
+[INFO] 2025-07-22 03:53:01.517 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.suspicious.description
+[INFO] 2025-07-22 03:53:01.519 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.blocked.label
+[INFO] 2025-07-22 03:53:01.521 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceType.device.blocked.description
+[INFO] 2025-07-22 03:53:01.525 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.active.label
+[INFO] 2025-07-22 03:53:01.525 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.active.description
+[INFO] 2025-07-22 03:53:01.526 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.incomplete.profile.label
+[INFO] 2025-07-22 03:53:01.526 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.incomplete.profile.description
+[INFO] 2025-07-22 03:53:01.526 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.pending.verification.label
+[INFO] 2025-07-22 03:53:01.527 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.pending.verification.description
+[INFO] 2025-07-22 03:53:01.527 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.inactive.label
+[INFO] 2025-07-22 03:53:01.527 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.inactive.description
+[INFO] 2025-07-22 03:53:01.528 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.locked.label
+[INFO] 2025-07-22 03:53:01.528 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.locked.description
+[INFO] 2025-07-22 03:53:01.529 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.dormant.label
+[INFO] 2025-07-22 03:53:01.529 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.dormant.description
+[INFO] 2025-07-22 03:53:01.530 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deactivated.label
+[INFO] 2025-07-22 03:53:01.530 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deactivated.description
+[INFO] 2025-07-22 03:53:01.531 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.suspended.label
+[INFO] 2025-07-22 03:53:01.532 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.suspended.description
+[INFO] 2025-07-22 03:53:01.533 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.banned.label
+[INFO] 2025-07-22 03:53:01.535 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.banned.description
+[INFO] 2025-07-22 03:53:01.538 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deleted.label
+[INFO] 2025-07-22 03:53:01.540 [restartedMain] I18n::extract - 21 - key : io.authid.core.containers.user.enums.DeviceStatus.user.status.deleted.description
+[INFO] 2025-07-22 03:53:02.820 [restartedMain] JtaPlatformInitiator::initiateService - 59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+[INFO] 2025-07-22 03:53:02.827 [restartedMain] LocalContainerEntityManagerFactoryBean::buildNativeEntityManagerFactory - 437 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN] 2025-07-22 03:53:03.009 [restartedMain] JpaBaseConfiguration$JpaWebConfiguration::openEntityManagerInViewInterceptor - 236 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[INFO] 2025-07-22 03:53:03.717 [restartedMain] EndpointLinksResolver::<init> - 60 - Exposing 1 endpoint beneath base path '/actuator'
+[INFO] 2025-07-22 03:53:03.875 [restartedMain] DefaultSecurityFilterChain::<init> - 54 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@35fdf570, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@68c40a95, org.springframework.security.web.context.SecurityContextHolderFilter@90026be, org.springframework.security.web.header.HeaderWriterFilter@3d0eb570, org.springframework.web.filter.CorsFilter@af003a9, org.springframework.security.web.authentication.logout.LogoutFilter@333f7f89, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b3cdb0a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@c29a648, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7635e4f6, org.springframework.security.web.session.SessionManagementFilter@699a158, org.springframework.security.web.access.ExceptionTranslationFilter@59b3c159, org.springframework.security.web.access.intercept.AuthorizationFilter@e2bd8be]
+[INFO] 2025-07-22 03:53:06.582 [restartedMain] OptionalLiveReloadServer::startServer - 59 - LiveReload server is running on port 35729
+[INFO] 2025-07-22 03:53:07.066 [restartedMain] EventDrivenConsumer::info - 174 - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+[INFO] 2025-07-22 03:53:07.067 [restartedMain] PublishSubscribeChannel::info - 174 - Channel 'io.authid.core.errorChannel' has 1 subscriber(s).
+[INFO] 2025-07-22 03:53:07.068 [restartedMain] EventDrivenConsumer::info - 292 - started bean '_org.springframework.integration.errorLogger'
+[INFO] 2025-07-22 03:53:07.071 [restartedMain] Http11NioProtocol::log - 173 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO] 2025-07-22 03:53:07.085 [restartedMain] TomcatWebServer::start - 243 - Tomcat started on port 8080 (http) with context path '/'
+[INFO] 2025-07-22 03:53:07.109 [restartedMain] AuthIdCoreApplication::logStarted - 56 - Started AuthIdCoreApplication in 24.967 seconds (process running for 25.699)
+[INFO] 2025-07-22 03:53:42.802 [http-nio-8080-exec-1] [/]::log - 173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO] 2025-07-22 03:53:42.886 [http-nio-8080-exec-1] TestExceptionController::testUserNotFoundException - 20 - Testing user not found exception...
+[INFO] 2025-07-22 03:53:42.887 [http-nio-8080-exec-1] TestExceptionController::testUserNotFoundException - 21 - Testing user not found exception... telhdlhfhdhkst hallo hallo sasdasdsd
+[INFO] 2025-07-22 03:53:42.887 [http-nio-8080-exec-1] I18n::extract - 21 - key : io.authid.core.containers.user.controllers.TestExceptionController.user.not.found
+[INFO] 2025-07-22 03:53:42.891 [http-nio-8080-exec-1] JsonMessageSource::loadMessagesForLocale - 50 - Loading i18n messages for locale 'id' from path pattern: classpath*:/i18n/id/**/*.json
+[INFO] 2025-07-22 03:53:42.953 [http-nio-8080-exec-1] JsonMessageSource::loadMessagesForLocale - 70 - Successfully loaded 153 message keys for locale 'id'
+[WARN] 2025-07-22 03:53:42.984 [http-nio-8080-exec-1] ExceptionHandlerExceptionResolver::logException - 247 - Resolved [io.authid.core.shared.components.exception.GlobalTranslatableException: io.authid.core.containers.user.controllers.TestExceptionController.user.not.found]
+[INFO] 2025-07-22 03:53:56.935 [http-nio-8080-exec-2] TestExceptionController::testUserNotFoundException - 20 - Testing user not found exception...
+[INFO] 2025-07-22 03:53:56.939 [http-nio-8080-exec-2] TestExceptionController::testUserNotFoundException - 21 - Testing user not found exception... telhdlhfhdhkst hallo hallo sasdasdsd
+[INFO] 2025-07-22 03:53:56.943 [http-nio-8080-exec-2] I18n::extract - 21 - key : io.authid.core.containers.user.controllers.TestExceptionController.user.not.found
+[WARN] 2025-07-22 03:53:56.951 [http-nio-8080-exec-2] ExceptionHandlerExceptionResolver::logException - 247 - Resolved [io.authid.core.shared.components.exception.GlobalTranslatableException: io.authid.core.containers.user.controllers.TestExceptionController.user.not.found]
+[INFO] 2025-07-22 03:54:48.344 [SpringApplicationShutdownHook] EventDrivenConsumer::info - 174 - Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+[INFO] 2025-07-22 03:54:48.345 [SpringApplicationShutdownHook] PublishSubscribeChannel::info - 174 - Channel 'io.authid.core.errorChannel' has 0 subscriber(s).
+[INFO] 2025-07-22 03:54:48.346 [SpringApplicationShutdownHook] EventDrivenConsumer::info - 292 - stopped bean '_org.springframework.integration.errorLogger'
+[INFO] 2025-07-22 03:54:48.357 [SpringApplicationShutdownHook] LocalContainerEntityManagerFactoryBean::destroy - 650 - Closing JPA EntityManagerFactory for persistence unit 'default'

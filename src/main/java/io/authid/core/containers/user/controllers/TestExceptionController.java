@@ -18,7 +18,7 @@ public class TestExceptionController {
     @GetMapping("/user-not-found/{userId}")
     public ResponseEntity<Void> testUserNotFoundException(@PathVariable String userId) {
         log.info("Testing user not found exception...");
-        log.info("Testing user not found exception... test");
+        log.info("Testing user not found exception...  detetetetett  telhdlhfhdhkst hallo hallo sasdasdsd");
         I18n.setSourceClass(TestExceptionController.class);
         String key = I18n.extract("user.not.found");
         throw new GlobalTranslatableException(key, new Object[]{userId});
