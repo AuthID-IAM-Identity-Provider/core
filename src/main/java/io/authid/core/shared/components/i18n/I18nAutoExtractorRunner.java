@@ -20,32 +20,33 @@ public class I18nAutoExtractorRunner {
         log.info("Found {} locales to proceeds", locales.size());
 
         String basePackage = "io.authid.core";
-
         log.info("Get base package for extractions: {}", basePackage);
-
 
         try (ScanResult scanResult = new ClassGraph()
                 .enableClassInfo()
                 .acceptPackages(basePackage)
                 .scan()) {
 
-            log.info("Found {} classes", scanResult.getAllClasses().size());
+            log.info("Found {} classes to process", scanResult.getAllClasses().size());
 
-            log.info("Processing classes...");
-            scanResult.getAllClasses().forEach(classInfo -> {
+            log.info("Processing classes in parallel...");
+            // OPTIMIZED: Changed from forEach to parallelStream().forEach()
+            scanResult.getAllClasses().parallelStream().forEach(classInfo -> {
                 try {
                     Class<?> clazz = classInfo.loadClass();
-                    String sourceCode = I18nExtractorUtils.readSourceForClass(clazz);
-                    if (sourceCode.contains("I18n.extract")) {
+                    // Optimization: Read a source only once if it contains the keyword
+                    if (I18nExtractorUtils.sourceContains(clazz, "I18n.extract")) {
                         log.info("Current Processing class : {}", clazz.getName());
 
                         for (Locale locale : locales) {
-                            log.info("Check and Start Extraction for locales: {} Locale", locale.getLanguage());
+                            // The log below might interleave in parallel execution, which is expected.
+                            // log.info("Check and Start Extraction for locales: {} Locale", locale.getLanguage());
                             I18nExtractor.extractAndWriteForClass(clazz, locale);
                         }
                     }
                 } catch (Exception e) {
-                    log.error("Failed processing class: {} → {}", classInfo.getName(), e.getMessage());
+                    // It's better to log the full stack trace for better debugging in parallel context
+                    log.error("Failed processing class: {}", classInfo.getName(), e);
                 }
             });
 

@@ -162,3 +162,18 @@
 [INFO] 2025-07-21 00:48:36.363 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 43 - Check and Start Extraction for locales: ar Locale
 [INFO] 2025-07-21 00:48:36.366 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nExtractorUtils::writeToJson - 59 - No changes to write: src/main/resources/i18n/ar/io/authid/core/shared/components/jobs/enums/JobType.json
 [INFO] 2025-07-21 00:48:36.367 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 52 - All classes processed.
+[INFO] 2025-07-21 23:57:17.944 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 20 - Found 4 locales to proceeds
+[INFO] 2025-07-21 23:57:18.001 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 23 - Get base package for extractions: io.authid.core
+[INFO] 2025-07-21 23:57:18.799 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 30 - Found 35 classes to process
+[INFO] 2025-07-21 23:57:18.800 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 32 - Processing classes in parallel...
+[INFO] 2025-07-21 23:57:18.861 [ForkJoinPool.commonPool-worker-1] I18nAutoExtractorRunner::lambda$main$0 - 39 - Current Processing class : io.authid.core.containers.user.enums.DeviceType
+[INFO] 2025-07-21 23:57:18.868 [ForkJoinPool.commonPool-worker-4] I18nAutoExtractorRunner::lambda$main$0 - 39 - Current Processing class : io.authid.core.shared.components.jobs.enums.JobParameterType
+[INFO] 2025-07-21 23:57:18.884 [ForkJoinPool.commonPool-worker-6] I18nAutoExtractorRunner::lambda$main$0 - 39 - Current Processing class : io.authid.core.shared.components.i18n.I18nAutoExtractorRunner
+[INFO] 2025-07-21 23:57:18.886 [ForkJoinPool.commonPool-worker-3] I18nAutoExtractorRunner::lambda$main$0 - 39 - Current Processing class : io.authid.core.shared.components.jobs.enums.JobLogLevel
+[INFO] 2025-07-21 23:57:18.887 [ForkJoinPool.commonPool-worker-5] I18nAutoExtractorRunner::lambda$main$0 - 39 - Current Processing class : io.authid.core.containers.user.enums.UserStatus
+[INFO] 2025-07-21 23:57:18.888 [ForkJoinPool.commonPool-worker-7] I18nAutoExtractorRunner::lambda$main$0 - 39 - Current Processing class : io.authid.core.shared.components.jobs.enums.JobType
+[INFO] 2025-07-21 23:57:18.893 [ForkJoinPool.commonPool-worker-2] I18nAutoExtractorRunner::lambda$main$0 - 39 - Current Processing class : io.authid.core.shared.components.jobs.enums.JobStatus
+[INFO] 2025-07-21 23:57:18.894 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::lambda$main$0 - 39 - Current Processing class : io.authid.core.shared.components.jobs.enums.JobStepStatus
+[INFO] 2025-07-21 23:57:18.895 [ForkJoinPool.commonPool-worker-6] I18nAutoExtractorRunner::lambda$main$0 - 39 - Current Processing class : io.authid.core.containers.user.enums.DeviceStatus
+[INFO] 2025-07-21 23:57:19.228 [ForkJoinPool.commonPool-worker-3] I18nAutoExtractorRunner::lambda$main$0 - 39 - Current Processing class : io.authid.core.containers.user.enums.PasswordResetTokenStatus
+[INFO] 2025-07-21 23:57:19.249 [io.authid.core.shared.components.i18n.I18nAutoExtractorRunner.main()] I18nAutoExtractorRunner::main - 53 - All classes processed.

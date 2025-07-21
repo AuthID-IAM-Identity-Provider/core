@@ -17,18 +17,31 @@ public class I18nExtractorUtils {
 
     public static String readSourceForClass(Class<?> clazz) throws IOException {
         String path = clazz.getName().replace('.', '/');
+        // Handle inner classes correctly, which contain '$'
+        path = path.replaceAll("\\$.*", "");
         Path sourcePath = Paths.get("src/main/java/" + path + ".java");
         return Files.readString(sourcePath);
     }
 
-    public static void writeToJson(Locale locale, String fullPrefix, Map<String, String> i18nMap) throws IOException {
+    // Helper method to avoid reading the file content twice
+    public static boolean sourceContains(Class<?> clazz, String text) {
+        try {
+            return readSourceForClass(clazz).contains(text);
+        } catch (IOException e) {
+            log.warn("Could not read source for class {}: {}", clazz.getName(), e.getMessage());
+            return false;
+        }
+    }
+
+
+    // OPTIMIZED: Added 'synchronized' to make the method thread-safe.
+    public static synchronized void writeToJson(Locale locale, String fullPrefix, Map<String, String> i18nMap) {
         String language = locale.getLanguage();
         String relativePath = fullPrefix.replace('.', '/') + ".json";
         Path filePath = Paths.get("src/main/resources/i18n", language, relativePath);
 
         ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         Map<String, String> finalMap = new LinkedHashMap<>();
-
 
         try {
             Files.createDirectories(filePath.getParent());
@@ -38,7 +51,7 @@ public class I18nExtractorUtils {
                 try (InputStream in = Files.newInputStream(filePath)) {
                     finalMap = mapper.readValue(in, new TypeReference<Map<String, String>>() {});
                 } catch (IOException e) {
-                    log.warn("Failed reading: {}", filePath);
+                    log.warn("Failed reading existing JSON file, a new one will be created. File: {}", filePath, e);
                 }
             }
 
@@ -56,7 +69,8 @@ public class I18nExtractorUtils {
                 Files.writeString(filePath, mapper.writeValueAsString(finalMap));
                 log.info("Updated file: {}", filePath);
             } else {
-                log.info("No changes to write: {}", filePath);
+                // This log can be noisy in a large project, consider removing or lowering its level.
+                // log.info("No changes to write: {}", filePath);
             }
         } catch (IOException e) {
             log.error("Failed writing to: {}: {}", filePath, e.getMessage());
