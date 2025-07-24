@@ -111,7 +111,8 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
+            <scope>runtime</scope>
+            <optional>true</optional>
 		</dependency>
 
 		<dependency>
@@ -164,6 +165,11 @@
 				</configuration>
 			</plugin>
 
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
 			<plugin>
 				<groupId>org.liquibase</groupId>
 				<artifactId>liquibase-maven-plugin</artifactId>
@@ -199,6 +205,20 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.5.0</version> <executions>
+                <execution>
+                    <id>touch-trigger-file</id>
+                    <phase>compile</phase> <goals>
+                </goals>
+                    <configuration>
+                        <file>.reloadTrigger</file> </configuration>
+                </execution>
+            </executions>
+            </plugin>
 		</plugins>
 	</build>
 </project>

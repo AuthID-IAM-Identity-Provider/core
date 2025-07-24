@@ -22,7 +22,7 @@ public class I18n {
         return fullKey;
     }
 
-    public static void setSourceClass(Class<?> clazz) {
+    public static void setSourceClass(Class clazz) {
         sourceClass.set(clazz.getName());
     }
 

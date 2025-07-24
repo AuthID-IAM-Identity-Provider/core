@@ -8,6 +8,7 @@ spring:
       poll-interval: 2s
       quiet-period: 1s
       enabled: true
+      trigger-file: .reloadTrigger
   datasource:
     url: jdbc:oracle:thin:@//localhost:1521/AUTHIDCOREDEV
     username: authid_core_app
