@@ -52,7 +52,7 @@ public class I18nAutoExtractorRunner implements CommandLineRunner {
         log.info("============================================================");
 
         log.info("Found {} locales to process from context: {}", locales.size(), locales);
-        String basePackage = "io.authid.core";
+        String basePackage = "io.authid.utils";
         log.info("Base package for extraction: {}", basePackage);
 
         try (ScanResult scanResult = new ClassGraph().enableAllInfo().acceptPackages(basePackage).scan()) {

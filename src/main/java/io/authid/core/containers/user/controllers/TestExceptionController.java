@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestExceptionController {
     @GetMapping("/user-not-found/{userId}")
     public ResponseEntity<Void> testUserNotFoundException(@PathVariable Object userId) {
+        log.info("hello user-not-found-exception di ganti dulu ");
         I18n.setSourceClass(TestExceptionController.class);
         String key = I18n.extract("user.not.found");
         throw new GlobalTranslatableException(key, new Object[]{userId});

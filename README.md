@@ -29,7 +29,7 @@ AuthID Core Engine adalah fondasi backend yang kokoh dibangun dengan Spring Boot
 1.  **Clone repository:**
     ```bash
     git clone <your-repository-url>
-    cd core
+    cd utils
     ```
 
 2.  **Konfigurasi Koneksi Database:**
