@@ -1,5 +1,6 @@
 package io.authid.core.shared.rest.contracts;
 
+import io.authid.core.shared.utils.UniPaginatedResult;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -7,7 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface RestService<T, ID, C, U> {
-    Page<T> findAll(Pageable pageable, Map<String, Object> filters);
+    UniPaginatedResult<T> findAll(String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor);
+    long count(String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor);
     T create(C createRequest);
     T findById(ID id);
     T update(ID id, U updateRequest);

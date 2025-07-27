@@ -43,7 +43,7 @@ public class UserEntity extends BaseEntity<UUID> {
     @Column(name = "email_verified_at")
     private Instant emailVerifiedAt;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "usr_pwd", nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)

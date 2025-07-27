@@ -1,10 +1,8 @@
 package io.authid.core.shared.rest.controllers;
 
 import io.authid.core.shared.rest.contracts.RestService;
-import io.authid.core.shared.utils.UniMeta;
-import io.authid.core.shared.utils.UniPagination;
-import io.authid.core.shared.utils.UniPaginationType;
-import io.authid.core.shared.utils.UniResponse;
+import io.authid.core.shared.utils.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -17,16 +15,56 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
 
+@Slf4j
 public abstract class RestController<T, ID, C, U> {
+
+    private static final int PAGINATION_THRESHOLD = 100;
+
     public abstract RestService<T, ID, C, U> getService();
 
-    // --- Endpoint Handler ---
     @GetMapping
     public ResponseEntity<UniResponse<List<T>>> findAll(
             Pageable pageable,
-            @RequestParam(required = false) Map<String, Object> filters) {
-        Page<T> page = getService().findAll(pageable, filters);
-        return paginated(page, Function.identity());
+            @RequestParam(required = false) String q,
+            @RequestParam(required = false) String cursor,
+            @RequestParam(required = false) Map<String, Object> filters
+    ) {
+
+        filters.remove("q");
+        filters.remove("cursor");
+        filters.remove("page");
+        filters.remove("size");
+        boolean useCursor = (cursor != null) || (pageable.isPaged() && pageable.getPageNumber() >= PAGINATION_THRESHOLD);
+
+        UniPaginatedResult<T> result = getService().findAll(q, filters, pageable, useCursor ? cursor : null);
+
+        UniMeta meta = createMeta(result.getPagination());
+        UniResponse<List<T>> response = UniResponse.success(
+                HttpStatus.OK.value(),
+                "Success",
+                result.getData(),
+                meta
+        );
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<UniResponse<Long>> count(
+            Pageable pageable,
+            @RequestParam(required = false) String q,
+            @RequestParam(required = false) String cursor,
+            @RequestParam(required = false) Map<String, Object> filters
+    ) {
+        long count = getService().count(q, filters, pageable, cursor);
+        UniMeta meta = createMeta(null);
+        UniResponse<Long> response = UniResponse.success(
+                HttpStatus.OK.value(),
+                "Success",
+                count,
+                meta
+        );
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
