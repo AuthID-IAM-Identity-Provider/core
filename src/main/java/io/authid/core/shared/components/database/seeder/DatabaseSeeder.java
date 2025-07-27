@@ -10,11 +10,6 @@ public class DatabaseSeeder extends CallableSeeder {
     @Override
     public void run() {
         System.out.println("🌱 Memulai proses database seeding...");
-
-//        this.call(
-////                AuthorizationSeeder.class
-//        );
-
         System.out.println("✅ Proses database seeding berhasil diselesaikan.");
     }
 }

@@ -24,7 +24,7 @@ public class SecurityConfig {
                 // Konfigurasi aturan otorisasi untuk setiap request.
                 .authorizeHttpRequests(auth -> auth
                         // PENTING: Izinkan semua request ke /api/test/** tanpa perlu autentikasi.
-                        .requestMatchers("/api/test/**").permitAll()
+                        .requestMatchers("/api/**").permitAll()
 
                         // Aturan lain bisa ditambahkan di sini, contoh:
                         // .requestMatchers("/api/auth/**").permitAll()
