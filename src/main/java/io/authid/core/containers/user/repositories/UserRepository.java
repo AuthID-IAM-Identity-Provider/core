@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-@Qualifier("userRepository")
 public interface UserRepository extends BaseRepository<UserEntity, UUID> {
+    boolean existsByEmail(String email);
 }
 

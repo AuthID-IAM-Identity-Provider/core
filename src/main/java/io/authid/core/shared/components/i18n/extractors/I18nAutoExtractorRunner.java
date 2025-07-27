@@ -14,8 +14,14 @@ import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfigurati
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Import;
+import org.springframework.shell.standard.ShellComponent;
+import org.springframework.shell.standard.ShellMethod;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * A self-contained script to extract I18n keys.
@@ -24,36 +30,39 @@ import java.util.Locale;
  * This prevents it from running accidentally when the main web application starts.
  */
 @Slf4j
-@EnableAutoConfiguration(exclude = {
-        DataSourceAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class,
-        LiquibaseAutoConfiguration.class
-})
-@Import(I18nConfig.class) // <-- Secara eksplisit impor konfigurasi yang dibutuhkan
+//@EnableAutoConfiguration(exclude = {
+//        DataSourceAutoConfiguration.class,
+//        HibernateJpaAutoConfiguration.class,
+//        LiquibaseAutoConfiguration.class
+//})
+//@Import(I18nConfig.class) // <-- Secara eksplisit impor konfigurasi yang dibutuhkan
 @RequiredArgsConstructor
-public class I18nAutoExtractorRunner implements CommandLineRunner {
+@ShellComponent
+public class I18nAutoExtractorRunner{
 
     @Qualifier("supportedLocales")
     private final List<Locale> locales;
 
-    /**
-     * The main entry point for the script. This is the ONLY way to run this class.
-     */
-    public static void main(String[] args) {
-        new SpringApplicationBuilder(I18nAutoExtractorRunner.class)
-                .web(WebApplicationType.NONE)
-                .run(args);
-    }
+//    /**
+//     * The main entry point for the script. This is the ONLY way to run this class.
+//     */
+//    public static void main(String[] args) {
+//        new SpringApplicationBuilder(I18nAutoExtractorRunner.class)
+//                .web(WebApplicationType.NONE)
+//                .run(args);
+//    }
 
-    @Override
-    public void run(String... args) {
+    @ShellMethod("Runs the i18n key extraction script.")
+    public void extractI18n() {
         log.info("============================================================");
         log.info("=== I18N AUTO-EXTRACTOR SCRIPT STARTING                ===");
         log.info("============================================================");
 
         log.info("Found {} locales to process from context: {}", locales.size(), locales);
-        String basePackage = "io.authid.utils";
+        String basePackage = "io.authid";
         log.info("Base package for extraction: {}", basePackage);
+
+        Set<String> allValidationKeys = ConcurrentHashMap.newKeySet();
 
         try (ScanResult scanResult = new ClassGraph().enableAllInfo().acceptPackages(basePackage).scan()) {
             log.info("Found {} classes to process", scanResult.getAllClasses().size());
@@ -62,11 +71,21 @@ public class I18nAutoExtractorRunner implements CommandLineRunner {
                 try {
                     if (!classInfo.isInterfaceOrAnnotation() && classInfo.isPublic()) {
                         Class<?> clazz = classInfo.loadClass();
-                        if (I18nExtractorUtils.sourceContains(clazz, "I18n.extract")) {
+                        String source = I18nExtractorUtils.readSourceForClass(clazz);
+
+                        Set<String> i18nKeys = I18nExtractor.findI18nKeys(source);
+                        Set<String> validationKeys = I18nExtractor.findValidationKeys(source);
+
+                        if (!i18nKeys.isEmpty()) {
                             log.info("Processing class: {}", clazz.getName());
                             for (Locale locale : locales) {
                                 I18nExtractor.extractAndWriteForClass(clazz, locale);
                             }
+                        }
+
+                        if (!validationKeys.isEmpty()) {
+                            log.info("Found {} validation keys in {}", validationKeys.size(), clazz.getSimpleName());
+                            allValidationKeys.addAll(validationKeys);
                         }
                     }
                 } catch (Throwable e) {
@@ -76,6 +95,17 @@ public class I18nAutoExtractorRunner implements CommandLineRunner {
             log.info("All classes processed.");
         } catch (Exception e) {
             log.error("An error occurred during the i18n extraction process.", e);
+        }
+
+        log.info("Found {} unique validation keys in total.", allValidationKeys.size());
+        if (!allValidationKeys.isEmpty()) {
+            for (Locale locale : locales) {
+                try {
+                    I18nExtractorUtils.writeToProperties(locale, allValidationKeys);
+                } catch (IOException e) {
+                    log.error("Failed to write ValidationMessages.properties for locale {}: {}", locale, e.getMessage());
+                }
+            }
         }
 
         log.info("========================================================");

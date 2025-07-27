@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 public class I18nExtractor {
 
     private static final Pattern I18N_PATTERN = Pattern.compile("I18n\\.extract\\(\"([^\"]+)\"");
+    private static final Pattern VALIDATION_MESSAGE_PATTERN = Pattern.compile("message\\s*=\\s*\"\\{([a-zA-Z0-9_.-]+)}\"");
 
     public static void extractAndWriteForClass(Class<?> clazz, Locale locale) {
         try {
@@ -37,5 +38,23 @@ public class I18nExtractor {
         } catch (Exception e) {
             log.error("Error extracting class:{}: {}", clazz.getName(), e.getMessage());
         }
+    }
+
+    public static Set<String> findI18nKeys(String content) {
+        Set<String> keys = new HashSet<>();
+        Matcher matcher = I18N_PATTERN.matcher(content);
+        while (matcher.find()) {
+            keys.add(matcher.group(1));
+        }
+        return keys;
+    }
+
+    public static Set<String> findValidationKeys(String content) {
+        Set<String> keys = new HashSet<>();
+        Matcher matcher = VALIDATION_MESSAGE_PATTERN.matcher(content);
+        while (matcher.find()) {
+            keys.add(matcher.group(1));
+        }
+        return keys;
     }
 }
