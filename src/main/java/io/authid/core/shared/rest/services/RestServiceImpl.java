@@ -57,7 +57,6 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
     }
 
     @Override
-    @Transactional(readOnly = true)
     public UniPaginatedResult<T> findAll(String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor) {
         beforeFindAll(searchTerm, filters);
         GenericSpecificationBuilder<T> specBuilder = new GenericSpecificationBuilder<>(getSearchableColumns(), getFilterableColumns());
@@ -121,7 +120,6 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
     }
 
     @Override
-    @Transactional(readOnly = true)
     public T findById(ID id) {
         beforeFindById(id);
         T entity = getRepository().findById(id)

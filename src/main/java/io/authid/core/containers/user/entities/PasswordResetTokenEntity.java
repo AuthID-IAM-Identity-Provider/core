@@ -1,6 +1,7 @@
 package io.authid.core.containers.user.entities;
 
 import io.authid.core.containers.user.enums.PasswordResetTokenStatus;
+import io.authid.core.shared.components.database.converters.InstantTimestampConverter;
 import io.authid.core.shared.components.database.model.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -28,6 +29,7 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
     private PasswordResetTokenStatus status = PasswordResetTokenStatus.PENDING;
 
     @Column(name = "expires_at", nullable = false)
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant expiresAt;
 
     // Request tracking
@@ -45,6 +47,7 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
     private String userAgentCompletion;
 
     @Column(name = "completed_at")
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant completedAt;
 
     // Security fields
@@ -55,6 +58,7 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
     private Integer maxAttempts = 3;
 
     @Column(name = "blocked_until")
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant blockedUntil;
 
     @Column(name = "hash_algorithm", length = 20)

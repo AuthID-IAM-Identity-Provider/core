@@ -16,6 +16,9 @@ spring:
       enabled: true
       trigger-file: .reloadTrigger
   datasource:
+    properties:
+      oracle.jdbc.timezoneAsRegion: false
+      oracle.jdbc.mapDateToTimestamp: false
     url: jdbc:oracle:thin:@//localhost:1521/AUTHIDCOREDEV
     username: authid_core_app
     password: authid_core_app202507130433
@@ -49,6 +52,7 @@ spring:
         session:
           events:
             auto_enable_filters: false
+        jdbc.time_zone: UTC
 
   liquibase:
     enabled: true

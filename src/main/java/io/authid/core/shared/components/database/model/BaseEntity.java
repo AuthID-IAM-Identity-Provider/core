@@ -1,5 +1,6 @@
 package io.authid.core.shared.components.database.model;
 
+import io.authid.core.shared.components.database.converters.InstantTimestampConverter;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,11 +26,13 @@ public abstract class BaseEntity<T extends Serializable> {
     @Setter
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant createdAt;
 
     @Getter
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant updatedAt;
 
     @CreatedBy

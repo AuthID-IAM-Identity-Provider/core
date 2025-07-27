@@ -1,6 +1,7 @@
 package io.authid.core.containers.user.entities;
 
 import io.authid.core.containers.user.enums.UserStatus;
+import io.authid.core.shared.components.database.converters.InstantTimestampConverter;
 import io.authid.core.shared.components.database.model.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -41,6 +42,7 @@ public class UserEntity extends BaseEntity<UUID> {
     private String email;
 
     @Column(name = "email_verified_at")
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant emailVerifiedAt;
 
     @Column(name = "usr_pwd", nullable = false)
@@ -60,24 +62,29 @@ public class UserEntity extends BaseEntity<UUID> {
     private String twoFactorRecoveryCodes;
 
     @Column(name = "two_factor_confirmed_at")
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant twoFactorConfirmedAt;
 
     @Column(name = "password_changed_at")
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant passwordChangedAt;
 
     @Column(name = "failed_login_attempts")
     private Integer failedLoginAttempts = 0;
 
     @Column(name = "locked_until")
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant lockedUntil;
 
     @Column(name = "last_login_at")
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant lastLoginAt;
 
     @Column(name = "last_login_ip", length = 45)
     private String lastLoginIp;
 
     @Column(name = "last_activity_at")
+    @Convert(converter = InstantTimestampConverter.class)
     private Instant lastActivityAt;
 
     @Column(name = "login_count")
