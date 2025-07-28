@@ -1,0 +1,7 @@
+{
+  "io.authid.core.containers.user.transformer.UserRestTransformer.last.login.never" : "",
+  "io.authid.core.containers.user.transformer.UserRestTransformer.last.login.just.now" : "",
+  "io.authid.core.containers.user.transformer.UserRestTransformer.last.login.a.minutes.ago" : "",
+  "io.authid.core.containers.user.transformer.UserRestTransformer.last.login.a.hours.ago" : "",
+  "io.authid.core.containers.user.transformer.UserRestTransformer.last.login.a.days.ago" : ""
+}
