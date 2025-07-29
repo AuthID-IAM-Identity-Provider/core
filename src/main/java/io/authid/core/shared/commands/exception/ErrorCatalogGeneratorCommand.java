@@ -1,0 +1,68 @@
+package io.authid.core.shared.commands.exception;
+
+import io.authid.core.generators.ErrorCatalogGenerator;
+import io.authid.core.shared.components.database.seeder.DatabaseSeeder;
+import org.springframework.shell.command.annotation.Command;
+import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.standard.ShellOption;
+import org.springframework.stereotype.Component;
+
+import java.io.File;
+
+@Command(command = "database-seeding", alias = "db-seeding", description = "Commands for database seeding operations")
+@Component
+public class ErrorCatalogGeneratorCommand {
+    private final ErrorCatalogGenerator errorCatalogGenerator;
+
+    // Path ke direktori master Excel Anda (harus sama dengan yang di generator)
+    // Bisa juga dijadikan @ShellOption untuk lebih fleksibel saat command dijalankan
+    private static final String DEFAULT_EXCEL_DIR = "src/main/resources/masters/";
+    private static final String LOCK_KEY = "error_catalog_generation_lock"; // Key untuk lock
+
+    public ErrorCatalogGeneratorCommand(ErrorCatalogGenerator errorCatalogGenerator) {
+        this.errorCatalogGenerator = errorCatalogGenerator;
+    }
+
+    // --- PSEUDO-CODE UNTUK SERVIS LOCK ---
+    // Di sini kita akan menggunakan pseudo-code lock yang sama dengan generator
+    // Anda bisa memindahkan ini ke util atau menggunakan @Service jika servis lock nyata ada
+    private boolean acquireLock(String lockKey) {
+        System.out.println("Attempting to acquire lock for: " + lockKey + "...");
+        // Implementasi nyata: Redis lock, database lock, etc.
+        // Untuk demo, selalu sukses.
+        return true;
+    }
+
+    private void releaseLock(String lockKey) {
+        System.out.println("Releasing lock for: " + lockKey + ".");
+        // Implementasi nyata: melepaskan lock
+    }
+    // --- AKHIR PSEUDO-CODE UNTUK SERVIS LOCK ---
+
+    @Command(command = "generate-error-catalog", alias = "gen-errors", description = "Generates the Error Catalog enum(s) from Excel master data.") // Untuk Spring Shell 3.x Command annotation
+    public String generateErrorCatalog() {
+
+        System.out.println("Executing generate-error-catalog command...");
+
+        // --- AKUISISI LOCK ---
+        if (!acquireLock(LOCK_KEY)) {
+            return "Generation process cannot start: Another process is currently running or lock could not be acquired.";
+        }
+
+        try {
+            // Panggil metode generate dari generator service
+            errorCatalogGenerator.generate();
+            return "Error Catalog generation completed successfully!";
+        } catch (IllegalArgumentException e) {
+            System.err.println("Validation Error: " + e.getMessage());
+            return "Generation failed due to validation error: " + e.getMessage();
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred during generation: " + e.getMessage());
+            e.printStackTrace();
+            return "Generation failed due to an unexpected error. Check logs for details: " + e.getMessage();
+        } finally {
+            // --- MELEPASKAN LOCK ---
+            releaseLock(LOCK_KEY);
+        }
+    }
+}
