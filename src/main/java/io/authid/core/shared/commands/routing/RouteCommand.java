@@ -52,7 +52,7 @@ public class RouteCommand {
                             Set<String> patterns = entry.getKey().getPatternValues();
                             return patterns.isEmpty() ? "" : patterns.iterator().next(); // Sortir berdasarkan URI pertama
                         }))
-                        .collect(Collectors.toList());
+                        .toList();
 
         for (Map.Entry<RequestMappingInfo, org.springframework.web.method.HandlerMethod> entry : sortedHandlerMethods) {
             RequestMappingInfo mapping = entry.getKey();
@@ -101,20 +101,20 @@ public class RouteCommand {
         }
 
         // 4. Bangun format string untuk baris (header dan data) dan separator
-        String headerAndRowFormat = "|";
-        String separatorFormat = "+";
+        StringBuilder headerAndRowFormat = new StringBuilder("|");
+        StringBuilder separatorFormat = new StringBuilder("+");
         for (int width : columnWidths) {
-            headerAndRowFormat += " %-" + width + "s |";
-            separatorFormat += "-".repeat(width + 1) + "+"; // +1 for the space after content
+            headerAndRowFormat.append(" %-").append(width).append("s |");
+            separatorFormat.append("-".repeat(width + 1)).append("+"); // +1 for the space after content
         }
-        headerAndRowFormat += "\n";
-        separatorFormat += "\n";
+        headerAndRowFormat.append("\n");
+        separatorFormat.append("\n");
 
         // 5. Bangun tabel utama
         // Baris separator atas
         tableBuilder.append(separatorFormat);
         // Header
-        tableBuilder.append(String.format(headerAndRowFormat, (Object[]) headerRow.toArray()));
+        tableBuilder.append(String.format(headerAndRowFormat.toString(), (Object[]) headerRow.toArray()));
         // Baris separator di bawah header
         tableBuilder.append(separatorFormat);
 
@@ -126,7 +126,7 @@ public class RouteCommand {
             for (int j = 0; j < row.size(); j++) {
                 truncatedRow.add(truncateString(row.get(j), columnWidths[j] - padding)); // Kurangi padding untuk cek trunc
             }
-            tableBuilder.append(String.format(headerAndRowFormat, (Object[]) truncatedRow.toArray()));
+            tableBuilder.append(String.format(headerAndRowFormat.toString(), (Object[]) truncatedRow.toArray()));
         }
 
         // Footer tabel
@@ -142,7 +142,7 @@ public class RouteCommand {
     private String truncateString(String text, int maxLength) {
         if (text.length() > maxLength && maxLength > 3) { // Hanya potong jika ada ruang untuk "..."
             return text.substring(0, maxLength - 3) + "...";
-        } else if (text.length() > maxLength && maxLength <= 3) { // Jika kolom sangat sempit
+        } else if (text.length() > maxLength) { // Jika kolom sangat sempit
             return text.substring(0, maxLength); // Potong saja tanpa "..."
         }
         return text;

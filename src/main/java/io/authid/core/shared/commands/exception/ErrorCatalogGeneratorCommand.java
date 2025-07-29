@@ -1,13 +1,8 @@
 package io.authid.core.shared.commands.exception;
 
 import io.authid.core.generators.ErrorCatalogGenerator;
-import io.authid.core.shared.components.database.seeder.DatabaseSeeder;
 import org.springframework.shell.command.annotation.Command;
-import org.springframework.shell.standard.ShellMethod;
-import org.springframework.shell.standard.ShellOption;
 import org.springframework.stereotype.Component;
-
-import java.io.File;
 
 @Command(command = "database-seeding", alias = "db-seeding", description = "Commands for database seeding operations")
 @Component
@@ -26,15 +21,15 @@ public class ErrorCatalogGeneratorCommand {
     // --- PSEUDO-CODE UNTUK SERVIS LOCK ---
     // Di sini kita akan menggunakan pseudo-code lock yang sama dengan generator
     // Anda bisa memindahkan ini ke util atau menggunakan @Service jika servis lock nyata ada
-    private boolean acquireLock(String lockKey) {
-        System.out.println("Attempting to acquire lock for: " + lockKey + "...");
+    private boolean acquireLock() {
+        System.out.println("Attempting to acquire lock for: " + ErrorCatalogGeneratorCommand.LOCK_KEY + "...");
         // Implementasi nyata: Redis lock, database lock, etc.
         // Untuk demo, selalu sukses.
         return true;
     }
 
-    private void releaseLock(String lockKey) {
-        System.out.println("Releasing lock for: " + lockKey + ".");
+    private void releaseLock() {
+        System.out.println("Releasing lock for: " + ErrorCatalogGeneratorCommand.LOCK_KEY + ".");
         // Implementasi nyata: melepaskan lock
     }
     // --- AKHIR PSEUDO-CODE UNTUK SERVIS LOCK ---
@@ -45,7 +40,7 @@ public class ErrorCatalogGeneratorCommand {
         System.out.println("Executing generate-error-catalog command...");
 
         // --- AKUISISI LOCK ---
-        if (!acquireLock(LOCK_KEY)) {
+        if (!acquireLock()) {
             return "Generation process cannot start: Another process is currently running or lock could not be acquired.";
         }
 
@@ -62,7 +57,7 @@ public class ErrorCatalogGeneratorCommand {
             return "Generation failed due to an unexpected error. Check logs for details: " + e.getMessage();
         } finally {
             // --- MELEPASKAN LOCK ---
-            releaseLock(LOCK_KEY);
+            releaseLock();
         }
     }
 }
