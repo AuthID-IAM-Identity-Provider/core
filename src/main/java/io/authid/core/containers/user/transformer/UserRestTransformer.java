@@ -13,10 +13,7 @@ import java.time.Instant;
 @Component
 public class UserRestTransformer implements RestTransformer<UserEntity, IndexUserResponse, DetailUserResponse, CreateUserResponse, UpdateUserResponse, DeleteUserResponse> {
 
-    private final I18nService i18nService;
-
     public UserRestTransformer(I18nService i18nService) {
-        this.i18nService = i18nService;
     }
 
     @Override
@@ -35,7 +32,36 @@ public class UserRestTransformer implements RestTransformer<UserEntity, IndexUse
 
     @Override
     public DetailUserResponse toDetail(UserEntity entity) {
-        return null;
+        return DetailUserResponse.builder()
+                .id(entity.getId().toString())
+                // --- Raw Fields ---
+                // Pastikan entity.getRefNo() tidak null jika refNo adalah Embeddable
+                .firstName(entity.getName())
+                .email(entity.getEmail())
+                .createdAt(String.valueOf(entity.getCreatedAt()))
+
+                // --- Computed Fields ---
+                .isEmailVerified(entity.isVerified()) // Delegasi ke metode di UserEntity
+                .isAccountLocked(entity.isAccountLocked()) // Delegasi ke metode di UserEntity
+                .hasTwoFactorAuth(entity.hasTwoFactor()) // Delegasi ke metode di UserEntity
+                .canLogin(entity.canLogin()) // Delegasi ke metode di UserEntity
+                .lastLoginAt(String.valueOf(entity.getLastLoginAt())) // Raw, but often displayed here
+                .lastLoginIp(entity.getLastLoginIp()) // Raw, be careful with exposure
+                .loginCount(String.valueOf(entity.getLoginCount()))   // Raw, but useful for detail
+                .failedLoginAttempts(String.valueOf(entity.getFailedLoginAttempts())) // Raw, but useful for detail (careful with exposure)
+                .daysSinceLastLogin((String) calculateDaysSinceLastLogin(entity.getLastLoginAt())) // Computed
+                // .publicProfileUrl("/users/" + entity.getRefNo().getSystemRefNo()) // Example computed URL
+                // .roles(entity.getRoles().stream().map(Role::getName).collect(Collectors.toSet())) // If roles entity exists
+                .build();
+    }
+
+    // Helper method for computed field
+    private Object calculateDaysSinceLastLogin(Instant lastLoginAt) {
+        if (lastLoginAt == null) {
+            return null; // Or some default like 0 if never logged in
+        }
+        Duration duration = Duration.between(lastLoginAt, Instant.now());
+        return (int) duration.toDays();
     }
 
     @Override

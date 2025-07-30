@@ -2,6 +2,7 @@ package io.authid.core.shared.utils;
 
 import lombok.*;
 
+@Data
 @Getter
 @Setter
 @Builder
