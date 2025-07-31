@@ -50,7 +50,12 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
                 .map(getTransformer()::toIndex) // Apply the toIndex transformation
                 .collect(Collectors.toList());
 
-        return UniResponseFactory.ok(response, "Success"); // Pass the transformed UniPaginatedResult
+        UniPaginatedResult<IndexResponse> transformedResult = new UniPaginatedResult<>(response, result.getPagination());
+
+        // *** THIS IS THE CRUCIAL CHANGE ***
+        // Call the overload of UniResponseFactory.ok() that accepts UniPaginatedResult
+        return UniResponseFactory.ok(transformedResult, "Success fetch all active records");
+        // Pass the transformed UniPaginatedResult
     }
 
     @GetMapping("/count")

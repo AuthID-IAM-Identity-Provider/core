@@ -1,4 +1,4 @@
 databaseChangeLog:
 
   - include:
-      file: db/changelog/2025_07_27_160332_initial_schema_snapshot.yaml
+      file: db/changelog/2025_08_01_003735_initial_schema_snapshot.yaml

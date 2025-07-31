@@ -1,5 +1,5 @@
 // File: src/main/java/io/authid/core/generators/ErrorCatalogGenerator.java
-package io.authid.core.generators;
+package io.authid.core.shared.generators;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;

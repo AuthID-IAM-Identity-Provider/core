@@ -1,4 +1,4 @@
-package io.authid.core.shared.components.database.configurations;
+package io.authid.core.shared.components.database.audit;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;

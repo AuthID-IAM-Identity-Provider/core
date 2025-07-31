@@ -1,6 +1,6 @@
 databaseChangeLog:
 - changeSet:
-    id: 1753607049969-1
+    id: 1753983488385-1
     author: elhakimdev99 (generated)
     changes:
     - createTable:
@@ -19,6 +19,17 @@ databaseChangeLog:
             type: TIMESTAMP(6)
         - column:
             name: created_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: is_deleted
+            type: NUMBER(1, 0)
+        - column:
+            name: deleted_at
+            type: TIMESTAMP(6)
+        - column:
+            name: deleted_by
             type: VARCHAR2(255 CHAR)
         - column:
             constraints:
@@ -98,7 +109,7 @@ databaseChangeLog:
             type: raw(16)
         tableName: password_reset_tokens
 - changeSet:
-    id: 1753607049969-2
+    id: 1753983488385-2
     author: elhakimdev99 (generated)
     changes:
     - createTable:
@@ -117,6 +128,17 @@ databaseChangeLog:
             type: TIMESTAMP(6)
         - column:
             name: created_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: is_deleted
+            type: NUMBER(1, 0)
+        - column:
+            name: deleted_at
+            type: TIMESTAMP(6)
+        - column:
+            name: deleted_by
             type: VARCHAR2(255 CHAR)
         - column:
             constraints:
@@ -190,7 +212,7 @@ databaseChangeLog:
             type: raw(16)
         tableName: user_devices
 - changeSet:
-    id: 1753607049969-3
+    id: 1753983488385-3
     author: elhakimdev99 (generated)
     changes:
     - createTable:
@@ -209,6 +231,17 @@ databaseChangeLog:
             type: TIMESTAMP(6)
         - column:
             name: created_by
+            type: VARCHAR2(255 CHAR)
+        - column:
+            constraints:
+              nullable: false
+            name: is_deleted
+            type: NUMBER(1, 0)
+        - column:
+            name: deleted_at
+            type: TIMESTAMP(6)
+        - column:
+            name: deleted_by
             type: VARCHAR2(255 CHAR)
         - column:
             constraints:
@@ -276,27 +309,27 @@ databaseChangeLog:
             type: VARCHAR2(255 CHAR)
         tableName: users
 - changeSet:
-    id: 1753607049969-4
+    id: 1753983488385-4
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
         columns:
         - column:
             name: token_hash
-        indexName: password_reset_tokens_TNXU_IX
+        indexName: password_reset_tokens_JUNF_IX
         tableName: password_reset_tokens
         unique: true
 - changeSet:
-    id: 1753607049969-5
+    id: 1753983488385-5
     author: elhakimdev99 (generated)
     changes:
     - addUniqueConstraint:
         columnNames: token_hash
         constraintName: UC_PASSWORD_RESET_TOKENSTOKEN_HASH_COL
-        forIndexName: password_reset_tokens_TNXU_IX
+        forIndexName: password_reset_tokens_JUNF_IX
         tableName: password_reset_tokens
 - changeSet:
-    id: 1753607049969-6
+    id: 1753983488385-6
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -306,7 +339,7 @@ databaseChangeLog:
         indexName: idx_email
         tableName: users
 - changeSet:
-    id: 1753607049969-7
+    id: 1753983488385-7
     author: elhakimdev99 (generated)
     changes:
     - addUniqueConstraint:
@@ -315,7 +348,7 @@ databaseChangeLog:
         forIndexName: idx_email
         tableName: users
 - changeSet:
-    id: 1753607049969-8
+    id: 1753983488385-8
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -325,7 +358,7 @@ databaseChangeLog:
         indexName: idx_device_fingerprint
         tableName: user_devices
 - changeSet:
-    id: 1753607049969-9
+    id: 1753983488385-9
     author: elhakimdev99 (generated)
     changes:
     - addUniqueConstraint:
@@ -334,7 +367,7 @@ databaseChangeLog:
         forIndexName: idx_device_fingerprint
         tableName: user_devices
 - changeSet:
-    id: 1753607049969-10
+    id: 1753983488385-10
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -346,7 +379,7 @@ databaseChangeLog:
         indexName: idx_activity_tracking
         tableName: users
 - changeSet:
-    id: 1753607049969-11
+    id: 1753983488385-11
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -356,7 +389,7 @@ databaseChangeLog:
         indexName: idx_current_device
         tableName: user_devices
 - changeSet:
-    id: 1753607049969-12
+    id: 1753983488385-12
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -368,7 +401,7 @@ databaseChangeLog:
         indexName: idx_device_location
         tableName: user_devices
 - changeSet:
-    id: 1753607049969-13
+    id: 1753983488385-13
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -378,7 +411,7 @@ databaseChangeLog:
         indexName: idx_device_status
         tableName: user_devices
 - changeSet:
-    id: 1753607049969-14
+    id: 1753983488385-14
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -388,7 +421,7 @@ databaseChangeLog:
         indexName: idx_device_type
         tableName: user_devices
 - changeSet:
-    id: 1753607049969-15
+    id: 1753983488385-15
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -400,7 +433,7 @@ databaseChangeLog:
         indexName: idx_email_status
         tableName: users
 - changeSet:
-    id: 1753607049969-16
+    id: 1753983488385-16
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -410,7 +443,7 @@ databaseChangeLog:
         indexName: idx_email_verified
         tableName: users
 - changeSet:
-    id: 1753607049969-17
+    id: 1753983488385-17
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -420,7 +453,7 @@ databaseChangeLog:
         indexName: idx_expires_at
         tableName: password_reset_tokens
 - changeSet:
-    id: 1753607049969-18
+    id: 1753983488385-18
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -430,7 +463,7 @@ databaseChangeLog:
         indexName: idx_failed_attempts
         tableName: users
 - changeSet:
-    id: 1753607049969-19
+    id: 1753983488385-19
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -440,7 +473,7 @@ databaseChangeLog:
         indexName: idx_last_activity
         tableName: users
 - changeSet:
-    id: 1753607049969-20
+    id: 1753983488385-20
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -450,7 +483,7 @@ databaseChangeLog:
         indexName: idx_last_login
         tableName: users
 - changeSet:
-    id: 1753607049969-21
+    id: 1753983488385-21
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -460,7 +493,7 @@ databaseChangeLog:
         indexName: idx_last_login_device
         tableName: user_devices
 - changeSet:
-    id: 1753607049969-22
+    id: 1753983488385-22
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -470,7 +503,7 @@ databaseChangeLog:
         indexName: idx_locked_until
         tableName: users
 - changeSet:
-    id: 1753607049969-23
+    id: 1753983488385-23
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -480,7 +513,7 @@ databaseChangeLog:
         indexName: idx_password_changed
         tableName: users
 - changeSet:
-    id: 1753607049969-24
+    id: 1753983488385-24
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -492,7 +525,7 @@ databaseChangeLog:
         indexName: idx_security_check
         tableName: users
 - changeSet:
-    id: 1753607049969-25
+    id: 1753983488385-25
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -502,7 +535,7 @@ databaseChangeLog:
         indexName: idx_status
         tableName: users
 - changeSet:
-    id: 1753607049969-26
+    id: 1753983488385-26
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -512,7 +545,7 @@ databaseChangeLog:
         indexName: idx_two_factor
         tableName: users
 - changeSet:
-    id: 1753607049969-27
+    id: 1753983488385-27
     author: elhakimdev99 (generated)
     changes:
     - createIndex:
@@ -524,7 +557,7 @@ databaseChangeLog:
         indexName: idx_user_device_fingerprint
         tableName: user_devices
 - changeSet:
-    id: 1753607049969-28
+    id: 1753983488385-28
     author: elhakimdev99 (generated)
     changes:
     - createIndex:

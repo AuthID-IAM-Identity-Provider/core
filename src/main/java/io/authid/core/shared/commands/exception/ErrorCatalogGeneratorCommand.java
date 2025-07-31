@@ -1,6 +1,6 @@
 package io.authid.core.shared.commands.exception;
 
-import io.authid.core.generators.ErrorCatalogGenerator;
+import io.authid.core.shared.generators.ErrorCatalogGenerator;
 import org.springframework.shell.command.annotation.Command;
 import org.springframework.stereotype.Component;
 

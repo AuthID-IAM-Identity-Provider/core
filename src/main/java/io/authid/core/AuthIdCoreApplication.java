@@ -1,6 +1,6 @@
 package io.authid.core;
 
-import io.authid.core.shared.components.database.configurations.AuditorAwareImpl;
+import io.authid.core.shared.components.database.audit.AuditorAwareImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -22,17 +22,6 @@ import org.springframework.shell.command.annotation.CommandScan;
 public class AuthIdCoreApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AuthIdCoreApplication.class, args);
-	}
-
-	@Bean
-	public AuditorAware<String> auditorProvider() {
-		return new AuditorAwareImpl();
-	}
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        SpringApplication.run(AuthIdCoreApplication.class, args);
     }
-
 }
