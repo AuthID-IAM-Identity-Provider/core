@@ -4,7 +4,7 @@ import io.authid.core.generators.ErrorCatalogGenerator;
 import org.springframework.shell.command.annotation.Command;
 import org.springframework.stereotype.Component;
 
-@Command(command = "database-seeding", alias = "db-seeding", description = "Commands for database seeding operations")
+@Command(command = "generate error catalog", alias = "gen-err-cat", description = "Commands for generating error catalaog  operations")
 @Component
 public class ErrorCatalogGeneratorCommand {
     private final ErrorCatalogGenerator errorCatalogGenerator;
@@ -34,7 +34,7 @@ public class ErrorCatalogGeneratorCommand {
     }
     // --- AKHIR PSEUDO-CODE UNTUK SERVIS LOCK ---
 
-    @Command(command = "generate-error-catalog", alias = "gen-errors", description = "Generates the Error Catalog enum(s) from Excel master data.") // Untuk Spring Shell 3.x Command annotation
+    @Command(command = "generate", alias = "gen", description = "Generates the Error Catalog enum(s) from Excel master data.") // Untuk Spring Shell 3.x Command annotation
     public String generateErrorCatalog() {
 
         System.out.println("Executing generate-error-catalog command...");

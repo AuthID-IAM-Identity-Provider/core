@@ -6,14 +6,6 @@ import io.github.classgraph.ScanResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.Import;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
@@ -30,27 +22,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * This prevents it from running accidentally when the main web application starts.
  */
 @Slf4j
-//@EnableAutoConfiguration(exclude = {
-//        DataSourceAutoConfiguration.class,
-//        HibernateJpaAutoConfiguration.class,
-//        LiquibaseAutoConfiguration.class
-//})
-//@Import(I18nConfig.class) // <-- Secara eksplisit impor konfigurasi yang dibutuhkan
 @RequiredArgsConstructor
 @ShellComponent
 public class I18nAutoExtractorRunner{
 
     @Qualifier("supportedLocales")
     private final List<Locale> locales;
-
-//    /**
-//     * The main entry point for the script. This is the ONLY way to run this class.
-//     */
-//    public static void main(String[] args) {
-//        new SpringApplicationBuilder(I18nAutoExtractorRunner.class)
-//                .web(WebApplicationType.NONE)
-//                .run(args);
-//    }
 
     @ShellMethod("Runs the i18n key extraction script.")
     public void extractI18n() {
