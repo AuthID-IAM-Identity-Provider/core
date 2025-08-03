@@ -16,6 +16,7 @@ public class UniError {
     private final String code;
     private final String category;
     private final String module;
+    private final String title;
     private final String cause;
     private final String action;
 

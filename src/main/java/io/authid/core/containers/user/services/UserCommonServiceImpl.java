@@ -2,16 +2,15 @@ package io.authid.core.containers.user.services;
 
 import io.authid.core.containers.user.contracts.UserCommonService;
 import io.authid.core.containers.user.entities.UserEntity;
+import io.authid.core.containers.user.exceptions.UserNotFoundException;
 import io.authid.core.containers.user.repositories.UserRepository;
 import io.authid.core.containers.user.request.CreateUserRequest;
 import io.authid.core.containers.user.request.UpdateUserRequest;
-import io.authid.core.shared.rest.contracts.RestRequest;
+import io.authid.core.shared.components.exception.BaseApplicationException;
 import io.authid.core.shared.rest.services.RestServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -85,5 +84,10 @@ public class UserCommonServiceImpl extends RestServiceImpl<UserEntity, UUID, Cre
     @Override
     protected void onUpdate(UpdateUserRequest updateRequest, UserEntity entity) {
 
+    }
+
+    @Override
+    protected BaseApplicationException onNotFound(UUID uuid) {
+        return new UserNotFoundException(uuid.toString());
     }
 }

@@ -1,12 +1,11 @@
 package io.authid.core.shared.rest.services;
-import io.authid.core.shared.components.database.repository.BaseRepository;
+import io.authid.core.shared.components.exception.BaseApplicationException;
 import io.authid.core.shared.rest.contracts.RestRequest;
 import io.authid.core.shared.rest.contracts.RestService;
 import io.authid.core.shared.rest.specifications.GenericSpecificationBuilder;
 import io.authid.core.shared.utils.UniPaginatedResult;
 import io.authid.core.shared.utils.UniPagination;
 import io.authid.core.shared.utils.UniPaginationType;
-import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,6 +35,7 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
 
     // Hooks for FindById
     protected void beforeFindById(ID id) {}
+    protected abstract BaseApplicationException onNotFound(ID id);
     protected void afterFindById(T entity) {}
 
     // Hooks for Create
@@ -123,7 +123,7 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
     public T findById(ID id) {
         beforeFindById(id);
         T entity = getRepository().findById(id)
-                .orElseThrow(() -> new RuntimeException("Resource with ID " + id + " not found.")); // Ganti dengan exception kustom
+                .orElseThrow(() -> onNotFound(id)); // Ganti dengan exception kustom
         afterFindById(entity);
         return entity;
     }

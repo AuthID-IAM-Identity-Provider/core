@@ -10,6 +10,7 @@ import io.authid.core.containers.user.transformer.UserRestTransformer;
 import io.authid.core.shared.rest.contracts.RestService;
 import io.authid.core.shared.rest.controllers.RestController;
 import io.authid.core.shared.rest.transformer.RestTransformer;
+import io.authid.core.shared.utils.UniResponseFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,11 +26,15 @@ public class UserRestController extends RestController<UserEntity, UUID, CreateU
 
     private final UserRestTransformer transformer;
 
+    private final UniResponseFactory response;
+
     public UserRestController(
+            UniResponseFactory responseFactory,
             @Qualifier("userCommonServiceImpl") RestService<UserEntity, UUID, CreateUserRequest, UpdateUserRequest> service, UserRestTransformer userRestTransformer
     ) {
         this.userService = (UserCommonService) service;
         this.transformer = userRestTransformer;
+        this.response = responseFactory;
     }
 
     @Override
@@ -40,5 +45,10 @@ public class UserRestController extends RestController<UserEntity, UUID, CreateU
     @Override
     public RestTransformer<UserEntity, IndexUserResponse, DetailUserResponse, CreateUserResponse, UpdateUserResponse, DeleteUserResponse> getTransformer() {
         return this.transformer;
+    }
+
+    @Override
+    public UniResponseFactory getResponseFactory() {
+        return this.response;
     }
 }

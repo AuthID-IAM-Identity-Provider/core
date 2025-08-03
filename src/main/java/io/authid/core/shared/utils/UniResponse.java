@@ -12,26 +12,23 @@ import lombok.*;
 @NoArgsConstructor
 public class UniResponse<T> {
     private boolean success;
-    private int code;
     private String message;
     private UniMeta meta;
     private T data;
     private UniError errors;
 
-    public static <T> UniResponse<T> success(int code, String message, T data, UniMeta meta) {
+    public static <T> UniResponse<T> success(String message, T data, UniMeta meta) {
         UniResponse<T> response = new UniResponse<>();
         response.setSuccess(true);
-        response.setCode(code);
         response.setMessage(message);
         response.setData(data);
         response.setMeta(meta);
         return response;
     }
 
-    public static <T> UniResponse<T> error(int code, String message, UniError errors, UniMeta meta) {
+    public static <T> UniResponse<T> error(String message, UniError errors, UniMeta meta) {
         UniResponse<T> response = new UniResponse<>();
         response.setSuccess(false);
-        response.setCode(code);
         response.setMessage(message);
         response.setErrors(errors);
         response.setMeta(meta);

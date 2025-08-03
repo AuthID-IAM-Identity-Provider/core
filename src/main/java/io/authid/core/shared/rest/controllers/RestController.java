@@ -3,22 +3,22 @@ package io.authid.core.shared.rest.controllers;
 import io.authid.core.shared.rest.contracts.RestService;
 import io.authid.core.shared.rest.transformer.RestTransformer;
 import io.authid.core.shared.utils.*;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.time.Instant;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Slf4j
+@Component
+@RequiredArgsConstructor
 public abstract class RestController<T, ID, CreateRequest, UpdateRequest, DeleteRequest, IndexResponse, DetailResponse, CreateResponse, UpdateResponse, DeleteResponse> {
 
     private static final int PAGINATION_THRESHOLD = 100;
@@ -26,6 +26,8 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
     public abstract RestService<T, ID, CreateRequest, UpdateRequest> getService();
 
     public abstract RestTransformer<T, IndexResponse, DetailResponse, CreateResponse, UpdateResponse, DeleteResponse> getTransformer();
+
+    public abstract UniResponseFactory getResponseFactory();
 
     @GetMapping
     public ResponseEntity<UniResponse<List<IndexResponse>>> findAll(
@@ -54,7 +56,7 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
 
         // *** THIS IS THE CRUCIAL CHANGE ***
         // Call the overload of UniResponseFactory.ok() that accepts UniPaginatedResult
-        return UniResponseFactory.ok(transformedResult, "Success fetch all active records");
+        return getResponseFactory().ok(transformedResult, "Success fetch all active records");
         // Pass the transformed UniPaginatedResult
     }
 
@@ -66,28 +68,28 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
             @RequestParam(required = false) Map<String, Object> filters
     ) {
         long count = getService().count(q, filters, pageable, cursor);
-        return UniResponseFactory.ok(count, "Success fetch all");
+        return getResponseFactory().ok(count, "Success fetch all");
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UniResponse<DetailResponse>> findById(@PathVariable ID id) {
         T resource = getService().findById(id);
         DetailResponse response = getTransformer().toDetail(resource);
-        return UniResponseFactory.ok(response, "Successfully get by ID");
+        return getResponseFactory().ok(response, "Successfully get by ID");
     }
 
     @PostMapping
     public ResponseEntity<UniResponse<CreateResponse>> create(@RequestBody CreateRequest createRequest) {
         T resource = getService().create(createRequest);
         CreateResponse response = getTransformer().toCreateResponse(resource);
-        return UniResponseFactory.created(URI.create("/"), response, "Create Success");
+        return getResponseFactory().created(URI.create("/"), response, "Create Success");
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<UniResponse<UpdateResponse>> update(@PathVariable ID id, @RequestBody UpdateRequest updateRequest) {
         T resource = getService().update(id, updateRequest);
         UpdateResponse response = getTransformer().toUpdateResponse(resource);
-        return UniResponseFactory.ok(response, "Update Success");
+        return getResponseFactory().ok(response, "Update Success");
     }
 
     @DeleteMapping("/{id}")

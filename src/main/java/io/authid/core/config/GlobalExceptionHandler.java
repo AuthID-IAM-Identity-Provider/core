@@ -1,30 +1,27 @@
 package io.authid.core.config;
 
-import io.authid.core.shared.components.exception.GlobalTranslatableException;
-import io.authid.core.shared.components.i18n.services.I18nService;
+import io.authid.core.shared.components.exception.BaseApplicationException;
+import io.authid.core.shared.utils.UniResponse;
+import io.authid.core.shared.utils.UniResponseFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.MessageSource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.Arrays;
 import java.util.Locale;
-import java.util.Map;
 
+@Slf4j
 @RestControllerAdvice
 @RequiredArgsConstructor
 public class GlobalExceptionHandler {
+    private final UniResponseFactory responseFactory;
 
-    private final I18nService i18nService;
-
-    @ExceptionHandler(GlobalTranslatableException.class)
-    public ResponseEntity<Map<String, String>> handleTranslatableException(GlobalTranslatableException ex, Locale locale) {
-        String translatedMessage = i18nService.translate(ex.getMessage(), locale, ex.getArgs());
-
-        Map<String, String> response = Map.of(
-                "errorCode", ex.getMessage(),
-                "message", translatedMessage
-        );
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    @ExceptionHandler(BaseApplicationException.class)
+    public ResponseEntity<UniResponse<Object>> handleApplicationException(BaseApplicationException ex, Locale locale) {
+        log.info("getArgs :  {}", Arrays.toString(ex.getArgs()));
+        return responseFactory.error(ex.getErrorCatalog(), locale, ex.getArgs());
     }
 }
