@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 
 import java.lang.reflect.Field;
 import java.util.*;
-import java.util.stream.Collectors;
-import io.authid.core.shared.components.i18n.extractors.I18n;
+
+import static io.authid.core.shared.enums.SystemErrorCatalog.getStrings;
 
 @Getter
 public enum UserErrorCatalog implements ErrorCatalog {
@@ -88,12 +88,11 @@ public enum UserErrorCatalog implements ErrorCatalog {
     }
 
     private List<String> parseVisibility(String visibilityStr) {
-        if ("ALL".equalsIgnoreCase(visibilityStr)) {
-            return List.of("DEV", "SIT", "UAT", "BET", "PROD");
-        } else if (visibilityStr != null && !visibilityStr.isEmpty()) {
-            return Arrays.stream(visibilityStr.toUpperCase().split(";")).map(String::trim).collect(Collectors.toList());
-        } else {
-            return Collections.emptyList();
-        }
+        return getStrings(visibilityStr);
+    }
+
+    @Override
+    public String getBaseMessageKey() {
+        return this.baseMessageKey;
     }
 }
