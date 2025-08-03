@@ -1,11 +1,15 @@
 package io.authid.core.shared.utils;
 
+import io.authid.core.shared.constants.DiagnosticContextConstant;
+import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.context.MessageSource;
 import java.net.URI;
 import java.time.Instant;
 import java.util.List;
+import java.util.Locale;
+import io.authid.core.shared.components.exception.contracts.ErrorCatalog;
 import java.util.UUID;
 
 public class UniResponseFactory {
@@ -79,32 +83,62 @@ public class UniResponseFactory {
     }
 
     // ===================================================================================
-    // # 4xx & 5xx - Error Responses
+    // # Error Responses (Struktur Baru yang Lebih Cerdas)
     // ===================================================================================
 
     /**
-     * Mengembalikan 400 Bad Request.
+     * [METODE UTAMA ERROR]
+     * Membuat respons error lengkap untuk error konseptual (non-validasi).
      */
-    public static ResponseEntity<UniResponse<Object>> badRequest(Object errorDetails) {
-        return error(HttpStatus.BAD_REQUEST, "Bad Request", errorDetails);
+    public static ResponseEntity<UniResponse<Object>> error(ErrorCatalog catalog, MessageSource messageSource, Locale locale, Object... args) {
+        // Terjemahkan pesan judul
+        String title = messageSource.getMessage(catalog.getBaseMessageKey() + ".title", args, catalog.getCode(), locale);
+
+        // Panggil helper untuk membangun payload, pass null untuk fieldErrors
+        UniError errorPayload = buildUniError(catalog, null, messageSource, locale, args);
+
+        // Bangun respons akhir
+        UniResponse<Object> response = UniResponse.error(catalog.getHttpStatus().value(), title, errorPayload, withMeta(null));
+        return ResponseEntity.status(catalog.getHttpStatus()).body(response);
     }
 
     /**
-     * Mengembalikan 404 Not Found.
+     * [METODE UTAMA VALIDATION ERROR]
+     * Membuat respons error lengkap khusus untuk kegagalan validasi.
      */
-    public static ResponseEntity<UniResponse<Object>> notFound(Object errorDetails) {
-        return error(HttpStatus.NOT_FOUND, "Resource Not Found", errorDetails);
+    public static ResponseEntity<UniResponse<Object>> validationError(ErrorCatalog catalog, List<FieldErrorDetail> fieldErrors, MessageSource messageSource, Locale locale) {
+        // Terjemahkan pesan judul
+        String topLevelMessage = messageSource.getMessage(catalog.getBaseMessageKey() + ".title", null, "Validation Failed", locale);
+
+        // Panggil helper untuk membangun payload, sertakan fieldErrors
+        UniError errorPayload = buildUniError(catalog, fieldErrors, messageSource, locale);
+
+        // Bangun respons akhir, gunakan HttpStatus dari catalog untuk konsistensi
+        UniResponse<Object> response = UniResponse.error(catalog.getHttpStatus().value(), topLevelMessage, errorPayload, withMeta(null));
+        return ResponseEntity.status(catalog.getHttpStatus()).body(response);
     }
 
     /**
-     * [METODE GENERIK ERROR]
-     * Mengembalikan respons error dengan status HTTP, pesan, dan detail error yang bisa ditentukan secara bebas.
-     * Gunakan ini untuk semua status 4xx dan 5xx (misal: 403, 409, 503).
+     * [PRIVATE HELPER]
+     * Pusat logika untuk membangun objek UniError dari ErrorCatalog.
+     * Mengeliminasi duplikasi kode antara metode error dan validationError.
      */
-    public static ResponseEntity<UniResponse<Object>> error(HttpStatus status, String message, Object errorDetails) {
-        UniResponse<Object> response = UniResponse.error(status.value(), message, errorDetails, withMeta(null));
-        return ResponseEntity.status(status).body(response);
+    private static UniError buildUniError(ErrorCatalog catalog, List<FieldErrorDetail> fieldErrors, MessageSource messageSource, Locale locale, Object... args) {
+        // Terjemahkan pesan cause dan action
+        String cause = messageSource.getMessage(catalog.getBaseMessageKey() + ".cause", args, "", locale);
+        String action = messageSource.getMessage(catalog.getBaseMessageKey() + ".action", args, "", locale);
+
+        // Bangun payload UniError dengan builder
+        return UniError.builder()
+                .code(catalog.getCode())
+                .category(catalog.getCategory())
+                .module(catalog.getModule())
+                .cause(cause)
+                .action(action)
+                .fieldErrors(fieldErrors) // Akan diabaikan oleh Jackson jika null/kosong
+                .build();
     }
+
 
     // ===================================================================================
     // # Private Helpers
@@ -112,9 +146,19 @@ public class UniResponseFactory {
 
     private static UniMeta withMeta(UniPagination pagination) {
         return UniMeta.builder()
-                .timestamp(Instant.now())
-                .pagination(pagination)
-                .requestId(UUID.randomUUID().toString())
-                .build();
+            .requestId(MDC.get(DiagnosticContextConstant.MDC_KEY_REQUEST_ID)) // Ambil dari MDC
+            .traceId(MDC.get(DiagnosticContextConstant.MDC_KEY_TRACE_ID))     // Ambil dari MDC
+            .correlationId(MDC.get(DiagnosticContextConstant.MDC_KEY_CORRELATION_ID)) // Ambil dari MDC
+            .userId(MDC.get(DiagnosticContextConstant.MDC_KEY_USER_ID))         // Ambil dari MDC
+            .clientIp(MDC.get(DiagnosticContextConstant.MDC_KEY_CLIENT_IP))     // Ambil dari MDC
+            .tenantId(MDC.get(DiagnosticContextConstant.MDC_KEY_TENANT_ID))     // Ambil dari MDC
+            .operationName(MDC.get(DiagnosticContextConstant.MDC_KEY_OPERATION_NAME)) // Ambil dari MDC
+            .requestDurationMs(MDC.get(DiagnosticContextConstant.MDC_KEY_REQUEST_DURATION_MS) != null ?
+                    Long.parseLong(MDC.get(DiagnosticContextConstant.MDC_KEY_REQUEST_DURATION_MS)) : null) // Convert to Long
+            // Pastikan sessionId juga diset jika ada di MDC
+            .sessionId(MDC.get("sessionIdKeyAnda")) // Ganti dengan MDC key yang relevan jika ada
+            .timestamp(Instant.now())
+            .pagination(pagination)
+            .build();
     }
 }

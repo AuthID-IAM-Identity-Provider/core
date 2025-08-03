@@ -16,7 +16,7 @@ public class UniResponse<T> {
     private String message;
     private UniMeta meta;
     private T data;
-    private Object errors;
+    private UniError errors;
 
     public static <T> UniResponse<T> success(int code, String message, T data, UniMeta meta) {
         UniResponse<T> response = new UniResponse<>();
@@ -28,7 +28,7 @@ public class UniResponse<T> {
         return response;
     }
 
-    public static <T> UniResponse<T> error(int code, String message, Object errors, UniMeta meta) {
+    public static <T> UniResponse<T> error(int code, String message, UniError errors, UniMeta meta) {
         UniResponse<T> response = new UniResponse<>();
         response.setSuccess(false);
         response.setCode(code);

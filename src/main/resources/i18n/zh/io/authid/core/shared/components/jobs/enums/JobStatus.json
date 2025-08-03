@@ -1,12 +1,12 @@
 {
-  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.starting.label" : "",
-  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.starting.description" : "",
-  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.started.label" : "",
-  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.started.description" : "",
-  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.failed.label" : "",
-  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.failed.description" : "",
-  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.completed.label" : "",
   "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.completed.description" : "",
-  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.stopped.label" : "",
-  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.stopped.description" : ""
+  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.completed.label" : "",
+  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.failed.description" : "",
+  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.failed.label" : "",
+  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.started.description" : "",
+  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.started.label" : "",
+  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.starting.description" : "",
+  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.starting.label" : "",
+  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.stopped.description" : "",
+  "io.authid.core.shared.components.jobs.enums.JobStatus.job.status.stopped.label" : ""
 }

@@ -1,16 +1,16 @@
 {
-  "io.authid.core.containers.user.enums.DeviceStatus.device.active.label" : "",
   "io.authid.core.containers.user.enums.DeviceStatus.device.active.description" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.trusted.label" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.trusted.description" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.untrusted.label" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.untrusted.description" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.expired.label" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.expired.description" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.revoked.label" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.revoked.description" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.suspicious.label" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.suspicious.description" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.active.label" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.blocked.description" : "",
   "io.authid.core.containers.user.enums.DeviceStatus.device.blocked.label" : "",
-  "io.authid.core.containers.user.enums.DeviceStatus.device.blocked.description" : ""
+  "io.authid.core.containers.user.enums.DeviceStatus.device.expired.description" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.expired.label" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.revoked.description" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.revoked.label" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.suspicious.description" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.suspicious.label" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.trusted.description" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.trusted.label" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.untrusted.description" : "",
+  "io.authid.core.containers.user.enums.DeviceStatus.device.untrusted.label" : ""
 }

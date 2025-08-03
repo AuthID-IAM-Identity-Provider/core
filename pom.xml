@@ -101,6 +101,7 @@
 			<artifactId>liquibase-core</artifactId>
 			<version>4.25.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.liquibase.ext</groupId>
 			<artifactId>liquibase-hibernate6</artifactId>
@@ -158,6 +159,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-ldap</artifactId>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -179,6 +181,17 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml-schemas</artifactId>
             <version>4.1.2</version>
+        </dependency>
+
+        <!-- Log Back - Logstash & Janino -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>7.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>janino</artifactId>
         </dependency>
     </dependencies>
 
