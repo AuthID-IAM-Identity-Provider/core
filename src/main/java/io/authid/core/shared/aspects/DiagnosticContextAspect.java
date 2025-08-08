@@ -57,28 +57,30 @@ public class DiagnosticContextAspect {
     public Object logMethodExecution(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
         String layer = getLayerType(joinPoint); // Mendapatkan tipe layer: "CONTROLLER" atau "SERVICE"
-        String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
-        String methodName = joinPoint.getSignature().getName();
+        String concreteClassName = joinPoint.getTarget().getClass().getSimpleName();
+        String concreteMethodName = joinPoint.getSignature().getName();
+        String abstractClassName = joinPoint.getSignature().getDeclaringType().getSimpleName();
+        String abstractMethodName = joinPoint.getSignature().getDeclaringType().getName();
 
         // Mengisi MDC dengan konteks yang lebih spesifik
-        MDC.put(DiagnosticContextConstant.MDC_KEY_CONTEXT_CLASS, className);
-        MDC.put(DiagnosticContextConstant.MDC_KEY_OPERATION_NAME, methodName);
+        MDC.put(DiagnosticContextConstant.MDC_KEY_CONTEXT_CLASS, concreteClassName);
+        MDC.put(DiagnosticContextConstant.MDC_KEY_OPERATION_NAME, concreteMethodName);
 
         try {
             String args = stringifyArguments(joinPoint.getArgs());
-            log.info("==> {}::{}({})", layer, methodName, args);
+            log.info("==> {}::{}({})", layer, abstractMethodName, args);
 
             // Eksekusi method asli
             Object result = joinPoint.proceed();
 
             long duration = System.currentTimeMillis() - startTime;
-            log.info("<== {}::{} returned [{}] in {}ms", layer, methodName, stringifierManager.stringifyArg(result), duration);
+            log.info("<== [{}::{}] <== [{}::{}] <== {} returned [{}] in {}ms", concreteClassName, concreteMethodName, abstractClassName, abstractMethodName, layer, stringifierManager.stringifyArg(result), duration);
 
             return result;
 
         } catch (Throwable e) {
             long duration = System.currentTimeMillis() - startTime;
-            log.error("<== {}::{} threw {} in {}ms", layer, methodName, e.getClass().getSimpleName(), duration, e);
+            log.error("<== {}::{} threw {} in {}ms", layer, abstractMethodName, e.getClass().getSimpleName(), duration, e);
             throw e; // Lemparkan kembali exception setelah di-log
 
         } finally {
@@ -106,9 +108,11 @@ public class DiagnosticContextAspect {
     private String getLayerType(ProceedingJoinPoint joinPoint) {
         Class<?> targetClass = joinPoint.getTarget().getClass();
         if (targetClass.isAnnotationPresent(RestController.class)) {
+            log.info("Found concrete controller class name : {}", targetClass.getSimpleName());
             return "CONTROLLER";
         }
         if (targetClass.isAnnotationPresent(Service.class) || targetClass.getSimpleName().endsWith("Service")) {
+            log.info("Found concrete service class name : {}", targetClass.getSimpleName());
             return "SERVICE";
         }
         return "UNKNOWN_LAYER";
