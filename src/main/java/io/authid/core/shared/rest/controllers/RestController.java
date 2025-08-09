@@ -97,4 +97,5 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
         getService().deleteById(id);
         return ResponseEntity.noContent().build();
     }
+    
 }
