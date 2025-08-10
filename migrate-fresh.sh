@@ -8,6 +8,7 @@
 # Konfigurasi
 CHANGELOG_DIR="src/main/resources/db/changelog"
 MASTER_LOG="${CHANGELOG_DIR}/db.changelog-master.yaml"
+INIT_DIR_PATH="${CHANGELOG_DIR}/init"
 
 # Safety Check - Konfirmasi dari pengguna
 read -p "⚠️  PERINGATAN: Ini akan menghapus semua tabel di database Anda. Lanjutkan? (y/n) " -n 1 -r
@@ -26,11 +27,18 @@ if [ $? -ne 0 ]; then echo "❌ Gagal drop tables."; exit 1; fi
 # --- LANGKAH 2: Bersihkan file changelog lama ---
 # Ini menghapus semua file .yaml KECUALI file master itu sendiri.
 echo "🧹 [2/5] Membersihkan file changelog lama..."
-find "$CHANGELOG_DIR" -type f ! -name 'db.changelog-master.yaml' -delete
+find "$CHANGELOG_DIR" -path "$CHANGELOG_DIR/init" -prune -o -type f ! -name 'db.changelog-master.yaml' -print0 | xargs -0 --no-run-if-empty rm -f
+if [ $? -ne 0 ]; then echo "❌ Gagal membersihkan changelog."; exit 1; fi
 
 # --- LANGKAH 3: Reset file master changelog ---
 echo "🔄 [3/5] Mereset master changelog..."
 echo "databaseChangeLog:" > "$MASTER_LOG"
+for file in "$CHANGELOG_DIR"/init/*.yaml; do
+    if [ -f "$file" ]; then
+        filename=$(basename "$file")
+        printf "  - include:\n      file: db/changelog/init/%s\n" "$filename" >> "$MASTER_LOG"
+    fi
+done
 
 # --- LANGKAH 4: Buat snapshot skema baru yang bersih ---
 echo "✨ [4/5] Membuat snapshot skema dari entitas saat ini..."

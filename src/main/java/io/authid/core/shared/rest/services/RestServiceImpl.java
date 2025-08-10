@@ -17,6 +17,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.UUID;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends RestRequest> implements RestService<T, ID, C, U> {
@@ -167,5 +168,13 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
     @Override
     public void batchDeleteByIds(List<ID> ids) {
         throw new UnsupportedOperationException("Batch delete is not implemented for this service.");
+    }
+
+    private List<T> processBatchSync(List<C> createRequests) {
+        List<T> entities = createRequests.stream()
+                .map(this::onCreating)
+                .collect(Collectors.toUnmodifiableList());
+
+        return getRepository().saveAll(entities);
     }
 }

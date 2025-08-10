@@ -1,4 +1,6 @@
 databaseChangeLog:
+  - include:
+      file: db/changelog/init/0000_00_00_000000_create_spring_batch_tables.yaml
 
   - include:
-      file: db/changelog/2025_08_01_003735_initial_schema_snapshot.yaml
+      file: db/changelog/2025_08_10_180312_initial_schema_snapshot.yaml

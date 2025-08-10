@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-spring-batch-tables
+      author: system (setup)
+      changes:
+        - sqlFile:
+            # Path ini dimulai dari root classpath (src/main/resources)
+            path: db/sql/spring-batch/schema-oracle.sql

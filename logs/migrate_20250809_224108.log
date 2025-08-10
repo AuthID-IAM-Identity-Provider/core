@@ -1,0 +1,51 @@
+[INFO] 2025-08-09 22:41:08 - [1/4] Membuat file changelog...
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------------< io.auth-id:core >---------------------------
+[INFO] Building core 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ core ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 188 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- liquibase:4.25.1:diff (default-cli) @ core ---
+Downloading from central: https://repo.maven.apache.org/maven2/net/minidev/json-smart/maven-metadata.xml
+Downloading from shibboleth-repo: https://build.shibboleth.net/nexus/content/repositories/releases/net/minidev/json-smart/maven-metadata.xml
+Downloading from oracle-maven-repo: https://maven.oracle.com/net/minidev/json-smart/maven-metadata.xml
+Progress (1): 1.4/1.4 kBProgress (1): 1.4 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/net/minidev/json-smart/maven-metadata.xml (1.4 kB at 850 B/s)
+[WARNING] Could not transfer metadata net.minidev:json-smart/maven-metadata.xml from/to oracle-maven-repo (https://maven.oracle.com): status code: 403, reason phrase: Forbidden (403)
+Downloading from oracle-maven-repo: https://maven.oracle.com/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.pom
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.pom
+Progress (1): 1.4/19 kBProgress (1): 2.8/19 kBProgress (1): 4.1/19 kBProgress (1): 5.5/19 kBProgress (1): 6.9/19 kBProgress (1): 8.3/19 kBProgress (1): 9.7/19 kBProgress (1): 11/19 kB Progress (1): 12/19 kBProgress (1): 14/19 kBProgress (1): 15/19 kBProgress (1): 16/19 kBProgress (1): 17/19 kBProgress (1): 19/19 kBProgress (1): 19 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.pom (19 kB at 64 kB/s)
+Downloading from oracle-maven-repo: https://maven.oracle.com/com/fasterxml/jackson/jackson-base/2.15.2/jackson-base-2.15.2.pom
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.15.2/jackson-base-2.15.2.pom
+Progress (1): 1.4/11 kBProgress (1): 2.8/11 kBProgress (1): 4.1/11 kBProgress (1): 5.5/11 kBProgress (1): 6.9/11 kBProgress (1): 8.3/11 kBProgress (1): 9.7/11 kBProgress (1): 11/11 kB Progress (1): 11 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.15.2/jackson-base-2.15.2.pom (11 kB at 49 kB/s)
+Downloading from oracle-maven-repo: https://maven.oracle.com/com/fasterxml/jackson/jackson-bom/2.15.2/jackson-bom-2.15.2.pom
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.15.2/jackson-bom-2.15.2.pom
+Progress (1): 1.4/18 kBProgress (1): 2.8/18 kBProgress (1): 4.1/18 kBProgress (1): 5.5/18 kBProgress (1): 6.9/18 kBProgress (1): 8.3/18 kBProgress (1): 9.7/18 kBProgress (1): 11/18 kB Progress (1): 12/18 kBProgress (1): 14/18 kBProgress (1): 15/18 kBProgress (1): 16/18 kBProgress (1): 17/18 kBProgress (1): 18 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.15.2/jackson-bom-2.15.2.pom (18 kB at 115 kB/s)
+Downloading from oracle-maven-repo: https://maven.oracle.com/com/fasterxml/jackson/jackson-parent/2.15/jackson-parent-2.15.pom
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.15/jackson-parent-2.15.pom
+Progress (1): 1.4/6.5 kBProgress (1): 2.8/6.5 kBProgress (1): 4.1/6.5 kBProgress (1): 5.5/6.5 kBProgress (1): 6.5 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.15/jackson-parent-2.15.pom (6.5 kB at 62 kB/s)
+Downloading from oracle-maven-repo: https://maven.oracle.com/com/fasterxml/oss-parent/50/oss-parent-50.pom
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/50/oss-parent-50.pom
+Progress (1): 16/24 kBProgress (1): 24 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/50/oss-parent-50.pom (24 kB at 132 kB/s)
+Downloading from oracle-maven-repo: https://maven.oracle.com/org/junit/junit-bom/5.9.2/junit-bom-5.9.2.pom
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.2/junit-bom-5.9.2.pom
+Progress (1): 5.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.2/junit-bom-5.9.2.pom (5.6 kB at 66 kB/s)
+Downloading from oracle-maven-repo: https://maven.oracle.com/com/fasterxml/jackson/core/jackson-annotations/2.15.2/jackson-annotations-2.15.2.pom
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.15.2/jackson-annotations-2.15.2.pom
+Progress (1): 7.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.15.2/jackson-annotations-2.15.2.pom (7.1 kB at 75 kB/s)
+Downloading from oracle-maven-repo: https://maven.oracle.com/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.pom
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.pom
+Progress (1): 9.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.pom (9.8 kB at 79 kB/s)
+Downloading from oracle-maven-repo: https://maven.oracle.com/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.jar
+Downloading from oracle-maven-repo: https://maven.oracle.com/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.jar
+Progress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0.1/1.6 MBProgress (1): 0.1/1.6 MBProgress (1): 0.1/1.6 MBProgress (1): 0.1/1.6 MBProgress (1): 0.1/1.6 MBProgress (1): 0.1/1.6 MBProgress (1): 0.2/1.6 MBProgress (1): 0.2/1.6 MBProgress (1): 0.2/1.6 MBProgress (1): 0.2/1.6 MBProgress (1): 0.2/1.6 MBProgress (1): 0.2/1.6 MBProgress (1): 0.3/1.6 MBProgress (1): 0.3/1.6 MBProgress (1): 0.3/1.6 MBProgress (1): 0.3/1.6 MBProgress (1): 0.3/1.6 MBProgress (1): 0.3/1.6 MBProgress (1): 0.4/1.6 MBProgress (1): 0.4/1.6 MBProgress (1): 0.4/1.6 MBProgress (1): 0.4/1.6 MBProgress (1): 0.4/1.6 MBProgress (1): 0.4/1.6 MBProgress (1): 0.4/1.6 MBProgress (1): 0.5/1.6 MBProgress (1): 0.5/1.6 MBProgress (1): 0.5/1.6 MBProgress (1): 0.5/1.6 MBProgress (1): 0.5/1.6 MBProgress (1): 0.5/1.6 MBProgress (1): 0.6/1.6 MBProgress (1): 0.6/1.6 MBProgress (1): 0.6/1.6 MBProgress (1): 0.6/1.6 MBProgress (1): 0.6/1.6 MBProgress (1): 0.6/1.6 MBProgress (1): 0.7/1.6 MBProgress (1): 0.7/1.6 MBProgress (1): 0.7/1.6 MBProgress (1): 0.7/1.6 MBProgress (1): 0.7/1.6 MBProgress (1): 0.7/1.6 MBProgress (1): 0.8/1.6 MBProgress (1): 0.8/1.6 MBProgress (1): 0.8/1.6 MBProgress (1): 0.8/1.6 MBProgress (1): 0.8/1.6 MBProgress (1): 0.8/1.6 MBProgress (1): 0.8/1.6 MBProgress (1): 0.8/1.6 MBProgress (1): 0.9/1.6 MBProgress (1): 0.9/1.6 MBProgress (1): 0.9/1.6 MBProgress (1): 0.9/1.6 MBProgress (1): 0.9/1.6 MBProgress (1): 0.9/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.6/1.6 MBProgress (1): 1.6/1.6 MBProgress (1): 1.6/1.6 MBProgress (1): 1.6/1.6 MBProgress (1): 1.6/1.6 MBProgress (1): 1.6 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.jar (1.6 MB at 725 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.jar
+Progress (1): 16/549 kBProgress (1): 33/549 kBProgress (1): 49/549 kBProgress (1): 63/549 kBProgress (1): 79/549 kBProgress (1): 96/549 kBProgress (1): 112/549 kBProgress (1): 128/549 kBProgress (1): 145/549 kBProgress (1): 161/549 kBProgress (1): 178/549 kBProgress (1): 194/549 kBProgress (1): 210/549 kBProgress (1): 227/549 kBProgress (1): 243/549 kBProgress (1): 260/549 kBProgress (1): 276/549 kBProgress (1): 292/549 kBProgress (1): 309/549 kBProgress (1): 313/549 kBProgress (1): 329/549 kBProgress (1): 346/549 kBProgress (1): 362/549 kBProgress (1): 378/549 kBProgress (1): 395/549 kBProgress (1): 411/549 kBProgress (1): 427/549 kBProgress (1): 444/549 kBProgress (1): 460/549 kBProgress (1): 477/549 kBProgress (1): 493/549 kBProgress (1): 509/549 kBProgress (1): 526/549 kBProgress (1): 542/549 kBProgress (1): 549 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.jar (549 kB at 934 kB/s)

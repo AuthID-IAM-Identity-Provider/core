@@ -37,8 +37,8 @@ spring:
   docker:
     compose:
       enabled: false
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration
+#  autoconfigure:
+#    exclude: org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration
   jpa:
     show-sql: true
     properties:
@@ -57,6 +57,22 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.yaml
+
+  # Konfigurasi inti Spring Batch
+  batch:
+    job:
+      # Pastikan job di-enable
+      enabled: true
+    # Mengarahkan Spring Batch untuk menggunakan skema Oracle
+    platform: oracle
+    jdbc:
+      # Inisialisasi skema (tabel BATCH_*) saat aplikasi pertama kali jalan.
+      # Gunakan 'NEVER' di production dan jalankan skrip DDL manual sekali.
+      initialize-schema: NEVER
+
+batch:
+  sync:
+    max-threshold: 100
 
 logging:
   pattern:
