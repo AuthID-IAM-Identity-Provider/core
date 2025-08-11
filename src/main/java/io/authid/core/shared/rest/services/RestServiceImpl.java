@@ -2,6 +2,7 @@ package io.authid.core.shared.rest.services;
 import io.authid.core.shared.components.exception.BaseApplicationException;
 import io.authid.core.shared.rest.contracts.RestRequest;
 import io.authid.core.shared.rest.contracts.RestService;
+import io.authid.core.shared.rest.services.handlers.FetchAllQueryHandler;
 import io.authid.core.shared.rest.specifications.GenericSpecificationBuilder;
 import io.authid.core.shared.utils.UniPaginatedResult;
 import io.authid.core.shared.utils.UniPagination;
@@ -59,18 +60,19 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
 
     @Override
     public UniPaginatedResult<T> findAll(String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor) {
-        beforeFindAll(searchTerm, filters);
-        GenericSpecificationBuilder<T> specBuilder = new GenericSpecificationBuilder<>(getSearchableColumns(), getFilterableColumns());
-        Specification<T> spec = specBuilder.build(searchTerm, filters);
-
-        UniPaginatedResult<T> result;
-        if (cursor != null && !cursor.isBlank()) {
-            result = findWithCursor(spec, cursor, pageable);
-        } else {
-            result = findWithLengthAware(spec, pageable);
-        }
-        afterFindAll(result);
-        return result;
+//        beforeFindAll(searchTerm, filters);
+//        GenericSpecificationBuilder<T> specBuilder = new GenericSpecificationBuilder<>(getSearchableColumns(), getFilterableColumns());
+//        Specification<T> spec = specBuilder.build(searchTerm, filters);
+//
+//        UniPaginatedResult<T> result;
+//        if (cursor != null && !cursor.isBlank()) {
+//            result = findWithCursor(spec, cursor, pageable);
+//        } else {
+//            result = findWithLengthAware(spec, pageable);
+//        }
+//        afterFindAll(result);
+//        return result;
+        return
     }
 
     private UniPaginatedResult<T> findWithCursor(Specification<T> spec, String cursor, Pageable pageable) {
