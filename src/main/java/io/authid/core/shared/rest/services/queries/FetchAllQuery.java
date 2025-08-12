@@ -1,18 +1,17 @@
 package io.authid.core.shared.rest.services.queries;
 
+import io.authid.core.shared.rest.contracts.hooks.commons.FetchAllHooks;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.Map;
 
-/**
- * The Query object for fetch all entity
- *
- * @param searchTerm The query search term
- * @param filters    The available filters
- * @param pageable   The pagination object
- * @param cursor     The cursor oject
- */
-public record FetchAllQuery(
-    String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor
+public record FetchAllQuery<T>(
+    String searchTerm,
+    Map<String, Object> filters,
+    Pageable pageable,
+    String cursor,
+    JpaSpecificationExecutor<T> repository,
+    FetchAllHooks<T> hooks
 ) {
 }

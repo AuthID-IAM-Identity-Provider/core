@@ -1,132 +1,73 @@
 package io.authid.core.shared.rest.services;
+
 import io.authid.core.shared.components.exception.BaseApplicationException;
 import io.authid.core.shared.rest.contracts.RestRequest;
 import io.authid.core.shared.rest.contracts.RestService;
+import io.authid.core.shared.rest.contracts.hooks.RestServiceHooks;
 import io.authid.core.shared.rest.services.handlers.FetchAllQueryHandler;
-import io.authid.core.shared.rest.specifications.GenericSpecificationBuilder;
-import io.authid.core.shared.utils.UniPaginatedResult;
-import io.authid.core.shared.utils.UniPagination;
-import io.authid.core.shared.utils.UniPaginationType;
+import io.authid.core.shared.rest.services.queries.FetchAllQuery;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import java.util.UUID;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Slf4j
 public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends RestRequest> implements RestService<T, ID, C, U> {
 
-    public abstract <R extends JpaRepository<T, ID> & JpaSpecificationExecutor<T>> R getRepository();
-    public abstract List<String> getSearchableColumns();
-    public abstract List<String> getFilterableColumns();
+    protected abstract <R extends JpaRepository<T, ID> & JpaSpecificationExecutor<T>> R getRepository();
+
+    protected abstract List<String> getSearchableColumns();
+
+    protected abstract List<String> getFilterableColumns();
+
     protected abstract String getCursorValue(T entity);
+
     protected abstract T onCreating(C createRequest);
+
     protected abstract void onUpdate(U updateRequest, T entity);
 
+    protected abstract RestServiceHooks<T, ID, C, U> getHooks();
 
-    // Hooks for FindAll
+     Hooks for FindAll
     protected void beforeFindAll(String searchTerm, Map<String, Object> filters) {}
     protected void afterFindAll(UniPaginatedResult<T> result) {}
 
-    // Hooks for FindById
+     Hooks for FindById
     protected void beforeFindById(ID id) {}
     protected abstract BaseApplicationException onNotFound(ID id);
     protected void afterFindById(T entity) {}
 
-    // Hooks for Create
+     Hooks for Create
     protected void beforeCreate(C createRequest) {}
     protected void afterCreate(T savedEntity) {}
 
-    // Hooks for Update
+     Hooks for Update
     protected void beforeUpdate(ID id, U updateRequest) {}
     protected void afterUpdate(T updatedEntity) {}
 
-    // Hooks for Delete
+     Hooks for Delete
     protected void beforeDelete(ID id) {}
     protected void afterDelete(ID id) {}
-
 
     @Override
     public long count(String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor){
         return getRepository().count();
     }
 
-    @Override
-    public UniPaginatedResult<T> findAll(String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor) {
-//        beforeFindAll(searchTerm, filters);
-//        GenericSpecificationBuilder<T> specBuilder = new GenericSpecificationBuilder<>(getSearchableColumns(), getFilterableColumns());
-//        Specification<T> spec = specBuilder.build(searchTerm, filters);
-//
-//        UniPaginatedResult<T> result;
-//        if (cursor != null && !cursor.isBlank()) {
-//            result = findWithCursor(spec, cursor, pageable);
-//        } else {
-//            result = findWithLengthAware(spec, pageable);
-//        }
-//        afterFindAll(result);
-//        return result;
-        return
-    }
+    public UniPaginatedResult<T> fetchAll(String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor) {
+        FetchAllQuery<T> query = new FetchAllQuery<T>(
+            searchTerm,filters,pageable, cursor, getRepository(), getHooks()
+        );
 
-    private UniPaginatedResult<T> findWithCursor(Specification<T> spec, String cursor, Pageable pageable) {
-        try {
-            UUID cursorId = UUID.fromString(cursor);
-            Specification<T> cursorSpec = (root, query, cb) -> cb.lessThan(root.get("id"), cursorId);
-            spec = spec.and(cursorSpec);
-            Pageable cursorPageable = PageRequest.of(0, pageable.getPageSize() + 1, pageable.getSort());
-            List<T> results = getRepository().findAll(spec, cursorPageable).getContent();
-            return buildCursorResult(results, pageable.getPageSize());
-        } catch (IllegalArgumentException e) {
-            log.warn("Invalid UUID format for cursor: {}", cursor);
-            return buildCursorResult(List.of(), pageable.getPageSize());
-        }
-    }
-
-    private UniPaginatedResult<T> findWithLengthAware(Specification<T> spec, Pageable pageable) {
-        Page<T> page = getRepository().findAll(spec, pageable);
-        return buildLengthAwareResult(page);
-    }
-
-    private UniPaginatedResult<T> buildLengthAwareResult(Page<T> page) {
-        UniPagination pagination = UniPagination.builder()
-                .type(UniPaginationType.LENGTH_AWARE)
-                .page(page.getNumber() + 1)
-                .perPage(page.getSize())
-                .totalPages(page.getTotalPages())
-                .totalItems((int) page.getTotalElements())
-                .build();
-
-        return new UniPaginatedResult<>(page.getContent(), pagination);
-    }
-
-    private UniPaginatedResult<T> buildCursorResult(List<T> results, int pageSize) {
-        boolean hasMore = results.size() > pageSize;
-        List<T> data = hasMore ? results.subList(0, pageSize) : results;
-
-        String nextCursor = hasMore ? getCursorValue(data.get(pageSize - 1)) : null;
-
-        UniPagination pagination = UniPagination.builder()
-                .type(UniPaginationType.CURSOR)
-                .perPage(pageSize)
-                .hasMore(hasMore)
-                .nextCursor(nextCursor)
-                .build();
-
-        return new UniPaginatedResult<>(data, pagination);
+        return new FetchAllQueryHandler<T>().handle(query);
     }
 
     @Override
     public T findById(ID id) {
         beforeFindById(id);
         T entity = getRepository().findById(id)
-                .orElseThrow(() -> onNotFound(id)); // Ganti dengan exception kustom
+                .orElseThrow(() -> onNotFound(id));  Ganti dengan exception kustom
         afterFindById(entity);
         return entity;
     }
@@ -142,7 +83,7 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
 
     @Override
     public T update(ID id, U updateRequest) {
-        T entity = findById(id); // Memanfaatkan findById yang sudah ada hook-nya
+        T entity = findById(id);  Memanfaatkan findById yang sudah ada hook-nya
         beforeUpdate(id, updateRequest);
         onUpdate(updateRequest, entity);
         T updatedEntity = getRepository().save(entity);

@@ -1,10 +1,10 @@
 package io.authid.core.shared.rest.services.handlers;
 
-import io.authid.core.shared.components.events.EntityLifecycleEvents;
-import io.authid.core.shared.components.events.EventBus;
 import io.authid.core.shared.rest.contracts.RestQueryHandler;
+import io.authid.core.shared.rest.contracts.hooks.commons.FetchAllHooks;
 import io.authid.core.shared.rest.services.queries.FetchAllQuery;
-import io.authid.core.shared.rest.services.utils.FetchAllQueryResult;
+import io.authid.core.shared.rest.services.utils.FetchAllQueryCursorResult;
+import io.authid.core.shared.rest.services.utils.FetchAllQueryOffsetResult;
 import io.authid.core.shared.rest.specifications.GenericSpecificationBuilder;
 import io.authid.core.shared.utils.UniPaginatedResult;
 import lombok.RequiredArgsConstructor;
@@ -13,31 +13,58 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class FetchAllQueryHandler<T, ID, C, U> implements RestQueryHandler<UniPaginatedResult<T>, FetchAllQuery> {
-
-    private final EventBus EventBus;
+public class FetchAllQueryHandler<T> implements RestQueryHandler<UniPaginatedResult<T>, FetchAllQuery<T>> {
 
     @Override
-    public UniPaginatedResult<T> handle(FetchAllQuery query) {
-        EventBus.dispatch(new EntityLifecycleEvents.BeforeFetchAllEvent());
+    public UniPaginatedResult<T> handle(FetchAllQuery<T> query) {
+        FetchAllHooks<T> hooks = query.hooks();
 
-        Specification<?> specification = FetchAllQuerySpecificationBuilder
-            .create(
-                List.of(""),
-                List.of("")
-            )
-            .build(query.searchTerm(), query.filters());
+        hooks.beforeFetchAll(
+            query.searchTerm(),
+            query.filters(),
+            query.pageable(),
+            query.cursor()
+        );
 
-        UniPaginatedResult<Object> cursorResult = FetchAllQueryResult.cursorResult();
-        return null;
+        GenericSpecificationBuilder<T> specificationBuilder = FetchAllQuerySpecificationBuilder.create(
+            hooks.getSearchableColumns(),
+            hooks.getFilterableColumns()
+        );
+
+        Specification<T> specification = specificationBuilder.build(
+            query.searchTerm(),
+            query.filters()
+        );
+
+        hooks.onFetchingAll();
+
+        UniPaginatedResult<T> uniPaginatedResult = Optional.ofNullable(query.cursor())
+            .filter(cursor -> !cursor.isBlank())
+            .map(cursor -> FetchAllQueryCursorResult.getResult(
+                specification,
+                query.repository(),
+                query.pageable(),
+                cursor,
+                hooks
+            ))
+            .orElseGet(() -> FetchAllQueryOffsetResult.getResult(
+                specification,
+                query.repository(),
+                query.pageable()
+            ));
+
+        hooks.afterFetchAll(uniPaginatedResult);
+
+        return uniPaginatedResult;
     }
 
     protected static class FetchAllQuerySpecificationBuilder {
-        public static GenericSpecificationBuilder<?> create(List<String> searchableColumns, List<String> filterableColumns) {
+        public static <T> GenericSpecificationBuilder<T> create(List<String> searchableColumns, List<String> filterableColumns) {
             return new GenericSpecificationBuilder<>(searchableColumns, filterableColumns);
         }
     }
