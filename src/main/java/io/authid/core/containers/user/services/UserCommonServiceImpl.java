@@ -80,7 +80,7 @@ public class UserCommonServiceImpl extends RestServiceImpl<
 
             @Override
             public void beforeUpdate(UpdateUserRequest request) {
-
+                log.info("Executing before update actions: {}", request);
             }
 
             @Override
@@ -125,7 +125,7 @@ public class UserCommonServiceImpl extends RestServiceImpl<
 
             @Override
             public String getCursorValue(UserEntity entity) {
-                return "";
+                return entity.getId().toString();
             }
 
             @Override
