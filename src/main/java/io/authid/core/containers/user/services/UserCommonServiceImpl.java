@@ -2,7 +2,6 @@ package io.authid.core.containers.user.services;
 
 import io.authid.core.containers.user.contracts.UserCommonService;
 import io.authid.core.containers.user.entities.UserEntity;
-import io.authid.core.containers.user.exceptions.UserNotFoundException;
 import io.authid.core.containers.user.repositories.UserRepository;
 import io.authid.core.containers.user.request.CreateUserRequest;
 import io.authid.core.containers.user.request.UpdateUserRequest;
@@ -39,39 +38,6 @@ public class UserCommonServiceImpl extends RestServiceImpl<
     @SuppressWarnings("unchecked")
     protected UserRepository getRepository() {
         return this.repository;
-    }
-
-    @Override
-    protected List<String> getSearchableColumns() {
-        return List.of();
-    }
-
-    @Override
-    protected List<String> getFilterableColumns() {
-        return List.of();
-    }
-
-    @Override
-    protected String getCursorValue(UserEntity entity) {
-        return entity.getId().toString();
-    }
-
-    @Override
-    protected UserEntity onCreating(CreateUserRequest request) {
-        return UserEntity.builder()
-            .name(request.getName())
-            .email(request.getEmail())
-            .password(passwordEncoder.encode(request.getPassword()))
-            .emailVerifiedAt(null)
-            .failedLoginAttempts(null)
-            .loginCount(0)
-            .build();
-
-    }
-
-    @Override
-    protected void onUpdate(UpdateUserRequest updateRequest, UserEntity entity) {
-        // To do validate update request via hooks
     }
 
     @Override
@@ -173,10 +139,5 @@ public class UserCommonServiceImpl extends RestServiceImpl<
 
             }
         };
-    }
-
-    @Override
-    protected BaseApplicationException onNotFound(UUID uuid) {
-        return new UserNotFoundException(uuid);
     }
 }
