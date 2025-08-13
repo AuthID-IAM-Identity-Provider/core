@@ -1,10 +1,7 @@
-package io.authid.core.shared.rest.services.handlers;
+package io.authid.core.shared.rest.services.commons.fetch;
 
 import io.authid.core.shared.rest.contracts.RestQueryHandler;
 import io.authid.core.shared.rest.contracts.hooks.commons.FetchAllHooks;
-import io.authid.core.shared.rest.services.queries.FetchAllQuery;
-import io.authid.core.shared.rest.services.utils.FetchAllQueryCursorResult;
-import io.authid.core.shared.rest.services.utils.FetchAllQueryOffsetResult;
 import io.authid.core.shared.rest.specifications.GenericSpecificationBuilder;
 import io.authid.core.shared.utils.UniPaginatedResult;
 import lombok.RequiredArgsConstructor;

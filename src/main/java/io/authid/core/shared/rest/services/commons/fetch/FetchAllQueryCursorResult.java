@@ -1,4 +1,4 @@
-package io.authid.core.shared.rest.services.utils;
+package io.authid.core.shared.rest.services.commons.fetch;
 
 import io.authid.core.shared.rest.contracts.hooks.commons.FetchAllHooks;
 import io.authid.core.shared.utils.UniPaginatedResult;

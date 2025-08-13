@@ -29,4 +29,7 @@ public class CreateUserRequest extends RestRequest {
 
     @NotBlank(message = "{user.passwordConfirmation.required}") // <-- Diperbaiki
     private String passwordConfirmation;
+
+    @NotBlank(message = "{user.status.required}")
+    private String status;
 }

@@ -2,6 +2,7 @@ package io.authid.core.containers.user.services;
 
 import io.authid.core.containers.user.contracts.UserCommonService;
 import io.authid.core.containers.user.entities.UserEntity;
+import io.authid.core.containers.user.enums.UserStatus;
 import io.authid.core.containers.user.repositories.UserRepository;
 import io.authid.core.containers.user.request.CreateUserRequest;
 import io.authid.core.containers.user.request.UpdateUserRequest;
@@ -131,7 +132,16 @@ public class UserCommonServiceImpl extends RestServiceImpl<
 
             @Override
             public UserEntity onCreating(CreateUserRequest request) {
-                return null;
+                UserEntity userEntity = UserEntity.builder()
+                    .name(request.getName())
+                    .email(request.getEmail())
+                    .password(passwordEncoder.encode(request.getPassword()))
+                    .status(UserStatus.PENDING_VERIFICATION)
+                    .build();
+
+                userEntity.markUnverifiedEmail();
+
+                return userEntity;
             }
 
             @Override

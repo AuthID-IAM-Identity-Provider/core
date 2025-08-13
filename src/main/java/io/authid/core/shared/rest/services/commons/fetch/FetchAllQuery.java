@@ -1,4 +1,4 @@
-package io.authid.core.shared.rest.services.queries;
+package io.authid.core.shared.rest.services.commons.fetch;
 
 import io.authid.core.shared.rest.contracts.hooks.commons.FetchAllHooks;
 import org.springframework.data.domain.Pageable;
