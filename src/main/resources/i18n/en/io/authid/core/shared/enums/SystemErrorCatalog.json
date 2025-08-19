@@ -43,5 +43,10 @@
   "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception" : "An unexpected error occurred while processing your request.",
   "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.cause" : "The application encountered a problem because a required piece of data was missing or not initialized correctly.",
   "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.action" : "Please try again later. If the problem continues, please contact our support team.",
-  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.debug" : "A null pointer was encountered. Please provide this information to the development team: Cause - '{0}', Message - '{1}'."
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.debug" : "A null pointer was encountered. Please provide this information to the development team: Cause - {0}, Message - {1}.",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.resource.not.found.title" : "Resource Not Found",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.resource.not.found" : "The resource you requested could not be found.",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.resource.not.found.cause" : "There is no resource matching the identifier ({0}).",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.resource.not.found.action" : "Please check the identifier you provided and try again.",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.resource.not.found.debug" : "A lookup for a resource with ID {0} failed because it does not exist in the system."
 }

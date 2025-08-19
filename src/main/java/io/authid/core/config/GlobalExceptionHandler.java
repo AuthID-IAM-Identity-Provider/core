@@ -1,6 +1,7 @@
 package io.authid.core.config;
 
 import io.authid.core.shared.components.exception.BaseApplicationException;
+import io.authid.core.shared.components.exception.ResourceNotFoundErrorException;
 import io.authid.core.shared.constants.DiagnosticContextConstant;
 import io.authid.core.shared.enums.SystemErrorCatalog;
 import io.authid.core.shared.utils.UniResponse;
@@ -8,6 +9,7 @@ import io.authid.core.shared.utils.UniResponseFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -25,6 +27,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BaseApplicationException.class)
     public ResponseEntity<UniResponse<Object>> handleApplicationException(BaseApplicationException ex, Locale locale) {
         log.info("getArgs :  {}", Arrays.toString(ex.getArgs()));
+        return responseFactory.error(ex.getErrorCatalog(), locale, ex.getArgs());
+    }
+
+    @ExceptionHandler(ResourceNotFoundErrorException.class)
+    public ResponseEntity<UniResponse<Object>> handleResourceNotFoundException(ResourceNotFoundErrorException ex, Locale locale){
+        log.info("Given id : {} is not found", ex.getArgs());
         return responseFactory.error(ex.getErrorCatalog(), locale, ex.getArgs());
     }
 

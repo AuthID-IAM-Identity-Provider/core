@@ -7,6 +7,7 @@ import io.authid.core.containers.user.repositories.UserRepository;
 import io.authid.core.containers.user.request.CreateUserRequest;
 import io.authid.core.containers.user.request.UpdateUserRequest;
 import io.authid.core.shared.components.exception.BaseApplicationException;
+import io.authid.core.shared.components.exception.ResourceNotFoundErrorException;
 import io.authid.core.shared.rest.contracts.hooks.RestServiceHooks;
 import io.authid.core.shared.rest.services.RestServiceImpl;
 import io.authid.core.shared.utils.UniPaginatedResult;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -77,7 +79,7 @@ public class UserCommonServiceImpl extends RestServiceImpl<
 
             @Override
             public BaseApplicationException onNotFound(UUID uuid) {
-                return null;
+                throw new ResourceNotFoundErrorException(uuid);
             }
 
             @Override

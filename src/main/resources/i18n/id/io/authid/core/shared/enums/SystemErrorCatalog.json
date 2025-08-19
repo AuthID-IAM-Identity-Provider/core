@@ -43,5 +43,10 @@
   "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.action" : "",
   "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.cause" : "",
   "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.debug" : "",
-  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.title" : ""
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.title" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.resource.not.found" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.resource.not.found.action" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.resource.not.found.cause" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.resource.not.found.debug" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.resource.not.found.title" : ""
 }
