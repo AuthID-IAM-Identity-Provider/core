@@ -38,6 +38,7 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
         @RequestParam(required = false) Map<String, Object> filters
     ) {
 
+        log.info("hello updated module: {}", cursor);
         filters.remove("q");
         filters.remove("cursor");
         filters.remove("page");
@@ -46,19 +47,14 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
         boolean useCursor = (cursor != null) || (pageable.isPaged() && pageable.getPageNumber() >= PAGINATION_THRESHOLD);
         UniPaginatedResult<T> result = getService().fetchAll(q, filters, pageable, useCursor ? cursor : null);
 
-        // Transform each raw entity (T) to IndexResponse
         List<IndexResponse> response = result
             .getData()
             .stream()
-            .map(getTransformer()::toIndex) // Apply the toIndex transformation
+            .map(getTransformer()::toIndex)
             .collect(Collectors.toList());
 
         UniPaginatedResult<IndexResponse> transformedResult = new UniPaginatedResult<>(response, result.getPagination());
-
-        // *** THIS IS THE CRUCIAL CHANGE ***
-        // Call the overload of UniResponseFactory.ok() that accepts UniPaginatedResult
         return getResponseFactory().ok(transformedResult, "Success fetch all active records");
-        // Pass the transformed UniPaginatedResult
     }
 
     @GetMapping("/count")

@@ -5,6 +5,8 @@ import io.authid.core.shared.rest.contracts.RestService;
 import io.authid.core.shared.rest.contracts.hooks.RestServiceHooks;
 import io.authid.core.shared.rest.services.commons.fetch.FetchAllQuery;
 import io.authid.core.shared.rest.services.commons.fetch.FetchAllQueryHandler;
+import io.authid.core.shared.rest.services.commons.find.FindByIdQuery;
+import io.authid.core.shared.rest.services.commons.find.FindByIdQueryHandler;
 import io.authid.core.shared.utils.UniPaginatedResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +29,7 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
 
     @Override
     public UniPaginatedResult<T> fetchAll(String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor) {
-        FetchAllQuery<T> query = new FetchAllQuery<>(
+        FetchAllQuery<T> allQuery = new FetchAllQuery<>(
             searchTerm,
             filters,
             pageable,
@@ -36,13 +38,15 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
             getHooks()
         );
 
-        return new FetchAllQueryHandler<T>().handle(query);
+        return new FetchAllQueryHandler<T>().handle(allQuery);
     }
 
     @Override
     public T findById(ID id) {
-        return getRepository().findById(id)
-            .orElseThrow(() -> getHooks().onNotFound(id));
+
+        FindByIdQuery<T, ID> byIdQuery = new FindByIdQuery<>(id, getRepository(), getHooks());
+
+        return new FindByIdQueryHandler<T, ID>().handle(byIdQuery);
     }
 
     @Override

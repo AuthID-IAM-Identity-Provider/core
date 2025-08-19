@@ -34,6 +34,12 @@ public class GlobalExceptionHandler {
         return responseFactory.error(SystemErrorCatalog.ROUTE_NOT_FOUND, locale, new Object[]{ex.getResourcePath(), ex.getMessage(), ex.getRootCause()});
     }
 
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<UniResponse<Object>> handleNullPoinEntity(NullPointerException ex, Locale locale) {
+        log.warn("Null Pointer Exception: {}", ex.getCause());
+        return responseFactory.error(SystemErrorCatalog.NULL_POINTER_EXCEPTION, locale, new Object[]{ex.getCause(), ex.getMessage()});
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<UniResponse<Object>> handleAllUncaughtExceptions(Exception ex, Locale locale) {
         log.error("An unexpected internal service error occurred: {}", ex.getMessage(), ex);

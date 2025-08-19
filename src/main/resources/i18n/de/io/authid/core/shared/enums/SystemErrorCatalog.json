@@ -33,5 +33,15 @@
   "io.authid.core.shared.enums.SystemErrorCatalog.error.system.third.party.integration.error.action" : "",
   "io.authid.core.shared.enums.SystemErrorCatalog.error.system.third.party.integration.error.cause" : "",
   "io.authid.core.shared.enums.SystemErrorCatalog.error.system.third.party.integration.error.debug" : "",
-  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.third.party.integration.error.title" : ""
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.third.party.integration.error.title" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.configuration.error" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.configuration.error.action" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.configuration.error.cause" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.configuration.error.debug" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.configuration.error.title" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.action" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.cause" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.debug" : "",
+  "io.authid.core.shared.enums.SystemErrorCatalog.error.system.null.pointer.exception.title" : ""
 }
