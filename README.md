@@ -123,4 +123,27 @@ Kontribusi sangat kami harapkan\! Silakan ajukan pull request.
 
 ## 📄 Lisensi
 
-Proyek ini dilisensikan di bawah [Lisensi MIT](https://www.google.com/search?q=LICENSE).
+Proyek ini dilisensikan di bawah [Lisensi MIT](https://www.google.com/search?q=LICENSE).## 🛠️ Analisis Teknis
+
+AuthID Core Engine adalah aplikasi Spring Boot yang dirancang untuk menyediakan fondasi backend yang kuat dengan fokus pada kontrol akses berbasis peran (RBAC), manajemen database, dan alur kerja pengembangan yang efisien.
+
+### Arsitektur dan Teknologi
+
+*   **Spring Boot:** Kerangka kerja utama yang digunakan untuk membangun aplikasi, menyediakan konfigurasi otomatis dan ekosistem yang kaya.
+*   **Spring Security:** Digunakan untuk mengamankan aplikasi, termasuk otentikasi (OAuth2 Client, Resource Server, Authorization Server) dan otorisasi (RBAC).
+*   **Spring Data JPA:** Memfasilitasi interaksi dengan database relasional menggunakan Hibernate sebagai implementasi JPA.
+*   **Oracle Database:** Database relasional yang digunakan untuk penyimpanan data. Driver JDBC Oracle (UCP, ojdbc11, oraclepki) disertakan.
+*   **Liquibase:** Digunakan untuk manajemen skema database, memungkinkan migrasi database yang terkontrol dan versioning. Integrasi dengan Hibernate (liquibase-hibernate6) memungkinkan pembuatan changelog berdasarkan entitas JPA.
+*   **MapStruct:** Pustaka pemetaan kode-ke-kode yang digunakan untuk menghasilkan mappers yang cepat dan aman tipe antara objek DTO dan entitas JPA.
+*   **Lombok:** Mengurangi boilerplate code dengan anotasi seperti `@Data`, `@NoArgsConstructor`, `@AllArgsConstructor`, dll.
+*   **Spring Shell:** Digunakan untuk membangun aplikasi command-line, kemungkinan untuk alat administrasi atau utilitas pengembangan.
+*   **Spring Integration:** Digunakan untuk integrasi aplikasi, khususnya dengan HTTP dan JPA, menunjukkan kemampuan untuk membangun alur kerja yang kompleks.
+*   **Apache POI:** Pustaka untuk membaca dan menulis format file Microsoft Office, menunjukkan potensi untuk fitur impor/ekspor data.
+*   **Logstash Logback Encoder & Janino:** Digunakan untuk logging terstruktur, memfasilitasi analisis log terpusat.
+*   **Spring Batch:** Digunakan untuk pemrosesan batch, menunjukkan kemampuan untuk menangani operasi data skala besar.
+*   **Datafaker:** Pustaka untuk menghasilkan data palsu, sangat berguna untuk pengujian dan seeding database.
+*   **ClassGraph:** Pustaka pemindaian classpath yang cepat, mungkin digunakan untuk penemuan komponen dinamis atau analisis runtime.
+
+### Struktur Proyek
+
+*   **`pom.xml`:** File konfigurasi Maven
