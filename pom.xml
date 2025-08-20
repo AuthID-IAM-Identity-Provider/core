@@ -332,11 +332,7 @@
                 <version>1.12.0</version> <inherited>false</inherited>
                 <configuration>
 
-                    <project>
-                        <version>
-                            <pattern>v{{projectVersion}}</pattern>
-                        </version>
-                    </project>
+                    <projectVersionPattern>v{{projectVersion}}</projectVersionPattern>
 
                     <release>
                         <github>
