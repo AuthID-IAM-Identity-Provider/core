@@ -13,7 +13,7 @@
 
     <groupId>io.auth-id</groupId>
     <artifactId>core</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>core</name>
     <description>AuthID Core Engine</description>
 
@@ -339,19 +339,23 @@
                             <releaseNotes>
                                 <file>RELEASE_NOTES.md</file>
                             </releaseNotes>
-                            <changelog>
-                                <formatted>ALWAYS</formatted>
-                                <preset>conventional-commits</preset>
-                                <file>CHANGELOG.md</file>
-                                <replacers>
-                                    <replacer>
-                                        <search>#([0-9]+)</search>
-                                        <replace>[#$1]({{repoHost}}/{{repoOwner}}/{{repoName}}/issues/$1)</replace>
-                                    </replacer>
-                                </replacers>
-                            </changelog>
+                            <issues>
+                                <enabled>true</enabled>
+                            </issues>
                         </github>
                     </release>
+
+                    <changelog>
+                        <formatted>ALWAYS</formatted>
+                        <preset>conventional-commits</preset>
+                        <file>CHANGELOG.md</file>
+                        <replacers>
+                            <replacer>
+                                <search>#([0-9]+)</search>
+                                <replace>[#$1]({{repoHost}}/{{repoOwner}}/{{repoName}}/issues/$1)</replace>
+                            </replacer>
+                        </replacers>
+                    </changelog>
 
                     <files>
                         <artifacts>
@@ -362,6 +366,15 @@
                         </artifacts>
                     </files>
 
+                    <checksum>
+                        <active>true</active>
+                        <individual>true</individual> 
+                    </checksum>
+
+                    <signing>
+                        <active>ALWAYS</active>
+                        <armored>true</armored>
+                    </signing>
                 </configuration>
             </plugin>
         </plugins>
