@@ -342,6 +342,9 @@
                             <issues>
                                 <enabled>true</enabled>
                             </issues>
+                            <update>
+                                <enabled>true</enabled>
+                            </update>
                         </github>
                     </release>
 
