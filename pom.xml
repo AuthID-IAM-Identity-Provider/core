@@ -365,6 +365,16 @@
                             </artifact>
                         </artifacts>
                     </files>
+
+                    <checksum>
+                        <active>true</active>
+                        <individual>true</individual> 
+                    </checksum>
+
+                    <signing>
+                        <active>ALWAYS</active>
+                        <armored>true</armored>
+                    </signing>
                 </configuration>
             </plugin>
         </plugins>
