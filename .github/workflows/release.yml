@@ -1,0 +1,31 @@
+# File: .github/workflows/release.yml
+name: Automatic Release from Main
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Buat Rilis
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'oracle'
+          cache: 'maven'
+
+      - name: Release with JReleaser
+        env:
+          JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn -B jreleaser:release
