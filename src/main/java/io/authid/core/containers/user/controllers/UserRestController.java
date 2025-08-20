@@ -29,8 +29,8 @@ public class UserRestController extends RestController<UserEntity, UUID, CreateU
     private final UniResponseFactory response;
 
     public UserRestController(
-            UniResponseFactory responseFactory,
-            @Qualifier("userCommonServiceImpl") RestService<UserEntity, UUID, CreateUserRequest, UpdateUserRequest> service, UserRestTransformer userRestTransformer
+        UniResponseFactory responseFactory,
+        @Qualifier("userCommonServiceImpl") RestService<UserEntity, UUID, CreateUserRequest, UpdateUserRequest> service, UserRestTransformer userRestTransformer
     ) {
         this.userService = (UserCommonService) service;
         this.transformer = userRestTransformer;

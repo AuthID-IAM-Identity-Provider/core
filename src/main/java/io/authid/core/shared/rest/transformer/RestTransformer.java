@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
  * Data transformer
  *
  * @param <T>              Entity Type
- * @param <IndexResponse>  DTO for list/summary/findAll
+ * @param <IndexResponse>  DTO for list/summary/fetchAll
  * @param <DetailResponse> DTO for detail/findById
  * @param <CreateResponse> DTO for response after create
  * @param <UpdateResponse> DTO for response after update
@@ -30,7 +30,7 @@ public interface RestTransformer<T, IndexResponse, DetailResponse, CreateRespons
             return Collections.emptyList();
         }
         return entities.stream()
-                .map(this::toIndex)
-                .collect(Collectors.toList());
+            .map(this::toIndex)
+            .collect(Collectors.toList());
     }
 }

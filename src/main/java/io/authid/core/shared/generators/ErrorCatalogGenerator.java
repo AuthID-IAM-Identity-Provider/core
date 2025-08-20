@@ -12,18 +12,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 @Component
 public class ErrorCatalogGenerator {
@@ -34,13 +25,13 @@ public class ErrorCatalogGenerator {
     private static final String OUTPUT_JAVA_ROOT_DIR_RELATIVE = "src/main/java/";
 
     private static final Pattern ENUM_ENTRY_PATTERN = Pattern.compile(
-            "\\s*(\\w+)\\((\".*?\"), (\"(?<category>.*?)\"), (\"(?<module>.*?)\"), (\"(?<baseKey>.*?)\"), (HttpStatus\\.\\w+), (\"(?<visibility>.*?)\")\\)");
+        "\\s*(\\w+)\\((\".*?\"), (\"(?<category>.*?)\"), (\"(?<module>.*?)\"), (\"(?<baseKey>.*?)\"), (HttpStatus\\.\\w+), (\"(?<visibility>.*?)\")\\)");
 
     private static final String ENUM_TEMPLATE_HEADER = """
         // GENERATED FILE - DO NOT MODIFY MANUALLY
         // Generated from Excel Master Data: {0}
         package {1};
-
+        
         import org.springframework.http.HttpStatus;
         import java.util.Arrays;
         import java.util.Collections;
@@ -48,12 +39,12 @@ public class ErrorCatalogGenerator {
         import java.util.Set;
         import java.util.stream.Collectors;
         import io.authid.core.shared.components.i18n.extractors.I18n;
-
+        
         public enum {2} {
         """;
     private static final String ENUM_TEMPLATE_FOOTER = """
             ; // End of enum entries
-
+        
             private final String code;
             private final String category;
             private final String module;
@@ -64,9 +55,9 @@ public class ErrorCatalogGenerator {
             private final String debugDescriptionKey;
             private final String causeKey;
             private final String actionKey;
-
+        
             private static final Set<String> VALID_PROFILES_FOR_GENERATION_CHECK = new HashSet<>(Arrays.asList("DEV", "SIT", "UAT", "BET", "PROD", "ALL"));
-
+        
             {2}(String code, String category, String module, String baseMessageKey, HttpStatus httpStatus, String additionalInfoVisibilityString) {
                 this.code = code;
                 this.category = category;
@@ -74,14 +65,14 @@ public class ErrorCatalogGenerator {
                 this.baseMessageKey = baseMessageKey;
                 this.httpStatus = httpStatus;
                 this.additionalInfoVisibility = parseVisibility(additionalInfoVisibilityString);
-
+        
                 I18n.setSourceClass({2}.class); 
                 this.titleKey = I18n.extract(baseMessageKey + ".title");
                 this.debugDescriptionKey = I18n.extract(baseMessageKey + ".debug");
                 this.causeKey = I18n.extract(baseMessageKey + ".cause");
                 this.actionKey = I18n.extract(baseMessageKey + ".action");
             }
-
+        
             public String getCode() { return code; }
             public String getCategory() { return category; }
             public String getModule() { return module; }
@@ -93,7 +84,7 @@ public class ErrorCatalogGenerator {
             public String getDebugDescriptionKey() { return debugDescriptionKey; }
             public String getCauseKey() { return causeKey; }
             public String getActionKey() { return actionKey; }
-
+        
             private List<String> parseVisibility(String visibilityStr) {
                 if ("ALL".equalsIgnoreCase(visibilityStr)) {
                     return List.of("DEV", "SIT", "UAT", "BET", "PROD");
@@ -145,7 +136,9 @@ public class ErrorCatalogGenerator {
 
     // Metode ini sekarang menerima FormulaEvaluator
     private String getCellValue(Cell cell, FormulaEvaluator evaluator) {
-        if (cell == null) { return ""; }
+        if (cell == null) {
+            return "";
+        }
         DataFormatter formatter = new DataFormatter();
 
         if (cell.getCellType() == CellType.FORMULA) {
@@ -202,7 +195,9 @@ public class ErrorCatalogGenerator {
                 if (row == null || isRowEmpty(row)) continue;
                 String key = getCellValue(row.getCell(keyColIdx), evaluator); // Teruskan evaluator
                 String value = getCellValue(row.getCell(valueColIdx), evaluator); // Teruskan evaluator
-                if (!key.isEmpty() && !value.isEmpty()) { lookupMap.put(key, value); }
+                if (!key.isEmpty() && !value.isEmpty()) {
+                    lookupMap.put(key, value);
+                }
             }
         }
         return lookupMap;
@@ -223,7 +218,9 @@ public class ErrorCatalogGenerator {
                 Row row = sheet.getRow(rowNum);
                 if (row == null || isRowEmpty(row)) continue;
                 String envName = getCellValue(row.getCell(0), evaluator); // Teruskan evaluator
-                if (!envName.isEmpty()) { environments.add(envName.toUpperCase()); }
+                if (!envName.isEmpty()) {
+                    environments.add(envName.toUpperCase());
+                }
             }
         }
         return environments;
@@ -246,7 +243,7 @@ public class ErrorCatalogGenerator {
                     continue; // Skip lookup and messages sheets
                 }
                 sheetsProcessed++;
-                System.out.println(String.format("  Processing sheet %d/%d: %s", sheetsProcessed, totalSheets, sheetName));
+                System.out.printf("  Processing sheet %d/%d: %s%n", sheetsProcessed, totalSheets, sheetName);
 
                 for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
                     Row row = sheet.getRow(rowNum);
@@ -254,7 +251,7 @@ public class ErrorCatalogGenerator {
 
                     // --- BACA KOLOM SESUAI INDEKS EXCEL ANDA (MULAI DARI 0) ---
                     // Setiap panggilan getCellValue harus meneruskan evaluator
-                    String enumName = getCellValue(row.getCell(0), evaluator);                     // Kolom A
+                    String enumName = getCellValue(row.getCell(0), evaluator);                     // Kolom DomainEvent
                     String categoryFullName = getCellValue(row.getCell(1), evaluator);             // Kolom B
                     String moduleFullName = getCellValue(row.getCell(3), evaluator);               // Kolom D
                     String jsonCode = getCellValue(row.getCell(6), evaluator);                     // Kolom G (hasil rumus Excel)
@@ -267,9 +264,9 @@ public class ErrorCatalogGenerator {
                     // ... (validasi lainnya tetap sama) ...
 
                     if (enumName.isEmpty() || categoryFullName.isEmpty() || moduleFullName.isEmpty() ||
-                            jsonCode.isEmpty() || baseMessageKey.isEmpty() || httpStatus.isEmpty() ||
-                            targetModulePackage.isEmpty() || targetEnumClassName.isEmpty()) {
-                        System.err.println(String.format("    WARNING: Skipping row %d in sheet %s due to missing essential data.", rowNum + 1, sheetName));
+                        jsonCode.isEmpty() || baseMessageKey.isEmpty() || httpStatus.isEmpty() ||
+                        targetModulePackage.isEmpty() || targetEnumClassName.isEmpty()) {
+                        System.err.printf("    WARNING: Skipping row %d in sheet %s due to missing essential data.%n", rowNum + 1, sheetName);
                         continue;
                     }
 
@@ -280,25 +277,25 @@ public class ErrorCatalogGenerator {
                         // HttpStatus.valueOf(int code) akan mencari enum konstanta yang sesuai (misal: NOT_FOUND)
                         httpStatusEnumName = HttpStatus.valueOf(Integer.parseInt(httpStatus)).name(); // Mendapatkan "NOT_FOUND"
                     } catch (IllegalArgumentException e) {
-                        System.err.println(String.format("    ERROR: Invalid HTTP Status '%s' for enum '%s' in sheet %s. Must be a valid HTTP status code (e.g., 200, 404). Skipping.", httpStatus, enumName, sheetName));
+                        System.err.printf("    ERROR: Invalid HTTP Status '%s' for enum '%s' in sheet %s. Must be a valid HTTP status code (e.g., 200, 404). Skipping.%n", httpStatus, enumName, sheetName);
                         continue; // Lewati jika HTTP Status tidak valid
                     }
 
                     if (processedGlobalErrorCodes.contains(jsonCode)) {
-                        System.err.println(String.format("    ERROR: Duplicate JSON Error Code '%s' found for enum '%s' in sheet %s. This code is already used. Skipping.", jsonCode, enumName, sheetName));
+                        System.err.printf("    ERROR: Duplicate JSON Error Code '%s' found for enum '%s' in sheet %s. This code is already used. Skipping.%n", jsonCode, enumName, sheetName);
                         continue;
                     }
                     processedGlobalErrorCodes.add(jsonCode);
 
                     String enumEntryString = String.format(
-                            "%s(\"%s\", \"%s\", \"%s\", \"%s\", HttpStatus.%s, \"%s\")",
-                            enumName, jsonCode, categoryFullName, moduleFullName, baseMessageKey, httpStatusEnumName, additionalInfoVisibility
+                        "%s(\"%s\", \"%s\", \"%s\", \"%s\", HttpStatus.%s, \"%s\")",
+                        enumName, jsonCode, categoryFullName, moduleFullName, baseMessageKey, httpStatusEnumName, additionalInfoVisibility
                     );
 
                     String groupKey = targetModulePackage + "." + targetEnumClassName;
                     groupedEnumEntries.computeIfAbsent(groupKey, k -> new LinkedHashMap<>())
-                            .computeIfAbsent(targetEnumClassName, k -> new ArrayList<>())
-                            .add(enumEntryString);
+                        .computeIfAbsent(targetEnumClassName, k -> new ArrayList<>())
+                        .add(enumEntryString);
                 }
             }
         }
@@ -322,11 +319,11 @@ public class ErrorCatalogGenerator {
             List<String> currentEnumEntries = packageEntry.getValue().get(enumClassName);
 
             if (currentEnumEntries == null || currentEnumEntries.isEmpty()) {
-                System.out.println(String.format("WARNING: No entries found for enum %s. Skipping generation.", enumClassName));
+                System.out.printf("WARNING: No entries found for enum %s. Skipping generation.%n", enumClassName);
                 continue;
             }
             enumsGenerated++;
-            System.out.println(String.format("  Generating enum %d/%d: %s.java", enumsGenerated, totalEnums, enumClassName));
+            System.out.printf("  Generating enum %d/%d: %s.java%n", enumsGenerated, totalEnums, enumClassName);
 
             String allEnumEntries = String.join(",\n    ", currentEnumEntries);
 
@@ -361,7 +358,9 @@ public class ErrorCatalogGenerator {
     // Pastikan semua helper method ini hanya didefinisikan SATU KALI di dalam kelas.
 
     private boolean isRowEmpty(Row row) {
-        if (row == null) { return true; }
+        if (row == null) {
+            return true;
+        }
         for (int cellNum = row.getFirstCellNum(); cellNum < Math.min(row.getLastCellNum(), 50); cellNum++) {
             Cell cell = row.getCell(cellNum);
             if (cell != null && cell.getCellType() != CellType.BLANK && !getCellValue(cell, null).isEmpty()) { // Use getCellValue with null evaluator here

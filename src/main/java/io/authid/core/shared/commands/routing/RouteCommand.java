@@ -1,6 +1,7 @@
 package io.authid.core.shared.commands.routing; // Sesuaikan dengan paket Anda
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.shell.command.annotation.Command;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
@@ -20,7 +21,9 @@ public class RouteCommand {
     private final RequestMappingHandlerMapping requestMappingHandlerMapping;
 
     @Autowired
-    public RouteCommand(RequestMappingHandlerMapping requestMappingHandlerMapping) {
+    public RouteCommand(
+            @Qualifier("requestMappingHandlerMapping")
+            RequestMappingHandlerMapping requestMappingHandlerMapping) {
         this.requestMappingHandlerMapping = requestMappingHandlerMapping;
     }
 

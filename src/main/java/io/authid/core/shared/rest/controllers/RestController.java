@@ -2,10 +2,11 @@ package io.authid.core.shared.rest.controllers;
 
 import io.authid.core.shared.rest.contracts.RestService;
 import io.authid.core.shared.rest.transformer.RestTransformer;
-import io.authid.core.shared.utils.*;
+import io.authid.core.shared.utils.UniPaginatedResult;
+import io.authid.core.shared.utils.UniResponse;
+import io.authid.core.shared.utils.UniResponseFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -31,41 +32,37 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
 
     @GetMapping
     public ResponseEntity<UniResponse<List<IndexResponse>>> findAll(
-            Pageable pageable,
-            @RequestParam(required = false) String q,
-            @RequestParam(required = false) String cursor,
-            @RequestParam(required = false) Map<String, Object> filters
+        Pageable pageable,
+        @RequestParam(required = false) String q,
+        @RequestParam(required = false) String cursor,
+        @RequestParam(required = false) Map<String, Object> filters
     ) {
 
+        log.info("hello updated module: {}", cursor);
         filters.remove("q");
         filters.remove("cursor");
         filters.remove("page");
         filters.remove("size");
 
         boolean useCursor = (cursor != null) || (pageable.isPaged() && pageable.getPageNumber() >= PAGINATION_THRESHOLD);
-        UniPaginatedResult<T> result = getService().findAll(q, filters, pageable, useCursor ? cursor : null);
+        UniPaginatedResult<T> result = getService().fetchAll(q, filters, pageable, useCursor ? cursor : null);
 
-        // Transform each raw entity (T) to IndexResponse
         List<IndexResponse> response = result
-                .getData()
-                .stream()
-                .map(getTransformer()::toIndex) // Apply the toIndex transformation
-                .collect(Collectors.toList());
+            .getData()
+            .stream()
+            .map(getTransformer()::toIndex)
+            .collect(Collectors.toList());
 
         UniPaginatedResult<IndexResponse> transformedResult = new UniPaginatedResult<>(response, result.getPagination());
-
-        // *** THIS IS THE CRUCIAL CHANGE ***
-        // Call the overload of UniResponseFactory.ok() that accepts UniPaginatedResult
         return getResponseFactory().ok(transformedResult, "Success fetch all active records");
-        // Pass the transformed UniPaginatedResult
     }
 
     @GetMapping("/count")
     public ResponseEntity<UniResponse<Long>> count(
-            Pageable pageable,
-            @RequestParam(required = false) String q,
-            @RequestParam(required = false) String cursor,
-            @RequestParam(required = false) Map<String, Object> filters
+        Pageable pageable,
+        @RequestParam(required = false) String q,
+        @RequestParam(required = false) String cursor,
+        @RequestParam(required = false) Map<String, Object> filters
     ) {
         long count = getService().count(q, filters, pageable, cursor);
         return getResponseFactory().ok(count, "Success fetch all");
@@ -97,4 +94,5 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
         getService().deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
 }

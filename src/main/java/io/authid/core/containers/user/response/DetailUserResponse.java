@@ -29,6 +29,6 @@ public class DetailUserResponse extends RestResponse {
     private String loginCount;  // Total login count
     private String failedLoginAttempts; // Failed attempts (can be sensitive for public API, adjust as needed)
     private String daysSinceLastLogin; // Example: days since last login, for activity tracking
-
+    private String daysSinceCreated;
     // --- Optional: Fields for richer user profile ---
 }

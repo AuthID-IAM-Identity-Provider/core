@@ -1,6 +1,7 @@
 package io.authid.core.config;
 
 import io.authid.core.shared.components.exception.BaseApplicationException;
+import io.authid.core.shared.components.exception.ResourceNotFoundErrorException;
 import io.authid.core.shared.constants.DiagnosticContextConstant;
 import io.authid.core.shared.enums.SystemErrorCatalog;
 import io.authid.core.shared.utils.UniResponse;
@@ -28,10 +29,22 @@ public class GlobalExceptionHandler {
         return responseFactory.error(ex.getErrorCatalog(), locale, ex.getArgs());
     }
 
+    @ExceptionHandler(ResourceNotFoundErrorException.class)
+    public ResponseEntity<UniResponse<Object>> handleResourceNotFoundException(ResourceNotFoundErrorException ex, Locale locale){
+        log.info("Given id : {} is not found", ex.getArgs());
+        return responseFactory.error(ex.getErrorCatalog(), locale, ex.getArgs());
+    }
+
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<UniResponse<Object>> handleNoResourceFoundException(NoResourceFoundException ex, Locale locale) {
         log.warn("No resource found for URI: {}", ex.getResourcePath());
         return responseFactory.error(SystemErrorCatalog.ROUTE_NOT_FOUND, locale, new Object[]{ex.getResourcePath(), ex.getMessage(), ex.getRootCause()});
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<UniResponse<Object>> handleNullPoinEntity(NullPointerException ex, Locale locale) {
+        log.warn("Null Pointer Exception: {}", ex.getCause());
+        return responseFactory.error(SystemErrorCatalog.NULL_POINTER_EXCEPTION, locale, new Object[]{ex.getCause(), ex.getMessage()});
     }
 
     @ExceptionHandler(Exception.class)

@@ -36,7 +36,13 @@ public enum SystemErrorCatalog implements ErrorCatalog {
     CONFIGURATION_ERROR("SYS-0105", "Infrastructure", "Configuration", HttpStatus.INTERNAL_SERVER_ERROR, "DEV;SIT"), // Masalah konfigurasi (mungkin hanya terlihat di non-prod)
 
     @ExtractableI18n(value = "error.system.route.not.found", suffixes = {".title", ".debug", ".cause", ".action"})
-    ROUTE_NOT_FOUND("SYS-0106", "System", "Routing", HttpStatus.NOT_FOUND, "ALL"); // Kode baru, kategori Routing
+    ROUTE_NOT_FOUND("SYS-0106", "System", "Routing", HttpStatus.NOT_FOUND, "ALL"), // Kode baru, kategori Routing
+
+    @ExtractableI18n(value = "error.system.null.pointer.exception", suffixes = {".title", ".debug", ".cause", ".action"})
+    NULL_POINTER_EXCEPTION("SYS-0107", "System", "Runtime", HttpStatus.INTERNAL_SERVER_ERROR, "ALL"), // Kode baru, kategori Routing
+
+    @ExtractableI18n(value = "error.system.resource.not.found", suffixes = {".title", ".debug", ".cause", ".action"})
+    RESOURCE_NOT_FOUND("SYS-0107", "System", "Runtime", HttpStatus.NOT_FOUND, "ALL");
 
     private final String code;
     private final String category;

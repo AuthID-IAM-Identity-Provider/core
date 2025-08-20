@@ -34,13 +34,9 @@ public class UserRestTransformer implements RestTransformer<UserEntity, IndexUse
     public DetailUserResponse toDetail(UserEntity entity) {
         return DetailUserResponse.builder()
                 .id(entity.getId().toString())
-                // --- Raw Fields ---
-                // Pastikan entity.getRefNo() tidak null jika refNo adalah Embeddable
                 .firstName(entity.getName())
                 .email(entity.getEmail())
                 .createdAt(String.valueOf(entity.getCreatedAt()))
-
-                // --- Computed Fields ---
                 .isEmailVerified(entity.isVerified()) // Delegasi ke metode di UserEntity
                 .isAccountLocked(entity.isAccountLocked()) // Delegasi ke metode di UserEntity
                 .hasTwoFactorAuth(entity.hasTwoFactor()) // Delegasi ke metode di UserEntity
@@ -50,8 +46,7 @@ public class UserRestTransformer implements RestTransformer<UserEntity, IndexUse
                 .loginCount(String.valueOf(entity.getLoginCount()))   // Raw, but useful for detail
                 .failedLoginAttempts(String.valueOf(entity.getFailedLoginAttempts())) // Raw, but useful for detail (careful with exposure)
                 .daysSinceLastLogin((String) calculateDaysSinceLastLogin(entity.getLastLoginAt())) // Computed
-                // .publicProfileUrl("/users/" + entity.getRefNo().getSystemRefNo()) // Example computed URL
-                // .roles(entity.getRoles().stream().map(Role::getName).collect(Collectors.toSet())) // If roles entity exists
+                .daysSinceCreated(String.valueOf(calculateDaysSinceCreated(entity.getCreatedAt())))
                 .build();
     }
 
@@ -61,6 +56,14 @@ public class UserRestTransformer implements RestTransformer<UserEntity, IndexUse
             return null; // Or some default like 0 if never logged in
         }
         Duration duration = Duration.between(lastLoginAt, Instant.now());
+        return (int) duration.toDays();
+    }
+
+    private Object calculateDaysSinceCreated(Instant createdAt) {
+        if (createdAt == null) {
+            return null; // Or some default like 0 if never logged in
+        }
+        Duration duration = Duration.between(createdAt, Instant.now());
         return (int) duration.toDays();
     }
 
