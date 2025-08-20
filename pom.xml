@@ -325,6 +325,49 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.jreleaser</groupId>
+                <artifactId>jreleaser-maven-plugin</artifactId>
+                <version>1.12.0</version> <inherited>false</inherited>
+                <configuration>
+
+                    <project>
+                        <version>
+                            <pattern>v{{projectVersion}}</pattern>
+                        </version>
+                    </project>
+
+                    <release>
+                        <github>
+                            <releaseNotes>
+                                <file>RELEASE_NOTES.md</file>
+                            </releaseNotes>
+                            <changelog>
+                                <formatted>ALWAYS</formatted>
+                                <preset>conventional-commits</preset>
+                                <file>CHANGELOG.md</file>
+                                <replacers>
+                                    <replacer>
+                                        <search>#([0-9]+)</search>
+                                        <replace>[#$1]({{repoHost}}/{{repoOwner}}/{{repoName}}/issues/$1)</replace>
+                                    </replacer>
+                                </replacers>
+                            </changelog>
+                        </github>
+                    </release>
+
+                    <files>
+                        <artifacts>
+                            <artifact>
+                                <path>target/{{projectArtifactId}}-{{projectVersion}}.jar</path>
+                                <transform>target/{{projectArtifactId}}-{{projectVersion}}-{{timestamp_yyyyMMddHHmmss}}-{{commitShortHash}}.jar</transform>
+                            </artifact>
+                        </artifacts>
+                    </files>
+
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
