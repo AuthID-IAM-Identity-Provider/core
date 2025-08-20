@@ -1,9 +1,10 @@
 # File: .github/workflows/release.yml
-name: Automatic Release from Main
+name: Rilis Otomatis dari Main
+
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
 
 jobs:
   release:
@@ -25,7 +26,7 @@ jobs:
           distribution: 'oracle'
           cache: 'maven'
 
-      - name: Release with JReleaser
+      - name: Rilis dengan JReleaser
         env:
           JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn -B jreleaser:release
