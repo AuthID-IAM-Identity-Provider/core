@@ -59,15 +59,13 @@ jobs:
           echo "${DRY_RUN_OUTPUT}"
           echo "--------------------------------------------"
 
-          # Use a more robust awk command to find the version number
-          VERSION=$(echo "${DRY_RUN_OUTPUT}" | awk '/The next release version is/ {print $NF}')
+          # Use a more robust sed command to extract only the version number
+          VERSION=$(echo "${DRY_RUN_OUTPUT}" | sed -n 's/.*The next release version is \([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p')
 
           if [ -z "$VERSION" ]; then
-            # Check if the reason for no version is simply no relevant commits
             if echo "${DRY_RUN_OUTPUT}" | grep -q "There are no relevant commits"; then
               echo "Semantic-release found no relevant commits. Nothing to release."
             else
-              # This will run if there was an actual error
               echo "Could not determine next version from the output. Please check the logs above."
             fi
             echo "NO_RELEASE=true" >> $GITHUB_ENV
