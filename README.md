@@ -143,7 +143,3 @@ AuthID Core Engine adalah aplikasi Spring Boot yang dirancang untuk menyediakan 
 *   **Spring Batch:** Digunakan untuk pemrosesan batch, menunjukkan kemampuan untuk menangani operasi data skala besar.
 *   **Datafaker:** Pustaka untuk menghasilkan data palsu, sangat berguna untuk pengujian dan seeding database.
 *   **ClassGraph:** Pustaka pemindaian classpath yang cepat, mungkin digunakan untuk penemuan komponen dinamis atau analisis runtime.
-
-### Struktur Proyek
-
-*   **`pom.xml`:** File konfigurasi Maven
