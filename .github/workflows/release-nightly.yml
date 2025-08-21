@@ -1,0 +1,67 @@
+# Nama workflow
+name: Nightly Release
+
+on:
+  # Pemicu: Berjalan setiap hari jam 00:00 UTC
+  schedule:
+    - cron: '0 0 * * *'
+  # Juga bisa dipicu manual
+  workflow_dispatch:
+
+jobs:
+  build-and-release-nightly:
+    name: Create Nightly Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Izin untuk membuat release
+
+    steps:
+      # Langkah 1: Checkout kode dari branch develop
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: develop # Target branch untuk nightly
+
+      # Langkah 2: Setup JDK 21
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'oracle'
+
+      # Langkah 3: Cache dependensi Maven
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
+
+      # Langkah 4: Build proyek
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml -DskipTests
+
+      # Langkah 5: Buat file Checksum
+      - name: Generate Checksum
+        run: |
+          cd target
+          sha256sum *.jar > sha256sums.txt
+          cd ..
+          echo "Checksum file generated at target/sha256sums.txt"
+
+      # Langkah 6: Buat Rilis dan Upload Artefak (JAR + Checksum)
+      - name: Create Nightly Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          # Membuat tag yang unik berdasarkan tanggal dan commit
+          tag_name: nightly-$(date +'%Y%m%d')-${{ github.sha }}
+          name: "Nightly Build ${{ env.TODAY }}"
+          body: "Automated nightly build from commit ${{ github.sha }}. This is a pre-release version and may be unstable."
+          prerelease: true
+          # Menggunakan wildcard untuk mengunggah file JAR dan file checksum
+          files: |
+            target/*.jar
+            target/sha256sums.txt
+        env:
+          TODAY: $(date +'%Y-%m-%d')

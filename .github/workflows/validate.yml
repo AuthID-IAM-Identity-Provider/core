@@ -1,0 +1,47 @@
+# Nama workflow
+name: PR Validation
+
+# Pemicu: Berjalan saat ada pull request ke branch main atau develop
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  validate:
+    name: Validate PR
+    runs-on: ubuntu-latest
+    steps:
+      # Langkah 1: Checkout kode dari repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Ambil semua history untuk validasi commit
+
+      # Langkah 2: Setup JDK 17 (sesuaikan dengan versi Java Anda)
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # Langkah 3: Cache dependensi Maven untuk mempercepat build
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
+
+      # Langkah 4: Validasi format commit message (Conventional Commits)
+      - name: Lint Commit Messages
+        uses: wagoid/commitlint-github-action@v6
+        with:
+          # Pastikan Anda memiliki file konfigurasi commitlint (commitlint.config.js)
+          configFile: 'commitlint.config.js'
+
+      # Langkah 5: Build dan jalankan test dengan Maven
+      - name: Build and Test with Maven
+        run: mvn -B verify --file pom.xml

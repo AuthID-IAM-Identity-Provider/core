@@ -1,0 +1,102 @@
+# {{#if isPatch}}Patch{{else}}{{#if isMinor}}Minor{{else}}Major{{/if}}{{/if}} Release: {{nextRelease.version}} ({{#if nextRelease.gitTag}}{{nextRelease.gitTag}}{{else}}{{nextRelease.version}}{{/if}}) - {{#with (split (gitDate nextRelease.gitHead) " ") as |dateParts|}}{{join (slice dateParts 1 4) " "}}{{/with}}
+
+{{#with commits}}
+{{#if breaking}}
+---
+### 💥 BREAKING CHANGES
+{{#each breaking}}
+- **{{scope}}**: {{subject}} ([{{shorthash @root.lastRelease.gitHead}}...{{shorthash @root.nextRelease.gitHead}}]) ([{{hash}}](
+  {{#if @root.host}}
+    {{#if @root.owner}}
+      {{#if @root.repository}}
+        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
+      {{/if}}
+    {{/if}}
+  {{/if}}
+/commit/{{this.hash}}))
+{{/each}}
+{{/if}}
+
+{{#if feat}}
+---
+### ✨ New Features
+{{#each feat}}
+- **{{scope}}**: {{subject}} ([{{hash}}](
+  {{#if @root.host}}
+    {{#if @root.owner}}
+      {{#if @root.repository}}
+        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
+      {{/if}}
+    {{/if}}
+  {{/if}}
+/commit/{{this.hash}}))
+{{/each}}
+{{/if}}
+
+{{#if fix}}
+---
+### 🐛 Bug Fixes
+{{#each fix}}
+- **{{scope}}**: {{subject}} ([{{hash}}](
+  {{#if @root.host}}
+    {{#if @root.owner}}
+      {{#if @root.repository}}
+        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
+      {{/if}}
+    {{/if}}
+  {{/if}}
+/commit/{{this.hash}}))
+{{/each}}
+{{/if}}
+
+{{#if perf}}
+---
+### ⚡️ Performance Improvements
+{{#each perf}}
+- **{{scope}}**: {{subject}} ([{{hash}}](
+  {{#if @root.host}}
+    {{#if @root.owner}}
+      {{#if @root.repository}}
+        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
+      {{/if}}
+    {{/if}}
+  {{/if}}
+/commit/{{this.hash}}))
+{{/each}}
+{{/if}}
+
+{{#if refactor}}
+---
+### ♻️ Code Refactoring
+{{#each refactor}}
+- **{{scope}}**: {{subject}} ([{{hash}}](
+  {{#if @root.host}}
+    {{#if @root.owner}}
+      {{#if @root.repository}}
+        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
+      {{/if}}
+    {{/if}}
+  {{/if}}
+/commit/{{this.hash}}))
+{{/each}}
+{{/if}}
+
+{{#if chore}}
+---
+### ⚙️ Miscellaneous Chores
+{{#each chore}}
+- **{{scope}}**: {{subject}} ([{{hash}}](
+  {{#if @root.host}}
+    {{#if @root.owner}}
+      {{#if @root.repository}}
+        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
+      {{/if}}
+    {{/if}}
+  {{/if}}
+/commit/{{this.hash}}))
+{{/each}}
+{{/if}}
+{{/with}}
+
+---
+**Full Changelog**: `{{#if @root.lastRelease.gitTag}}{{@root.host}}/{{@root.owner}}/{{@root.repository}}/compare/{{@root.lastRelease.gitTag}}...{{@root.nextRelease.gitTag}}{{else}}...{{@root.nextRelease.gitTag}}{{/if}}`
