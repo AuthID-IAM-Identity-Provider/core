@@ -24,14 +24,6 @@
       }
     ],
     [
-      "semantic-release-maven",
-      {
-        "mvn": "mvn",
-        "verifyAuth": false,
-        "verifyGpg": false
-      }
-    ],
-    [
       "@semantic-release/github",
       {
         "assets": [
