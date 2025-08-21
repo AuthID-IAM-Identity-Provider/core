@@ -51,19 +51,25 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          # Store the output in a variable for robust parsing
-          DRY_RUN_OUTPUT=$(npx semantic-release --dry-run)
-          
+          # Capture both stdout and stderr for complete logging
+          DRY_RUN_OUTPUT=$(npx semantic-release --dry-run 2>&1)
+
           # Print the full output for debugging
           echo "--- Full semantic-release dry-run output ---"
           echo "${DRY_RUN_OUTPUT}"
           echo "--------------------------------------------"
 
-          # Extract the version from the variable
-          VERSION=$(echo "${DRY_RUN_OUTPUT}" | grep 'The next release version is' | sed -E 's/.* ([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
-          
+          # Use a more robust awk command to find the version number
+          VERSION=$(echo "${DRY_RUN_OUTPUT}" | awk '/The next release version is/ {print $NF}')
+
           if [ -z "$VERSION" ]; then
-            echo "Could not determine next version. Exiting."
+            # Check if the reason for no version is simply no relevant commits
+            if echo "${DRY_RUN_OUTPUT}" | grep -q "There are no relevant commits"; then
+              echo "Semantic-release found no relevant commits. Nothing to release."
+            else
+              # This will run if there was an actual error
+              echo "Could not determine next version from the output. Please check the logs above."
+            fi
             echo "NO_RELEASE=true" >> $GITHUB_ENV
           else
             echo "Next version is $VERSION"
