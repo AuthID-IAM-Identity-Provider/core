@@ -59,8 +59,11 @@ jobs:
           echo "${DRY_RUN_OUTPUT}"
           echo "--------------------------------------------"
 
-          # Use a more robust sed command to extract only the version number
-          VERSION=$(echo "${DRY_RUN_OUTPUT}" | sed -n 's/.*The next release version is \([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p')
+          # Use a more robust grep command to extract the version
+          VERSION=$(echo "${DRY_RUN_OUTPUT}" | grep -oP 'the next release version is \K\d+\.\d+\.\d+')
+          
+          # --- LANGKAH DEBUG BARU ---
+          echo "Debug: Extracted VERSION variable is [${VERSION}]"
 
           if [ -z "$VERSION" ]; then
             if echo "${DRY_RUN_OUTPUT}" | grep -q "There are no relevant commits"; then
