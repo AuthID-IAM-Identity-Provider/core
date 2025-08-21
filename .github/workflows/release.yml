@@ -51,10 +51,19 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          npx semantic-release --dry-run > release_output.txt || true
-          VERSION=$(grep 'The next release version is' release_output.txt | sed -E 's/.* ([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+          # Store the output in a variable for robust parsing
+          DRY_RUN_OUTPUT=$(npx semantic-release --dry-run)
+          
+          # Print the full output for debugging
+          echo "--- Full semantic-release dry-run output ---"
+          echo "${DRY_RUN_OUTPUT}"
+          echo "--------------------------------------------"
+
+          # Extract the version from the variable
+          VERSION=$(echo "${DRY_RUN_OUTPUT}" | grep 'The next release version is' | sed -E 's/.* ([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+          
           if [ -z "$VERSION" ]; then
-            echo "No new version to release. Exiting."
+            echo "Could not determine next version. Exiting."
             echo "NO_RELEASE=true" >> $GITHUB_ENV
           else
             echo "Next version is $VERSION"
