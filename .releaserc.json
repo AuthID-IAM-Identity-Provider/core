@@ -8,7 +8,7 @@
         "preset": "conventionalcommits",
         "config": {
           "writerOpts": {
-            "mainTemplate": "./.github/templates/release.hbs",
+            "mainTemplate": "./.github/templates/release-notes-template.hbs",
             "headerPartial": "",
             "commitPartial": "",
             "footerPartial": ""
@@ -26,7 +26,9 @@
     [
       "semantic-release-maven",
       {
-        "mvn": "mvn"
+        "mvn": "mvn",
+        "verifyAuth": false,
+        "verifyGpg": false
       }
     ],
     [
