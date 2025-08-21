@@ -1,35 +1,44 @@
-# Nama workflow
 name: Nightly Release
 
 on:
-  # Pemicu: Berjalan setiap hari jam 00:00 UTC
+  push:
+    branches:
+      - dev
   schedule:
     - cron: '0 0 * * *'
-  # Juga bisa dipicu manual
   workflow_dispatch:
 
 jobs:
-  build-and-release-nightly:
-    name: Create Nightly Release
+  release:
+    name: Create Nightly Pre-Release
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Izin untuk membuat release
+      contents: write
+      pull-requests: write
 
     steps:
-      # Langkah 1: Checkout kode dari branch develop
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: develop # Target branch untuk nightly
+          # Ambil semua history agar semantic-release bisa membandingkan dengan branch main
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
 
-      # Langkah 2: Setup JDK 21
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install semantic-release dependencies
+        run: |
+          npm install -g semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/github @semantic-release/git conventional-changelog-conventionalcommits
+
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'oracle'
+          distribution: 'temurin'
 
-      # Langkah 3: Cache dependensi Maven
       - name: Cache Maven packages
         uses: actions/cache@v4
         with:
@@ -38,30 +47,50 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2
 
-      # Langkah 4: Build proyek
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml -DskipTests
-
-      # Langkah 5: Buat file Checksum
-      - name: Generate Checksum
-        run: |
-          cd target
-          sha256sum *.jar > sha256sums.txt
-          cd ..
-          echo "Checksum file generated at target/sha256sums.txt"
-
-      # Langkah 6: Buat Rilis dan Upload Artefak (JAR + Checksum)
-      - name: Create Nightly Release and Upload Assets
-        uses: softprops/action-gh-release@v2
-        with:
-          # Membuat tag yang unik berdasarkan tanggal dan commit
-          tag_name: nightly-$(date +'%Y%m%d')-${{ github.sha }}
-          name: "Nightly Build ${{ env.TODAY }}"
-          body: "Automated nightly build from commit ${{ github.sha }}. This is a pre-release version and may be unstable."
-          prerelease: true
-          # Menggunakan wildcard untuk mengunggah file JAR dan file checksum
-          files: |
-            target/*.jar
-            target/sha256sums.txt
+      - name: Get next version
+        id: get_version
         env:
-          TODAY: $(date +'%Y-%m-%d')
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          # Jalankan dry-run untuk mendapatkan versi pre-release
+          DRY_RUN_OUTPUT=$(npx semantic-release --dry-run 2>&1)
+          echo "--- Full semantic-release dry-run output ---"
+          echo "${DRY_RUN_OUTPUT}"
+          echo "--------------------------------------------"
+
+          # Ekstrak versi (termasuk pre-release tag seperti -nightly.1)
+          VERSION=$(echo "${DRY_RUN_OUTPUT}" | grep -oP 'the next release version is \K[0-9]+\.[0-9]+\.[0-9]+-nightly\.[0-9]+')
+          echo "Debug: Extracted VERSION variable is [${VERSION}]"
+
+          if [ -z "$VERSION" ]; then
+            echo "No new version to release. Exiting."
+            echo "NO_RELEASE=true" >> $GITHUB_ENV
+          else
+            echo "Next version is $VERSION"
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
+          fi
+
+      - name: Prepare Release Assets
+        if: env.NO_RELEASE != 'true'
+        run: |
+          # Kita tidak update pom.xml untuk nightly build, cukup build saja
+          mvn -B package -DskipTests
+          mkdir -p target/release-assets
+          JAR_FILE=$(find target -maxdepth 1 -name "*.jar")
+          if [ ! -f "$JAR_FILE" ]; then
+            echo "JAR file not found!"
+            exit 1
+          fi
+          
+          # Gunakan nama file yang konsisten untuk nightly
+          ASSET_NAME="app-${VERSION}"
+          mv "$JAR_FILE" "target/release-assets/${ASSET_NAME}.jar"
+          cd target/release-assets
+          sha256sum "${ASSET_NAME}.jar" > "${ASSET_NAME}.jar.sha256"
+          cd ../..
+
+      - name: Run semantic-release
+        if: env.NO_RELEASE != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release
