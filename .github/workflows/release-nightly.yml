@@ -59,7 +59,8 @@ jobs:
           echo "--------------------------------------------"
 
           # Ekstrak versi (termasuk pre-release tag seperti -nightly.1)
-          VERSION=$(echo "${DRY_RUN_OUTPUT}" | grep -oP 'the next release version is \K[0-9]+\.[0-9]+\.[0-9]+-nightly\.[0-9]+')
+          # Menambahkan -i agar tidak case-sensitive
+          VERSION=$(echo "${DRY_RUN_OUTPUT}" | grep -i -oP 'the next release version is \K[0-9]+\.[0-9]+\.[0-9]+-nightly\.[0-9]+')
           echo "Debug: Extracted VERSION variable is [${VERSION}]"
 
           if [ -z "$VERSION" ]; then
