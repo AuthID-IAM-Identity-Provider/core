@@ -21,8 +21,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # FIX #1: Tambahkan token di sini agar git bisa push
           token: ${{ secrets.GH_TOKEN }}
+
+      # --- LANGKAH DEBUG BARU ---
+      - name: Verify Config File
+        run: |
+          echo "--- Verifying .releaserc.json content ---"
+          cat .releaserc.json
+          echo "-----------------------------------------"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -49,11 +55,9 @@ jobs:
 
       - name: Get next version
         id: get_version
-        # FIX #2: Tambahkan blok env di sini
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          # Tambahkan '|| true' agar workflow tidak berhenti jika dry-run gagal
           npx semantic-release --dry-run > release_output.txt || true
           VERSION=$(grep 'The next release version is' release_output.txt | sed -E 's/.* ([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
           if [ -z "$VERSION" ]; then
@@ -82,7 +86,7 @@ jobs:
           fi
           mv "$JAR_FILE" "target/release-assets/${ASSET_NAME}.jar"
           cd target/release-assets
-          sha256sum "${ASSET_NAME}.jar" > "${ASSET_NAME}.jar.sha256"
+          sha2sum -a 256 "${ASSET_NAME}.jar" > "${ASSET_NAME}.jar.sha256"
           cd ../..
 
       - name: Run semantic-release
