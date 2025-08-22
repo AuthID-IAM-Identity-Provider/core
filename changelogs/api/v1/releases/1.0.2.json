@@ -1,0 +1,33 @@
+{
+  "version": "1.0.2",
+  "date": "2025-08-22T19:54:36.146Z",
+  "notes": "## [1.0.2](https://github.com/AuthID-IAM-Identity-Provider/core/compare/v1.0.1...v1.0.2) (2025-08-22)\n\n### Bug Fixes\n\n* **setup-ci:** addopt  more flexible and conventional commit resilient regex ([370727f](https://github.com/AuthID-IAM-Identity-Provider/core/commit/370727f89d76e4502b6343d0219bc58fb1bfc44d))\n* **setup-ci:** fix commit parsing ([fa2dc9c](https://github.com/AuthID-IAM-Identity-Provider/core/commit/fa2dc9c1c45d6e7db483ec3f3603d51e7254283a))\n",
+  "commits": {
+    "features": [],
+    "fixes": [
+      {
+        "commit": "370727f",
+        "author": "elhakimdev99",
+        "date": "2025-08-22T19:53:11.000Z",
+        "message": "fix(setup-ci): addopt  more flexible and conventional commit resilient regex",
+        "scope": "general",
+        "issue": null
+      },
+      {
+        "commit": "fa2dc9c",
+        "author": "elhakimdev99",
+        "date": "2025-08-22T19:51:06.000Z",
+        "message": "fix(setup-ci): fix commit parsing",
+        "scope": "general",
+        "issue": null
+      }
+    ],
+    "performance": [],
+    "refactoring": [],
+    "tests": [],
+    "styles": [],
+    "docs": [],
+    "chores": [],
+    "breakingChanges": []
+  }
+}

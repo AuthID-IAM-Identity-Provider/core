@@ -1,6 +1,11 @@
 {
   "releases": [
     {
+      "version": "1.0.2",
+      "date": "2025-08-22T19:54:36.146Z",
+      "path": "./releases/1.0.2.json"
+    },
+    {
       "version": "1.0.1",
       "date": "2025-08-22T19:36:07.487Z",
       "path": "./releases/1.0.1.json"
