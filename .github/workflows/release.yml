@@ -53,7 +53,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           # Capture both stdout and stderr for complete logging
-          DRY_RUN_OUTPUT=$(npx semantic-release --dry-run 2>&1)
+          DRY_RUN_OUTPUT=$(npx semantic-release --dry-run || true)
 
           # Print the full output for debugging
           echo "--- Full semantic-release dry-run output ---"
