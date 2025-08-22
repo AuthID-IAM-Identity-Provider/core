@@ -94,6 +94,9 @@ function createReleaseJsonObject() {
     },
   };
   commits.forEach((commit) => {
+
+    console.log("Log commit : " + commit.hash, {commit});
+
     const commitData = {
       commit: commit.hash.substring(0, 7),
       author: commit.author.name,
