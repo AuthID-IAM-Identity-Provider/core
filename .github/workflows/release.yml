@@ -1,9 +1,10 @@
-name: Create Stable Release
+name: Setup Stable & LTS Release
 
 on:
   push:
     branches:
       - main
+      - '+([0-9]).x'
 
 jobs:
   release:
@@ -100,7 +101,7 @@ jobs:
           fi
           mv "$JAR_FILE" "target/release-assets/${ASSET_NAME}.jar"
           cd target/release-assets
-          sha256sum "${ASSET_NAME}.jar" > "${ASSET_NAME}.jar.sha256"
+          sha256sum "${ASSET_NAME}.jar" > "checksums.txt"
           cd ../..
 
       - name: Run semantic-release

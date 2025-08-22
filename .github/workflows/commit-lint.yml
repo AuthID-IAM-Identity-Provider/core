@@ -1,12 +1,20 @@
 # Nama workflow
-name: PR Validation
+name: Commit & PR Linting Validation
 
 # Pemicu: Berjalan saat ada pull request ke branch main atau develop
 on:
+  push: 
+    branches: 
+      - main
+      - dev
   pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
     branches:
       - main
-      - develop
+      - dev
 
 jobs:
   validate:

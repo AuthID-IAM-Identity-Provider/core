@@ -1,0 +1,25 @@
+name: Create LTS Branch on Major Release
+on:
+  release:
+    types: [published]
+jobs:
+  create-lts-branch:
+    name: Create LTS Branch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: github.event.release.prerelease == false && endsWith(github.event.release.tag_name, '.0.0')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+      - name: Create and Push LTS Branch
+        run: |
+          RELEASE_TAG=${{ github.event.release.tag_name }}
+          MAJOR_VERSION=$(echo ${RELEASE_TAG} | sed -E 's/v([0-9]+)\..*/\1/')
+          LTS_BRANCH_NAME="${MAJOR_VERSION}.x"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b ${LTS_BRANCH_NAME} ${RELEASE_TAG}
+          git push origin ${LTS_BRANCH_NAME}

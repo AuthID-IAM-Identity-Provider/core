@@ -1,101 +1,106 @@
-# {{#if isPatch}}Patch{{else}}{{#if isMinor}}Minor{{else}}Major{{/if}}{{/if}} Release: {{nextRelease.version}} ({{#if nextRelease.gitTag}}{{nextRelease.gitTag}}{{else}}{{nextRelease.version}}{{/if}}) - {{#with (split (gitDate nextRelease.gitHead) " ") as |dateParts|}}{{join (slice dateParts 1 4) " "}}{{/with}}
+# {{#if isPatch}}Patch{{else}}{{#if isMinor}}Minor{{else}}Major{{/if}}{{/if}} Release: {{nextRelease.version}} - {{#with (split (gitDate nextRelease.gitHead) " ") as |dateParts|}}{{join (slice dateParts 1 4) " "}}{{/with}}
 
 {{#with commits}}
+
 {{#if breaking}}
 ---
 ### 💥 BREAKING CHANGES
+
+| Commit | Scope | Description | PR / Issue | Author | Date |
+|---|---|---|---|---|---|
 {{#each breaking}}
-- **{{scope}}**: {{subject}} ([{{shorthash @root.lastRelease.gitHead}}...{{shorthash @root.nextRelease.gitHead}}]) ([{{hash}}](
-  {{#if @root.host}}
-    {{#if @root.owner}}
-      {{#if @root.repository}}
-        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
-      {{/if}}
-    {{/if}}
-  {{/if}}
-/commit/{{this.hash}}))
+| [{{shorthash}}]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/commit/{{hash}}) | `{{scope}}` | {{subject}} | {{#if references}}{{#each references}}[`#{{issue}}`]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/issues/{{issue}}){{/each}}{{else}}N/A{{/if}} | {{authorName}} | {{formatDate committerDate "yyyy-mm-dd"}} |
 {{/each}}
 {{/if}}
 
 {{#if feat}}
 ---
 ### ✨ New Features
+
+| Commit | Scope | Description | PR / Issue | Author | Date |
+|---|---|---|---|---|---|
 {{#each feat}}
-- **{{scope}}**: {{subject}} ([{{hash}}](
-  {{#if @root.host}}
-    {{#if @root.owner}}
-      {{#if @root.repository}}
-        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
-      {{/if}}
-    {{/if}}
-  {{/if}}
-/commit/{{this.hash}}))
+| [{{shorthash}}]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/commit/{{hash}}) | `{{scope}}` | {{subject}} | {{#if references}}{{#each references}}[`#{{issue}}`]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/issues/{{issue}}){{/each}}{{else}}N/A{{/if}} | {{authorName}} | {{formatDate committerDate "yyyy-mm-dd"}} |
 {{/each}}
 {{/if}}
 
 {{#if fix}}
 ---
 ### 🐛 Bug Fixes
+
+| Commit | Scope | Description | PR / Issue | Author | Date |
+|---|---|---|---|---|---|
 {{#each fix}}
-- **{{scope}}**: {{subject}} ([{{hash}}](
-  {{#if @root.host}}
-    {{#if @root.owner}}
-      {{#if @root.repository}}
-        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
-      {{/if}}
-    {{/if}}
-  {{/if}}
-/commit/{{this.hash}}))
+| [{{shorthash}}]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/commit/{{hash}}) | `{{scope}}` | {{subject}} | {{#if references}}{{#each references}}[`#{{issue}}`]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/issues/{{issue}}){{/each}}{{else}}N/A{{/if}} | {{authorName}} | {{formatDate committerDate "yyyy-mm-dd"}} |
 {{/each}}
 {{/if}}
 
 {{#if perf}}
 ---
 ### ⚡️ Performance Improvements
+
+| Commit | Scope | Description | PR / Issue | Author | Date |
+|---|---|---|---|---|---|
 {{#each perf}}
-- **{{scope}}**: {{subject}} ([{{hash}}](
-  {{#if @root.host}}
-    {{#if @root.owner}}
-      {{#if @root.repository}}
-        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
-      {{/if}}
-    {{/if}}
-  {{/if}}
-/commit/{{this.hash}}))
+| [{{shorthash}}]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/commit/{{hash}}) | `{{scope}}` | {{subject}} | {{#if references}}{{#each references}}[`#{{issue}}`]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/issues/{{issue}}){{/each}}{{else}}N/A{{/if}} | {{authorName}} | {{formatDate committerDate "yyyy-mm-dd"}} |
 {{/each}}
 {{/if}}
 
 {{#if refactor}}
 ---
 ### ♻️ Code Refactoring
+
+| Commit | Scope | Description | PR / Issue | Author | Date |
+|---|---|---|---|---|---|
 {{#each refactor}}
-- **{{scope}}**: {{subject}} ([{{hash}}](
-  {{#if @root.host}}
-    {{#if @root.owner}}
-      {{#if @root.repository}}
-        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
-      {{/if}}
-    {{/if}}
-  {{/if}}
-/commit/{{this.hash}}))
+| [{{shorthash}}]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/commit/{{hash}}) | `{{scope}}` | {{subject}} | {{#if references}}{{#each references}}[`#{{issue}}`]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/issues/{{issue}}){{/each}}{{else}}N/A{{/if}} | {{authorName}} | {{formatDate committerDate "yyyy-mm-dd"}} |
+{{/each}}
+{{/if}}
+
+{{#if test}}
+---
+### 🧪 Tests
+
+| Commit | Scope | Description | PR / Issue | Author | Date |
+|---|---|---|---|---|---|
+{{#each test}}
+| [{{shorthash}}]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/commit/{{hash}}) | `{{scope}}` | {{subject}} | {{#if references}}{{#each references}}[`#{{issue}}`]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/issues/{{issue}}){{/each}}{{else}}N/A{{/if}} | {{authorName}} | {{formatDate committerDate "yyyy-mm-dd"}} |
+{{/each}}
+{{/if}}
+
+{{#if style}}
+---
+### 🎨 Styles
+
+| Commit | Scope | Description | PR / Issue | Author | Date |
+|---|---|---|---|---|---|
+{{#each style}}
+| [{{shorthash}}]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/commit/{{hash}}) | `{{scope}}` | {{subject}} | {{#if references}}{{#each references}}[`#{{issue}}`]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/issues/{{issue}}){{/each}}{{else}}N/A{{/if}} | {{authorName}} | {{formatDate committerDate "yyyy-mm-dd"}} |
+{{/each}}
+{{/if}}
+
+{{#if docs}}
+---
+### 📝 Documentation
+
+| Commit | Scope | Description | PR / Issue | Author | Date |
+|---|---|---|---|---|---|
+{{#each docs}}
+| [{{shorthash}}]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/commit/{{hash}}) | `{{scope}}` | {{subject}} | {{#if references}}{{#each references}}[`#{{issue}}`]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/issues/{{issue}}){{/each}}{{else}}N/A{{/if}} | {{authorName}} | {{formatDate committerDate "yyyy-mm-dd"}} |
 {{/each}}
 {{/if}}
 
 {{#if chore}}
 ---
 ### ⚙️ Miscellaneous Chores
+
+| Commit | Scope | Description | PR / Issue | Author | Date |
+|---|---|---|---|---|---|
 {{#each chore}}
-- **{{scope}}**: {{subject}} ([{{hash}}](
-  {{#if @root.host}}
-    {{#if @root.owner}}
-      {{#if @root.repository}}
-        {{@root.host}}/{{@root.owner}}/{{@root.repository}}
-      {{/if}}
-    {{/if}}
-  {{/if}}
-/commit/{{this.hash}}))
+| [{{shorthash}}]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/commit/{{hash}}) | `{{scope}}` | {{subject}} | {{#if references}}{{#each references}}[`#{{issue}}`]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/issues/{{issue}}){{/each}}{{else}}N/A{{/if}} | {{authorName}} | {{formatDate committerDate "yyyy-mm-dd"}} |
 {{/each}}
 {{/if}}
+
 {{/with}}
 
 ---

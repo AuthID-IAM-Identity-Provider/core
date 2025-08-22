@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-
+    if: "!contains(github.event.head_commit.message, 'chore(release)')"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -87,11 +87,11 @@ jobs:
           ASSET_NAME="app-${VERSION}"
           mv "$JAR_FILE" "target/release-assets/${ASSET_NAME}.jar"
           cd target/release-assets
-          sha256sum "${ASSET_NAME}.jar" > "${ASSET_NAME}.jar.sha256"
+          sha256sum "${ASSET_NAME}.jar" > "checksums.txt"
           cd ../..
 
       - name: Run semantic-release
         if: env.NO_RELEASE != 'true'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npx semantic-release
+        run: npx semantic-release -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator -p @semantic-release/github

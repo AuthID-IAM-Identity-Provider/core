@@ -1,46 +1,36 @@
 {
   "branches": [
     "main",
-    {
-      "name": "dev",
-      "prerelease": "nightly"
-    }
+    { "name": "+([0-9]).x", "range": "+([0-9]).x.x" },
+    { "name": "next", "prerelease": "next" },
+    { "name": "beta", "prerelease": "rc" },
+    { "name": "dev", "prerelease": "nightly" }
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
     [
-      "@semantic-release/release-notes-generator",
+      "@semantic-release/exec",
       {
-        "preset": "conventionalcommits",
-        "config": {
-          "writerOpts": {
-            "mainTemplate": "./.github/templates/release-notes-template.hbs",
-            "headerPartial": "",
-            "commitPartial": "",
-            "footerPartial": ""
-          }
-        }
-      }
-    ],
-    [
-      "@semantic-release/changelog",
-      {
-        "changelogFile": "CHANGELOG.md",
-        "changelogTitle": "# Changelog\n\nAll notable changes to this project will be documented in this file."
+        "prepareCmd": "node ./.github/scripts/generate-changelog.js ${nextRelease.version}"
       }
     ],
     [
       "@semantic-release/github",
       {
         "assets": [
-          { "path": "target/release-assets/*", "label": "Distribution Files" }
+          { "path": "target/release-assets/*", "label": "Distribution Files" },
+          { "path": "changelogs/api/v*/changelog.json", "label": "Changelog API Data" }
         ]
       }
     ],
     [
       "@semantic-release/git",
       {
-        "assets": ["pom.xml", "CHANGELOG.md"],
+        "assets": [
+          "pom.xml",
+          "changelogs/"
+        ],
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ]
