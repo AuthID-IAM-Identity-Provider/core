@@ -27,13 +27,6 @@ jobs:
         with:
           fetch-depth: 0 # Ambil semua history untuk validasi commit
 
-      # Langkah 2: Setup JDK 17 (sesuaikan dengan versi Java Anda)
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
       # Langkah 3: Cache dependensi Maven untuk mempercepat build
       - name: Cache Maven packages
         uses: actions/cache@v4

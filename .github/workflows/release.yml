@@ -31,13 +31,13 @@ jobs:
 
       - name: Install semantic-release dependencies
         run: |
-          npm install -g semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/github @semantic-release/git conventional-changelog-conventionalcommits
+          npm install -g semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/github @semantic-release/git @semantic-release/exec conventional-changelog-conventionalcommits
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'temurin'
+          distribution: 'oracle'
 
       - name: Cache Maven packages
         uses: actions/cache@v4

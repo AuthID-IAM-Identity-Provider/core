@@ -12,7 +12,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "node ./.github/scripts/generate-changelog.js ${nextRelease.version}"
+        "prepareCmd": "node ./.github/scripts/generate-changelog.mjs ${nextRelease.version}"
       }
     ],
     [
