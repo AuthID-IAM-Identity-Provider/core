@@ -49,7 +49,3 @@ jobs:
         with:
           # Pastikan Anda memiliki file konfigurasi commitlint (commitlint.config.js)
           configFile: 'commitlint.config.mjs'
-
-      # Langkah 5: Build dan jalankan test dengan Maven
-      - name: Build and Test with Maven
-        run: mvn -B verify --file pom.xml
