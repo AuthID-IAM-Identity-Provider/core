@@ -27,6 +27,7 @@ if (!version || !notes || !commitsRaw || !branchName || !buildNumber) {
 }
 
 const commits = JSON.parse(commitsRaw);
+console.log({commits});
 
 // --- Helper function to run shell commands ---
 function runCommand(command) {
