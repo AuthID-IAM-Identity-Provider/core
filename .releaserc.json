@@ -12,7 +12,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "node ./.github/scripts/prepare-release.js ${nextRelease.version} \"${nextRelease.notes}\" '${JSON.stringify(commits)}' ${process.env.GITHUB_RUN_NUMBER}"
+        "prepareCmd": "node ./.github/scripts/prepare-release.js ${nextRelease.version} \"${nextRelease.notes}\" '${JSON.stringify(commits)}'"
       }
     ],
     [

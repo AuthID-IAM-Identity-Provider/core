@@ -7,17 +7,22 @@ const crypto = require("crypto");
 const version = process.argv[2];
 const notes = process.argv[3];
 const commitsRaw = process.argv[4];
-const buildNumber = process.argv[5];
+// Get additional metadata from the GitHub Actions environment
+const branchName = process.env.GITHUB_REF_NAME;
+const buildNumber = process.env.GITHUB_RUN_NUMBER;
+const commitSha = process.env.GITHUB_SHA;
+const actor = process.env.GITHUB_ACTOR;
+const repository = process.env.GITHUB_REPOSITORY;
 
+console.log("Release Manifest Information:");
 console.log(`Version: ${version}`);
 console.log(`Notes: ${notes}`);
 console.log(`Commits: ${commitsRaw}`);
 console.log(`Build Number: ${buildNumber}`);
+console.log(`Branch Name: ${branchName}`);
 
-if (!version || !notes || !commitsRaw) {
-  console.error(
-    "Error: Release information was not provided via command-line arguments."
-  );
+if (!version || !notes || !commitsRaw || !branchName || !buildNumber) {
+  console.error('Error: Missing required arguments or environment variables.');
   process.exit(1);
 }
 
@@ -192,9 +197,6 @@ function prepareAssets() {
   const time = new Date().toTimeString().slice(0, 8).replace(/:/g, ''); // HHMMSS
   
   const assetName = `${appBundlename}-${version}-${channel}-${date}-${time}-build.${buildNumber}.jar`;
-  // Example: 1.1.0-stable-20250822-183000-build.42.jar
-  // Example: 1.2.0-next.1-next-20250823-010000-build.43.jar
-
   const destPath = path.join(assetsDir, assetName);
   
   fs.renameSync(sourcePath, destPath);
@@ -207,6 +209,66 @@ function prepareAssets() {
   const hex = hashSum.digest('hex');
   fs.writeFileSync(path.join(assetsDir, 'checksums.txt'), `${hex}  ${assetName}\n`);
   console.log('Generated checksums.txt');
+  generateBuildManifest(assetName, assetsDir, hex, channel);
+}
+
+function generateBuildManifest(assetName, assetsDir, checksum, channel) {
+    console.log(`Generating build-manifest.json... into: ${assetsDir}`);
+    const manifestPath = path.join(assetsDir, 'build-manifest.json');
+    let manifest = {
+        version: version,
+        channel: channel,
+        build: {
+            number: parseInt(buildNumber, 10),
+            timestamp: new Date().toISOString(),
+            triggeredBy: actor,
+            commit: commitSha,
+        },
+        project: {
+            repository: repository,
+            branch: branchName,
+        },
+        assets: [
+            {
+                filename: assetName,
+                size: fs.statSync(path.join(assetsDir, assetName)).size,
+                checksum: {
+                    sha256: checksum
+                }
+            },
+            {
+                filename: 'checksums.txt',
+                size: fs.statSync(path.join(assetsDir, 'checksums.txt')).size
+            }
+        ]
+    };
+
+    // First, write the manifest without its own checksum to calculate it
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+
+    // Now, calculate the checksum of the manifest file itself
+    const manifestBuffer = fs.readFileSync(manifestPath);
+    const manifestHashSum = crypto.createHash('sha256');
+    manifestHashSum.update(manifestBuffer);
+    const manifestChecksum = manifestHashSum.digest('hex');
+
+    // Add the self-checksum to the manifest object
+    manifest.manifest_checksum = {
+        sha256: manifestChecksum
+    };
+    
+    // Add the manifest file itself to the assets list
+    manifest.assets.push({
+        filename: 'build-manifest.json',
+        size: fs.statSync(manifestPath).size,
+        checksum: {
+            sha256: manifestChecksum
+        }
+    });
+
+    // Finally, overwrite the file with the complete manifest
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+    console.log('Successfully generated self-verifying build-manifest.json');
 }
 
 // --- Execute Script ---
