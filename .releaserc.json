@@ -12,7 +12,8 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "node ./.github/scripts/prepare-release.js ${nextRelease.version}"
+        "generateNotesCmd": "node ./.github/scripts/generate-changelogs.js ${nextRelease.version}",
+        "prepareCmd": "node ./.github/scripts/prepare-assets.js ${nextRelease.version}"
       }
     ],
     [
