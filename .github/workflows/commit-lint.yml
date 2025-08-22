@@ -3,10 +3,6 @@ name: Commit & PR Linting Validation
 
 # Pemicu: Berjalan saat ada pull request ke branch main atau develop
 on:
-  push: 
-    branches: 
-      - main
-      - dev
   pull_request:
     types:
       - opened
