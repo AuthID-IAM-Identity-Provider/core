@@ -8,6 +8,11 @@ const version = process.argv[2];
 const notes = process.argv[3];
 const commitsRaw = process.argv[4];
 
+console.log(`Version: ${version}`);
+console.log(`Notes: ${notes}`);
+console.log(`Commits: ${commitsRaw}`);
+
+
 if (!version || !notes || !commitsRaw) {
   console.error('Error: Release information was not provided via command-line arguments.');
   process.exit(1);
