@@ -77,7 +77,7 @@ function generateAllChangelogs() {
 }
 
 function createReleaseJsonObject() {
-  const conventionalCommitRegex = /^(?<type>\w+)(?:\((?<scope>.*)\))?!?: (?<subject>.*)$/;
+  const conventionalCommitRegex = /^(?<type>[a-zA-Z]+)(?:\((?<scope>[\w\s-]+)\))?!?: (?<subject>.*)$/;
 
   const releaseData = {
     version,
