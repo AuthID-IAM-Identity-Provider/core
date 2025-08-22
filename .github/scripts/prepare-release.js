@@ -3,14 +3,14 @@ const path = require('path');
 const { execSync } = require('child_process');
 const crypto = require('crypto');
 
-// This script is called by semantic-release.
-const { nextRelease, commits } = require('semantic-release/lib/get-release-info');
-
-// Get the version from the command line argument
+// Get Release Info from Environment Variables (The Correct Way)
 const version = process.argv[2];
+const notes = process.env.SEMANTIC_RELEASE_NEXT_RELEASE_NOTES;
+const commits = JSON.parse(process.env.SEMANTIC_RELEASE_COMMITS);
 
-if (!version) {
-  console.error('Error: Release version was not provided as an argument.');
+if (!version || !notes || !commits) {
+  console.error('Error: Release information was not found in the environment variables.');
+  console.log('This script should be run by the @semantic-release/exec plugin.');
   process.exit(1);
 }
 
@@ -56,11 +56,6 @@ function prepareRelease() {
 
 // --- Changelog Generation Logic ---
 function generateAllChangelogs() {
-  if (!nextRelease || !commits) {
-    console.log('No release info found. Skipping changelog generation.');
-    return;
-  }
-
   const releaseJson = createReleaseJsonObject();
   generateMarkdownFiles(releaseJson);
   generateJsonApiFiles(releaseJson);
@@ -68,9 +63,9 @@ function generateAllChangelogs() {
 
 function createReleaseJsonObject() {
     const releaseData = {
-        version: nextRelease.version,
+        version: version,
         date: new Date().toISOString(),
-        notes: nextRelease.notes,
+        notes: notes,
         commits: { features: [], fixes: [], performance: [], refactoring: [], tests: [], styles: [], docs: [], chores: [], breakingChanges: [] }
     };
 
