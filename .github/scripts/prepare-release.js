@@ -7,10 +7,12 @@ const crypto = require("crypto");
 const version = process.argv[2];
 const notes = process.argv[3];
 const commitsRaw = process.argv[4];
+const buildNumber = process.argv[5];
 
 console.log(`Version: ${version}`);
 console.log(`Notes: ${notes}`);
 console.log(`Commits: ${commitsRaw}`);
+console.log(`Build Number: ${buildNumber}`);
 
 if (!version || !notes || !commitsRaw) {
   console.error(
@@ -161,35 +163,50 @@ function generateJsonApiFiles(releaseJson) {
 }
 
 // --- Asset Preparation Logic ---
+// --- Asset Preparation Logic ---
+function getChannel(branch) {
+    if (branch === 'main') return 'stable';
+    if (branch === 'next') return 'next';
+    if (branch === 'beta') return 'rc';
+    if (branch === 'dev') return 'nightly';
+    if (branch.match(/^\d+\.x$/)) return 'lts';
+    return 'snapshot'; // Fallback
+}
+
 function prepareAssets() {
-  const assetsDir = "target/release-assets";
+  const appBundlename = "auth4j.id"
+  const assetsDir = 'target/release-assets';
   fs.mkdirSync(assetsDir, { recursive: true });
 
-  const jarFile = fs
-    .readdirSync("target")
-    .find((file) => file.endsWith(".jar"));
+  const jarFile = fs.readdirSync('target').find(file => file.endsWith('.jar'));
   if (!jarFile) {
-    console.error("ERROR: JAR file not found in target directory!");
+    console.error('ERROR: JAR file not found in target directory!');
     process.exit(1);
   }
+  
+  const sourcePath = path.join('target', jarFile);
 
-  const sourcePath = path.join("target", jarFile);
-  const assetName = `app-v${version}.jar`;
+  // --- NEW ASSET NAMING LOGIC ---
+  const channel = getChannel(branchName);
+  const date = new Date().toISOString().slice(0, 10).replace(/-/g, ''); // YYYYMMDD
+  const time = new Date().toTimeString().slice(0, 8).replace(/:/g, ''); // HHMMSS
+  
+  const assetName = `${appBundlename}-${version}-${channel}-${date}-${time}-build.${buildNumber}.jar`;
+  // Example: 1.1.0-stable-20250822-183000-build.42.jar
+  // Example: 1.2.0-next.1-next-20250823-010000-build.43.jar
+
   const destPath = path.join(assetsDir, assetName);
-
+  
   fs.renameSync(sourcePath, destPath);
   console.log(`Renamed JAR to ${assetName}`);
 
   // Generate checksum
   const fileBuffer = fs.readFileSync(destPath);
-  const hashSum = crypto.createHash("sha256");
+  const hashSum = crypto.createHash('sha256');
   hashSum.update(fileBuffer);
-  const hex = hashSum.digest("hex");
-  fs.writeFileSync(
-    path.join(assetsDir, "checksums.txt"),
-    `${hex}  ${assetName}\n`
-  );
-  console.log("Generated checksums.txt");
+  const hex = hashSum.digest('hex');
+  fs.writeFileSync(path.join(assetsDir, 'checksums.txt'), `${hex}  ${assetName}\n`);
+  console.log('Generated checksums.txt');
 }
 
 // --- Execute Script ---
