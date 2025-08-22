@@ -3,8 +3,16 @@ const path = require('path');
 
 // Get Release Info from Environment Variables
 const version = process.argv[2];
-const notes = process.env.SEMANTIC_RELEASE_NEXT_RELEASE_NOTES;
-const commitsRaw = process.env.SEMANTIC_RELEASE_COMMITS;
+const notes = fs.readFileSync('.release-notes.tmp', 'utf-8');
+const commitsRaw = fs.readFileSync('.commits.tmp', 'utf-8');
+
+console.log(`--- Generating changelog files for version ${version} ---`)
+
+console.debug({
+  version,
+  notes,
+  commitsRaw
+})
 
 if (!version || !notes || !commitsRaw) {
   console.error('Error: Release information was not found in environment variables.');
