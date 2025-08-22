@@ -12,7 +12,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "node ./.github/scripts/generate-changelog.mjs ${nextRelease.version}"
+        "prepareCmd": "node ./.github/scripts/prepare-release.js ${nextRelease.version}"
       }
     ],
     [
@@ -20,7 +20,7 @@
       {
         "assets": [
           { "path": "target/release-assets/*", "label": "Distribution Files" },
-          { "path": "changelogs/api/v*/changelog.json", "label": "Changelog API Data" }
+          { "path": "changelogs/api/**", "label": "Changelog API Data" }
         ]
       }
     ],
@@ -29,7 +29,8 @@
       {
         "assets": [
           "pom.xml",
-          "changelogs/"
+          "changelogs/",
+          "CHANGELOG.md"
         ],
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }

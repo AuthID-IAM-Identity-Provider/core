@@ -46,67 +46,9 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2
-
-      - name: Get next version
-        id: get_version
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          # Capture both stdout and stderr for complete logging
-          DRY_RUN_OUTPUT=$(npx semantic-release --dry-run || true)
-
-          # Print the full output for debugging
-          echo "--- Full semantic-release dry-run output ---"
-          echo "${DRY_RUN_OUTPUT}"
-          echo "--------------------------------------------"
-
-          # Use a more robust grep command to extract the version
-          VERSION=$(echo "${DRY_RUN_OUTPUT}" | grep -oP 'the next release version is \K\d+\.\d+\.\d+')
-          
-          # --- LANGKAH DEBUG BARU ---
-          echo "Debug: Extracted VERSION variable is [${VERSION}]"
-
-          if [ -z "$VERSION" ]; then
-            if echo "${DRY_RUN_OUTPUT}" | grep -q "There are no relevant commits"; then
-              echo "Semantic-release found no relevant commits. Nothing to release."
-            else
-              echo "Could not determine next version from the output. Please check the logs above."
-            fi
-            echo "NO_RELEASE=true" >> $GITHUB_ENV
-          else
-            echo "Next version is $VERSION"
-            echo "VERSION=$VERSION" >> $GITHUB_ENV
-          fi
-
-      # --- LANGKAH BARU UNTUK MENGGANTIKAN PLUGIN MAVEN ---
-      - name: Update pom.xml version
-        if: env.NO_RELEASE != 'true'
-        run: mvn versions:set -DnewVersion=${{ env.VERSION }} -DprocessAllModules
-
-      - name: Prepare Release Assets
-        if: env.NO_RELEASE != 'true'
-        run: |
-          mvn -B package -DskipTests
-          mkdir -p target/release-assets
-          JAR_FILE=$(find target -maxdepth 1 -name "*.jar")
-          if [ ! -f "$JAR_FILE" ]; then
-            echo "JAR file not found!"
-            exit 1
-          fi
-          RELEASE_DATE=$(date +'%Y%m%d')
-          SHORT_COMMIT=$(git rev-parse --short HEAD)
-          ASSET_NAME="app-v${VERSION}-${RELEASE_DATE}-${SHORT_COMMIT}"
-          if [[ "${VERSION}" == *.0 ]]; then
-            ASSET_NAME="app-v${VERSION}"
-          fi
-          mv "$JAR_FILE" "target/release-assets/${ASSET_NAME}.jar"
-          cd target/release-assets
-          sha256sum "${ASSET_NAME}.jar" > "checksums.txt"
-          cd ../..
-
+            
       - name: Run semantic-release
         id: semantic
-        if: env.NO_RELEASE != 'true'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npx semantic-release
