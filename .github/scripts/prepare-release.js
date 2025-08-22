@@ -77,6 +77,8 @@ function generateAllChangelogs() {
 }
 
 function createReleaseJsonObject() {
+  const conventionalCommitRegex = /^(?<type>\w+)(?:\((?<scope>.*)\))?!?: (?<subject>.*)$/;
+
   const releaseData = {
     version,
     date: new Date().toISOString(),
@@ -95,8 +97,9 @@ function createReleaseJsonObject() {
   };
   commits.forEach((commit) => {
 
-    console.log("Log commit : " + commit.hash, {commit});
-
+    // Regex to parse the conventional commit message
+    const match = commit.message.split('\n')[0].match(conventionalCommitRegex);
+    const commitType = match ? match.groups.type : null;
     const commitData = {
       commit: commit.hash.substring(0, 7),
       author: commit.author.name,
@@ -115,15 +118,12 @@ function createReleaseJsonObject() {
       docs: "docs",
       chore: "chores",
     };
-    if (typeMap[commit.type])
-      releaseData.commits[typeMap[commit.type]].push(commitData);
-    if (
-      Array.isArray(commit.notes) &&
-      commit.notes.some((note) =>
-        note.title.toUpperCase().includes("BREAKING CHANGE")
-      )
-    ) {
-      releaseData.commits.breakingChanges.push(commitData);
+    if (commitType && typeMap[commitType]) {
+        releaseData.commits[typeMap[commitType]].push(commitData);
+    }
+
+    if (commit.message.includes('BREAKING CHANGE:')) {
+        releaseData.commits.breakingChanges.push(commitData);
     }
   });
   return releaseData;
