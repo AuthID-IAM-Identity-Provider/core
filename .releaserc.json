@@ -7,24 +7,12 @@
     { "name": "dev", "prerelease": "nightly" }
   ],
   "plugins": [
-    [
-      "@semantic-release/commit-analyzer",
-      {
-        "releaseRules": [{ "type": "docs", "scope": "readme", "release": "patch" }]
-      }
-    ],
-    [
-      "@semantic-release/release-notes-generator",
-      {
-        "notesFile": ".release-notes.tmp"
-      }
-    ],
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
     [
       "@semantic-release/exec",
       {
-        "analyzeCommitsCmd": "echo '${JSON.stringify(commits)}' > .commits.tmp",
-        "generateNotesCmd": "node ./.github/scripts/generate-changelogs.js ${nextRelease.version}",
-        "prepareCmd": "node ./.github/scripts/prepare-assets.js ${nextRelease.version}"
+        "prepareCmd": "node ./.github/scripts/prepare-release.js ${nextRelease.version} \"${nextRelease.notes}\" '${JSON.stringify(commits)}'"
       }
     ],
     [

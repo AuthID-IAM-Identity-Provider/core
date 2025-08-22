@@ -1,25 +1,25 @@
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
+const crypto = require('crypto');
 
-// Get Release Info from Environment Variables
+// Get Release Info from command-line arguments
 const version = process.argv[2];
-const notes = fs.readFileSync('.release-notes.tmp', 'utf-8');
-const commitsRaw = fs.readFileSync('.commits.tmp', 'utf-8');
-
-console.log(`--- Generating changelog files for version ${version} ---`)
-
-console.debug({
-  version,
-  notes,
-  commitsRaw
-})
+const notes = process.argv[3];
+const commitsRaw = process.argv[4];
 
 if (!version || !notes || !commitsRaw) {
-  console.error('Error: Release information was not found in environment variables.');
+  console.error('Error: Release information was not provided via command-line arguments.');
   process.exit(1);
 }
 
 const commits = JSON.parse(commitsRaw);
+
+// --- Helper function to run shell commands ---
+function runCommand(command) {
+  console.log(`> ${command}`);
+  execSync(command, { stdio: 'inherit' });
+}
 
 // --- Path Definitions ---
 const majorVersion = `v${version.split('.')[0]}`;
@@ -32,13 +32,34 @@ const jsonDetailDir = path.join(jsonApiDir, 'releases');
 const jsonDetailFile = path.join(jsonDetailDir, `${version}.json`);
 const jsonIndexFile = path.join(jsonApiDir, 'index.json');
 
-// --- Main Generation Function ---
+// --- Main Preparation Function ---
+function prepareRelease() {
+  console.log(`--- Preparing release for version ${version} ---`);
+
+  // Step 1: Update pom.xml version
+  console.log(`Updating pom.xml to version ${version}...`);
+  runCommand(`mvn versions:set -DnewVersion=${version} -DprocessAllModules`);
+
+  // Step 2: Generate all changelog files (JSON and Markdown)
+  console.log('Generating changelog files...');
+  generateAllChangelogs();
+
+  // Step 3: Build the project and create the JAR
+  console.log('Building project with Maven...');
+  runCommand('mvn -B package -DskipTests');
+
+  // Step 4: Prepare and name the release assets
+  console.log('Preparing release assets...');
+  prepareAssets();
+
+  console.log('--- Release preparation complete ---');
+}
+
+// --- Changelog Generation Logic ---
 function generateAllChangelogs() {
-  console.log(`--- Generating changelog files for version ${version} ---`);
   const releaseJson = createReleaseJsonObject();
   generateMarkdownFiles(releaseJson);
   generateJsonApiFiles(releaseJson);
-  console.log('--- Changelog generation complete ---');
 }
 
 function createReleaseJsonObject() {
@@ -72,5 +93,32 @@ function generateJsonApiFiles(releaseJson) {
     fs.writeFileSync(jsonIndexFile, JSON.stringify(indexData, null, 2));
 }
 
+// --- Asset Preparation Logic ---
+function prepareAssets() {
+  const assetsDir = 'target/release-assets';
+  fs.mkdirSync(assetsDir, { recursive: true });
+
+  const jarFile = fs.readdirSync('target').find(file => file.endsWith('.jar'));
+  if (!jarFile) {
+    console.error('ERROR: JAR file not found in target directory!');
+    process.exit(1);
+  }
+  
+  const sourcePath = path.join('target', jarFile);
+  const assetName = `app-v${version}.jar`;
+  const destPath = path.join(assetsDir, assetName);
+  
+  fs.renameSync(sourcePath, destPath);
+  console.log(`Renamed JAR to ${assetName}`);
+
+  // Generate checksum
+  const fileBuffer = fs.readFileSync(destPath);
+  const hashSum = crypto.createHash('sha256');
+  hashSum.update(fileBuffer);
+  const hex = hashSum.digest('hex');
+  fs.writeFileSync(path.join(assetsDir, 'checksums.txt'), `${hex}  ${assetName}\n`);
+  console.log('Generated checksums.txt');
+}
+
 // --- Execute Script ---
-generateAllChangelogs();
+prepareRelease();
