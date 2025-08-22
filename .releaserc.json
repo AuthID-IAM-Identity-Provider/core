@@ -1,7 +1,7 @@
 {
   "branches": [
     "main",
-    { "name": "+([0-9]).x", "range": "+([0-9]).x.x" },
+    { "name": "+([0-9]).x" },
     { "name": "next", "prerelease": "next" },
     { "name": "beta", "prerelease": "rc" },
     { "name": "dev", "prerelease": "nightly" }
