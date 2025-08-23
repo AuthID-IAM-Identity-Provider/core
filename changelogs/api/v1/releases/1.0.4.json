@@ -1,0 +1,33 @@
+{
+  "version": "1.0.4",
+  "date": "2025-08-23T08:41:58.057Z",
+  "notes": "./.github/templates/release-notes-template.hbs",
+  "commits": {
+    "features": [],
+    "fixes": [
+      {
+        "commit": "ad5e62e",
+        "author": "elhakimdev99",
+        "date": "2025-08-23T08:39:14.000Z",
+        "message": "fix(setup-ci): use template",
+        "scope": "general",
+        "issue": null
+      },
+      {
+        "commit": "d74cc13",
+        "author": "elhakimdev99",
+        "date": "2025-08-23T08:21:22.000Z",
+        "message": "fix(setup-ci): fix fomratting",
+        "scope": "general",
+        "issue": null
+      }
+    ],
+    "performance": [],
+    "refactoring": [],
+    "tests": [],
+    "styles": [],
+    "docs": [],
+    "chores": [],
+    "breakingChanges": []
+  }
+}
