@@ -36,7 +36,7 @@ The Conventional Commits specification is a lightweight convention on top of com
 The commit message should be structured as follows:
 
 ```
-<type>[optional scope]: <description>
+<type>(optional scope): <description>
 
 [optional body]
 

@@ -77,7 +77,8 @@ function generateAllChangelogs() {
 }
 
 function createReleaseJsonObject() {
-  const conventionalCommitRegex = /^(?<type>[a-zA-Z]+)(?:\((?<scope>[\w\s-]+)\))?!?: (?<subject>.*)$/;
+    // CORRECTED: This regex properly handles the optional breaking change indicator (!) and the colon.
+    const conventionalCommitRegex = /^(?<type>[a-zA-Z]+)(?:\((?<scope>[\w.-]+)\))?!: (?<subject>.*)$/;
 
   const releaseData = {
     version,
