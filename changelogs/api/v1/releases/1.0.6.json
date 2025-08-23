@@ -1,0 +1,25 @@
+{
+  "version": "1.0.6",
+  "date": "2025-08-23T09:00:12.202Z",
+  "notes": "## [1.0.6](https://github.com/AuthID-IAM-Identity-Provider/core/compare/v1.0.5...v1.0.6) (2025-08-23)\n\n### 🐛 Bug Fixes\n\n* **fixing:** release page ([f168827](https://github.com/AuthID-IAM-Identity-Provider/core/commit/f1688277f5d6c612cfa250e0981c3147c498ef39))\n",
+  "commits": {
+    "features": [],
+    "fixes": [
+      {
+        "commit": "f168827",
+        "author": "elhakimdev99",
+        "date": "2025-08-23T08:55:55.000Z",
+        "message": "fix(fixing): release page",
+        "scope": "general",
+        "issue": null
+      }
+    ],
+    "performance": [],
+    "refactoring": [],
+    "tests": [],
+    "styles": [],
+    "docs": [],
+    "chores": [],
+    "breakingChanges": []
+  }
+}
