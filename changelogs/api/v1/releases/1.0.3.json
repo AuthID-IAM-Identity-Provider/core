@@ -1,0 +1,25 @@
+{
+  "version": "1.0.3",
+  "date": "2025-08-23T08:21:32.546Z",
+  "notes": "## [1.0.3](https://github.com/AuthID-IAM-Identity-Provider/core/compare/v1.0.2...v1.0.3) (2025-08-23)\n\n### 🐛 Bug Fixes\n\n* **setup-ci:** add preset-conf opts ([3104a14](https://github.com/AuthID-IAM-Identity-Provider/core/commit/3104a147181ac5cfb8822c2143523cef061e8e46))\n",
+  "commits": {
+    "features": [],
+    "fixes": [
+      {
+        "commit": "3104a14",
+        "author": "elhakimdev99",
+        "date": "2025-08-23T08:20:48.000Z",
+        "message": "fix(setup-ci): add preset-conf opts",
+        "scope": "general",
+        "issue": null
+      }
+    ],
+    "performance": [],
+    "refactoring": [],
+    "tests": [],
+    "styles": [],
+    "docs": [],
+    "chores": [],
+    "breakingChanges": []
+  }
+}
