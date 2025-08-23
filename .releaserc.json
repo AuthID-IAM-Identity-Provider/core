@@ -11,7 +11,7 @@
     [
       "@semantic-release/release-notes-generator",
       {
-        "config": "conventional-changelog-conventionalcommits",
+        "preset": "conventionalcommits",
         "presetConfig": {
           "types": [
             { "type": "feat", "section": "✨ New Features" },
@@ -23,9 +23,6 @@
             { "type": "docs", "section": "📝 Documentation" },
             { "type": "chore", "section": "⚙️ Miscellaneous Chores", "hidden": true }
           ]
-        },
-        "writerOpts": {
-          "mainTemplate": "./.github/templates/release-notes-template.hbs"
         },
         "notesFile": ".release-notes.tmp"
       }
