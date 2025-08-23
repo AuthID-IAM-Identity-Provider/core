@@ -1,0 +1,33 @@
+{
+  "version": "1.0.5",
+  "date": "2025-08-23T08:53:08.121Z",
+  "notes": "./.github/templates/release-notes-template.hbs",
+  "commits": {
+    "features": [],
+    "fixes": [
+      {
+        "commit": "8b794b5",
+        "author": "elhakimdev99",
+        "date": "2025-08-23T08:52:23.000Z",
+        "message": "fix(setup): change writer",
+        "scope": "general",
+        "issue": null
+      },
+      {
+        "commit": "8c594af",
+        "author": "elhakimdev99",
+        "date": "2025-08-23T08:47:08.000Z",
+        "message": "fix(setup-ci): add optional conf",
+        "scope": "general",
+        "issue": null
+      }
+    ],
+    "performance": [],
+    "refactoring": [],
+    "tests": [],
+    "styles": [],
+    "docs": [],
+    "chores": [],
+    "breakingChanges": []
+  }
+}
