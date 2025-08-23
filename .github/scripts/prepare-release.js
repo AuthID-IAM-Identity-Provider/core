@@ -130,8 +130,42 @@ function createReleaseJsonObject() {
 }
 
 function generateMarkdownFiles(releaseJson) {
+
+    // --- NEW LOGIC TO BUILD MARKDOWN TABLE ---
+    const typeSections = {
+        breakingChanges: '💥 BREAKING CHANGES',
+        features: '✨ New Features',
+        fixes: '🐛 Bug Fixes',
+        performance: '⚡️ Performance Improvements',
+        refactoring: '♻️ Code Refactoring',
+        tests: '🧪 Tests',
+        styles: '🎨 Styles',
+        docs: '📝 Documentation',
+        chores: '⚙️ Miscellaneous Chores',
+    };
+
+    let markdownNotes = `# ${releaseJson.version} (${new Date().toISOString().split('T')[0]})\n\n`;
+
+    const createTable = (commitList) => {
+        let table = '| Commit | Scope | Description | PR / Issue | Author |\n';
+        table += '|---|---|---|---|---|\n';
+        commitList.forEach(c => {
+            const issue = c.issue ? `[#${c.issue}](https://github.com/${repository}/issues/${c.issue})` : 'N/A';
+            const commitLink = `[${c.commit}](https://github.com/${repository}/commit/${c.commit})`;
+            table += `| ${commitLink} | \`${c.scope}\` | ${c.message} | ${issue} | ${c.author} |\n`;
+        });
+        return table;
+    };
+
+    for (const key in typeSections) {
+        if (releaseJson.commits[key] && releaseJson.commits[key].length > 0) {
+            markdownNotes += `### ${typeSections[key]}\n\n` + createTable(releaseJson.commits[key]) + '\n';
+        }
+    }
+    // --- END OF NEW LOGIC ---
+
   fs.mkdirSync(mdDetailDir, { recursive: true });
-  fs.writeFileSync(mdDetailFile, releaseJson.notes);
+  fs.writeFileSync(mdDetailFile, markdownNotes);
   if (!fs.existsSync(mdRootChangelog))
     fs.writeFileSync(
       mdRootChangelog,
