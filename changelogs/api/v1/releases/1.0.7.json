@@ -1,0 +1,16 @@
+{
+  "version": "1.0.7",
+  "date": "2025-08-23T09:10:22.068Z",
+  "notes": "## [1.0.7](https://github.com/AuthID-IAM-Identity-Provider/core/compare/v1.0.6...v1.0.7) (2025-08-23)\n\n### 🐛 Bug Fixes\n\n* **Setup-ci:** handle parse commit ([2631458](https://github.com/AuthID-IAM-Identity-Provider/core/commit/263145840cb5a2c520ed9b3d92351cc89b18f59a))\n",
+  "commits": {
+    "features": [],
+    "fixes": [],
+    "performance": [],
+    "refactoring": [],
+    "tests": [],
+    "styles": [],
+    "docs": [],
+    "chores": [],
+    "breakingChanges": []
+  }
+}
