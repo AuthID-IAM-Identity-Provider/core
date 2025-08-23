@@ -12,6 +12,18 @@
       "@semantic-release/release-notes-generator",
       {
         "preset": "conventionalcommits",
+                "presetConfig": {
+          "types": [
+            { "type": "feat", "section": "✨ New Features" },
+            { "type": "fix", "section": "🐛 Bug Fixes" },
+            { "type": "perf", "section": "⚡️ Performance Improvements" },
+            { "type": "refactor", "section": "♻️ Code Refactoring" },
+            { "type": "test", "section": "🧪 Tests" },
+            { "type": "style", "section": "🎨 Styles" },
+            { "type": "docs", "section": "📝 Documentation" },
+            { "type": "chore", "section": "⚙️ Miscellaneous Chores" }
+          ]
+        },
         "config": {
           "writerOpts": {
             "mainTemplate": "./.github/templates/release-notes-template.hbs"
