@@ -5,6 +5,7 @@ import io.authid.core.shared.rest.transformer.RestTransformer;
 import io.authid.core.shared.utils.UniPaginatedResult;
 import io.authid.core.shared.utils.UniResponse;
 import io.authid.core.shared.utils.UniResponseFactory;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -76,7 +77,7 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
     }
 
     @PostMapping
-    public ResponseEntity<UniResponse<CreateResponse>> create(@RequestBody CreateRequest createRequest) {
+    public ResponseEntity<UniResponse<CreateResponse>> create(@Valid @RequestBody CreateRequest createRequest) {
         T resource = getService().create(createRequest);
         CreateResponse response = getTransformer().toCreateResponse(resource);
         return getResponseFactory().created(URI.create("/"), response, "Create Success");

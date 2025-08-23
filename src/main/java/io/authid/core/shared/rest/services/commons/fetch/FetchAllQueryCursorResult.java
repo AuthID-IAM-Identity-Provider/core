@@ -21,7 +21,7 @@ public class FetchAllQueryCursorResult {
         FetchAllHooks<T> hooks
     ) {
         UUID cursorId = UUID.fromString(cursor);
-        Specification<T> cursorSpec = (root, query, cb) -> cb.lessThan(root.get("id"), cursorId);
+        Specification<T> cursorSpec = (root, query, criteriaBuilder) -> criteriaBuilder.lessThan(root.get("id"), cursorId);
         Specification<T> finalSpec = specification.and(cursorSpec);
 
         Pageable page = PageRequest.of(0, pageable.getPageSize() + 1, pageable.getSort());

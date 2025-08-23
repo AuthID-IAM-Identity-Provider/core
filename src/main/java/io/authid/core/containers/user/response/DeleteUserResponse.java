@@ -1,10 +1,12 @@
 package io.authid.core.containers.user.response;
 
 import io.authid.core.shared.rest.contracts.RestResponse;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
+@Builder
 @EqualsAndHashCode(callSuper = true)
 public class DeleteUserResponse extends RestResponse {
 }

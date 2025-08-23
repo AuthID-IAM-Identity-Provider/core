@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +37,6 @@ public class UserCommonServiceImpl extends RestServiceImpl<
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    @SuppressWarnings("unchecked")
     protected UserRepository getRepository() {
         return this.repository;
     }
@@ -140,15 +138,13 @@ public class UserCommonServiceImpl extends RestServiceImpl<
                     .password(passwordEncoder.encode(request.getPassword()))
                     .status(UserStatus.PENDING_VERIFICATION)
                     .build();
-
                 userEntity.markUnverifiedEmail();
-
                 return userEntity;
             }
 
             @Override
             public void afterCreate(UserEntity entity) {
-
+                
             }
         };
     }

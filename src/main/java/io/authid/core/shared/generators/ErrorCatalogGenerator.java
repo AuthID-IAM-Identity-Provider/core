@@ -10,11 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Component
 public class ErrorCatalogGenerator {
@@ -23,9 +19,6 @@ public class ErrorCatalogGenerator {
     private static final String MASTER_EXCEL_DIR = "src/main/resources/masters/";
 
     private static final String OUTPUT_JAVA_ROOT_DIR_RELATIVE = "src/main/java/";
-
-    private static final Pattern ENUM_ENTRY_PATTERN = Pattern.compile(
-        "\\s*(\\w+)\\((\".*?\"), (\"(?<category>.*?)\"), (\"(?<module>.*?)\"), (\"(?<baseKey>.*?)\"), (HttpStatus\\.\\w+), (\"(?<visibility>.*?)\")\\)");
 
     private static final String ENUM_TEMPLATE_HEADER = """
         // GENERATED FILE - DO NOT MODIFY MANUALLY
@@ -177,55 +170,6 @@ public class ErrorCatalogGenerator {
         }
     }
 
-    // readLookupSheet dimodifikasi untuk membuat dan meneruskan FormulaEvaluator
-    private Map<String, String> readLookupSheet(File excelFile, String sheetName, String keyColumnLetter, String valueColumnLetter) throws IOException {
-        Map<String, String> lookupMap = new HashMap<>();
-        try (FileInputStream inputStream = new FileInputStream(excelFile);
-             Workbook workbook = new XSSFWorkbook(inputStream)) {
-            FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator(); // Buat evaluator
-            Sheet sheet = workbook.getSheet(sheetName);
-            if (sheet == null) {
-                System.err.println("WARNING: Lookup sheet '" + sheetName + "' not found in " + excelFile.getName() + ". This might lead to validation errors.");
-                return lookupMap;
-            }
-            int keyColIdx = ColumnLetterToIndex(keyColumnLetter);
-            int valueColIdx = ColumnLetterToIndex(valueColumnLetter);
-            for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
-                Row row = sheet.getRow(rowNum);
-                if (row == null || isRowEmpty(row)) continue;
-                String key = getCellValue(row.getCell(keyColIdx), evaluator); // Teruskan evaluator
-                String value = getCellValue(row.getCell(valueColIdx), evaluator); // Teruskan evaluator
-                if (!key.isEmpty() && !value.isEmpty()) {
-                    lookupMap.put(key, value);
-                }
-            }
-        }
-        return lookupMap;
-    }
-
-    // readLookupEnvironments dimodifikasi untuk membuat dan meneruskan FormulaEvaluator
-    private Set<String> readLookupEnvironments(File excelFile) throws IOException {
-        Set<String> environments = new HashSet<>();
-        try (FileInputStream inputStream = new FileInputStream(excelFile);
-             Workbook workbook = new XSSFWorkbook(inputStream)) {
-            FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator(); // Buat evaluator
-            Sheet sheet = workbook.getSheet("Lookup_Environments");
-            if (sheet == null) {
-                System.err.println("WARNING: Lookup_Environments sheet not found in " + excelFile.getName() + ". Environment validation might be inaccurate.");
-                return environments;
-            }
-            for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
-                Row row = sheet.getRow(rowNum);
-                if (row == null || isRowEmpty(row)) continue;
-                String envName = getCellValue(row.getCell(0), evaluator); // Teruskan evaluator
-                if (!envName.isEmpty()) {
-                    environments.add(envName.toUpperCase());
-                }
-            }
-        }
-        return environments;
-    }
-
     private void processAllErrorDefinitionSheets(File masterExcelFile, Map<String, Map<String, List<String>>> groupedEnumEntries, Set<String> processedGlobalErrorCodes, Map<String, String> categoriesMap, Map<String, String> modulesMap, Set<String> validEnvironments) throws IOException {
         try (FileInputStream inputStream = new FileInputStream(masterExcelFile);
              Workbook workbook = new XSSFWorkbook(inputStream)) {
@@ -368,44 +312,5 @@ public class ErrorCatalogGenerator {
             }
         }
         return true;
-    }
-
-    private int ColumnLetterToIndex(String letter) {
-        int index = 0;
-        for (char c : letter.toUpperCase().toCharArray()) {
-            index = index * 26 + (c - 'A' + 1);
-        }
-        return index - 1;
-    }
-
-    // readExistingEnumEntries tetap ada (untuk dipanggil oleh writeGroupedErrorCatalogs jika perlu)
-    private Map<String, String> readExistingEnumEntries(String filePath) throws IOException {
-        Map<String, String> entries = new HashMap<>();
-        File file = new File(filePath);
-        if (!file.exists()) return entries;
-
-        List<String> lines = Files.readAllLines(Paths.get(filePath));
-        boolean inEnumBlock = false;
-        Pattern enumClassPattern = Pattern.compile("public\\s+enum\\s+(\\w+)\\s*\\{");
-
-        for (String line : lines) {
-            Matcher classMatcher = enumClassPattern.matcher(line);
-            if (classMatcher.find()) {
-                inEnumBlock = true;
-                continue;
-            }
-
-            if (inEnumBlock) {
-                if (line.trim().equals(";") || line.trim().equals("};")) {
-                    inEnumBlock = false;
-                    break;
-                }
-                Matcher entryMatcher = ENUM_ENTRY_PATTERN.matcher(line.trim());
-                if (entryMatcher.find()) {
-                    entries.put(entryMatcher.group(1), line.trim());
-                }
-            }
-        }
-        return entries;
     }
 }

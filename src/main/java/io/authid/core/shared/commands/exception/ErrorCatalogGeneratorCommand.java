@@ -9,9 +9,6 @@ import org.springframework.stereotype.Component;
 public class ErrorCatalogGeneratorCommand {
     private final ErrorCatalogGenerator errorCatalogGenerator;
 
-    // Path ke direktori master Excel Anda (harus sama dengan yang di generator)
-    // Bisa juga dijadikan @ShellOption untuk lebih fleksibel saat command dijalankan
-    private static final String DEFAULT_EXCEL_DIR = "src/main/resources/masters/";
     private static final String LOCK_KEY = "error_catalog_generation_lock"; // Key untuk lock
 
     public ErrorCatalogGeneratorCommand(ErrorCatalogGenerator errorCatalogGenerator) {

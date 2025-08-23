@@ -28,7 +28,6 @@ public class EventBus {
             .ifPresent(listeners -> listeners
                 .forEach(listener -> {
                     try {
-                        @SuppressWarnings("unchecked")
                         DomainEventListener<DomainEvent> typedListener = (DomainEventListener<DomainEvent>) listener;
                         typedListener.handle(event);
                     } catch (Exception e) {

@@ -1,7 +1,6 @@
 package io.authid.core.shared.components.database.converters; // Atau package yang sesuai
 
 import jakarta.persistence.AttributeConverter;
-import jakarta.persistence.Converter;
 import java.sql.Timestamp;
 import java.time.Instant;
 

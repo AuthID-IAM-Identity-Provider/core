@@ -5,6 +5,7 @@ import io.authid.core.shared.components.database.converters.InstantTimestampConv
 import io.authid.core.shared.components.database.model.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.Builder.Default;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -50,7 +51,8 @@ public class UserEntity extends BaseEntity<UUID> {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
+    @Column(name = "status")
+    @Default
     private UserStatus status = UserStatus.getDefault();
 
     @Column(name = "remember_token", length = 100)
@@ -71,6 +73,7 @@ public class UserEntity extends BaseEntity<UUID> {
     private Instant passwordChangedAt;
 
     @Column(name = "failed_login_attempts")
+    @Default
     private Integer failedLoginAttempts = 0;
 
     @Column(name = "locked_until")
@@ -89,6 +92,7 @@ public class UserEntity extends BaseEntity<UUID> {
     private Instant lastActivityAt;
 
     @Column(name = "login_count")
+    @Default
     private Integer loginCount = 0;
 
     // 1. ACCOUNT LIFECYCLE

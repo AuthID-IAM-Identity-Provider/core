@@ -21,7 +21,7 @@ public class FindByIdQueryHandler<T, ID> implements RestQueryHandler<T, FindById
 
         return query.repository()
             .findOne(
-                (root, q, cb) -> cb.equal(root.get("id"), query.uuid())
+                (root, q, criteriaBuilder) -> criteriaBuilder.equal(root.get("id"), query.uuid())
             )
             .map(entity -> {
                 hooks.afterFindById(entity);

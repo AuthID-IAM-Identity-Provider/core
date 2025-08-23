@@ -11,23 +11,23 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@PasswordMatches(message = "{user.password.mismatch}") // <-- Diperbaiki
+@PasswordMatches(message = "{user.password.mismatch}")
 public class CreateUserRequest extends RestRequest {
 
-    @NotBlank(message = "{user.name.required}") // <-- Diperbaiki
-    @Size(min = 3, max = 255, message = "{user.name.size}") // <-- Diperbaiki
+    @NotBlank(message = "{user.name.required}")
+    @Size(min = 3, max = 255, message = "{user.name.size}")
     private String name;
 
-    @NotBlank(message = "{user.email.required}") // <-- Diperbaiki
-    @Email(message = "{user.email.format}") // <-- Diperbaiki
-    @UniqueEmail(message = "{user.email.unique}") // <-- Diperbaiki
+    @NotBlank(message = "{user.email.required}")
+    @Email(message = "{user.email.format}")
+    @UniqueEmail(message = "{user.email.unique}")
     private String email;
 
-    @NotBlank(message = "{user.password.required}") // <-- Diperbaiki
-    @Size(min = 8, message = "{user.password.size}") // <-- Diperbaiki
+    @NotBlank(message = "{user.password.required}")
+    @Size(min = 8, message = "{user.password.size}")
     private String password;
 
-    @NotBlank(message = "{user.passwordConfirmation.required}") // <-- Diperbaiki
+    @NotBlank(message = "{user.passwordConfirmation.required}")
     private String passwordConfirmation;
 
     @NotBlank(message = "{user.status.required}")

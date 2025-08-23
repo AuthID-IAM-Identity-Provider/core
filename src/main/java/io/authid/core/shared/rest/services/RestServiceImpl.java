@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-
 import java.util.Map;
 
 @Slf4j
@@ -50,7 +49,8 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
     }
 
     @Override
-    public T create(C createRequest) {
+    public T create(
+        C createRequest) {
         return getRepository().save(
             getHooks().onCreating(createRequest)
         );
