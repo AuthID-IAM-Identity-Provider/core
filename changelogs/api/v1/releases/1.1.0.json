@@ -1,0 +1,16 @@
+{
+  "version": "1.1.0",
+  "date": "2025-08-24T00:58:12.690Z",
+  "notes": "## [1.1.0](https://github.com/AuthID-IAM-Identity-Provider/core/compare/v1.0.7...v1.1.0) (2025-08-24)\n\n### ✨ New Features\n\n* **validation:** handle and implement validation error handling) ([d9a489c](https://github.com/AuthID-IAM-Identity-Provider/core/commit/d9a489c204ee9d55c282dc0df4a3e1c4c25b462a))\n\n### 🐛 Bug Fixes\n\n* **refactor:** refctor     @Default ([f0ccef0](https://github.com/AuthID-IAM-Identity-Provider/core/commit/f0ccef071411fc8fe269b94fd79e7723e74ae85c))\n",
+  "commits": {
+    "features": [],
+    "fixes": [],
+    "performance": [],
+    "refactoring": [],
+    "tests": [],
+    "styles": [],
+    "docs": [],
+    "chores": [],
+    "breakingChanges": []
+  }
+}
