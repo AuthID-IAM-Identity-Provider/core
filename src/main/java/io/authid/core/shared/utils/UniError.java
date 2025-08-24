@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Getter
@@ -21,5 +22,6 @@ public class UniError {
     private final String action;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY) // Hanya tampil jika list tidak kosong
-    private final List<FieldErrorDetail> fieldErrors;
+    // private final List<FieldErrorDetail> fieldErrors;
+    private Map<String, List<String>> fieldErrors;
 }

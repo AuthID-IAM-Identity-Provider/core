@@ -42,7 +42,10 @@ public enum SystemErrorCatalog implements ErrorCatalog {
     NULL_POINTER_EXCEPTION("SYS-0107", "System", "Runtime", HttpStatus.INTERNAL_SERVER_ERROR, "ALL"), // Kode baru, kategori Routing
 
     @ExtractableI18n(value = "error.system.resource.not.found", suffixes = {".title", ".debug", ".cause", ".action"})
-    RESOURCE_NOT_FOUND("SYS-0107", "System", "Runtime", HttpStatus.NOT_FOUND, "ALL");
+    RESOURCE_NOT_FOUND("SYS-0107", "System", "Runtime", HttpStatus.NOT_FOUND, "ALL"),
+
+    @ExtractableI18n(value = "error.system.validation.error", suffixes = {".title", ".debug", ".cause", ".action"})
+    VALIDATION_ERROR("SYS-0108", "System", "Validation", HttpStatus.UNPROCESSABLE_ENTITY, "ALL");
 
     private final String code;
     private final String category;

@@ -10,12 +10,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestControllerAdvice
@@ -35,14 +39,23 @@ public class GlobalExceptionHandler {
         return responseFactory.error(ex.getErrorCatalog(), locale, ex.getArgs());
     }
 
-    @ExceptionHandler(NoResourceFoundException.class)
-    public ResponseEntity<UniResponse<Object>> handleNoResourceFoundException(NoResourceFoundException ex, Locale locale) {
-        log.warn("No resource found for URI: {}", ex.getResourcePath());
-        return responseFactory.error(SystemErrorCatalog.ROUTE_NOT_FOUND, locale, new Object[]{ex.getResourcePath(), ex.getMessage(), ex.getRootCause()});
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<UniResponse<Object>> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, Locale locale) {
+        // Mengelompokkan semua error berdasarkan nama field
+        Map<String, List<String>> validationErrors = ex.getBindingResult()
+                .getFieldErrors()
+                .stream()
+                .collect(Collectors.groupingBy(
+                        FieldError::getField, // Kunci Map adalah nama field
+                        Collectors.mapping(FieldError::getDefaultMessage, Collectors.toList()) // Value adalah List dari pesan error
+                ));
+
+        // Panggil factory untuk membuat respons
+        return responseFactory.validationError(SystemErrorCatalog.VALIDATION_ERROR, validationErrors, locale);
     }
 
     @ExceptionHandler(NullPointerException.class)
-    public ResponseEntity<UniResponse<Object>> handleNullPoinEntity(NullPointerException ex, Locale locale) {
+    public ResponseEntity<UniResponse<Object>> handleNullPointerException(NullPointerException ex, Locale locale) {
         log.warn("Null Pointer Exception: {}", ex.getCause());
         return responseFactory.error(SystemErrorCatalog.NULL_POINTER_EXCEPTION, locale, new Object[]{ex.getCause(), ex.getMessage()});
     }

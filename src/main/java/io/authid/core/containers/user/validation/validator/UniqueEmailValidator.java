@@ -4,14 +4,18 @@ import io.authid.core.containers.user.repositories.UserRepository;
 import io.authid.core.containers.user.validation.annotations.UniqueEmail;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
 
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
+
+    public UniqueEmailValidator(
+        UserRepository userRepository       
+    ) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public boolean isValid(String email, ConstraintValidatorContext context) {

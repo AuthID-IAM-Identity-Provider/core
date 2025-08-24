@@ -10,6 +10,8 @@ import java.net.URI;
 import java.time.Instant;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+
 import io.authid.core.shared.components.exception.contracts.ErrorCatalog;
 import org.springframework.stereotype.Component;
 
@@ -112,7 +114,7 @@ public class UniResponseFactory {
      * [METODE UTAMA VALIDATION ERROR]
      * Membuat respons error lengkap khusus untuk kegagalan validasi.
      */
-    public ResponseEntity<UniResponse<Object>> validationError(ErrorCatalog catalog, List<FieldErrorDetail> fieldErrors,Locale locale) {
+    public ResponseEntity<UniResponse<Object>> validationError(ErrorCatalog catalog, Map<String, List<String>> fieldErrors,Locale locale) {
         // Panggil helper untuk membangun payload, sertakan fieldErrors
         UniError errorPayload = buildUniError(catalog, fieldErrors, locale);
 
@@ -126,7 +128,7 @@ public class UniResponseFactory {
      * Pusat logika untuk membangun objek UniError dari ErrorCatalog.
      * Mengeliminasi duplikasi kode antara metode error dan validationError.
      */
-    private UniError buildUniError(ErrorCatalog catalog, List<FieldErrorDetail> fieldErrors, Locale locale, Object... args) {
+    private UniError buildUniError(ErrorCatalog catalog,  Map<String, List<String>> fieldErrors, Locale locale, Object... args) {
         // ✨ KUNCI PERBAIKAN: Dapatkan prefix dari nama kelas enum
         String fullClassNamePrefix = catalog.getClass().getName() + ".";
         String baseKey = catalog.getBaseMessageKey();
