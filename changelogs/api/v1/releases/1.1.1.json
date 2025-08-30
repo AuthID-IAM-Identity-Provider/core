@@ -1,0 +1,16 @@
+{
+  "version": "1.1.1",
+  "date": "2025-08-24T01:19:40.126Z",
+  "notes": "## [1.1.1](https://github.com/AuthID-IAM-Identity-Provider/core/compare/v1.1.0...v1.1.1) (2025-08-24)\n\n### 🐛 Bug Fixes\n\n* **docs:** update docs ([#9](https://github.com/AuthID-IAM-Identity-Provider/core/issues/9)) ([379d7bf](https://github.com/AuthID-IAM-Identity-Provider/core/commit/379d7bf61cb09e724b5eaf059c34de53c419d7d4))\n* **docs:** update readme ([#8](https://github.com/AuthID-IAM-Identity-Provider/core/issues/8)) ([cf8cda2](https://github.com/AuthID-IAM-Identity-Provider/core/commit/cf8cda28986ef39f71a70502d44b55764fffec9d))\n",
+  "commits": {
+    "features": [],
+    "fixes": [],
+    "performance": [],
+    "refactoring": [],
+    "tests": [],
+    "styles": [],
+    "docs": [],
+    "chores": [],
+    "breakingChanges": []
+  }
+}
