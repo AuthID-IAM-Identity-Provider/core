@@ -1,0 +1,30 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://localhost:3100/loki/api/v1/push
+
+scrape_configs:
+# Job #1: Membaca log request (dengan traceId)
+- job_name: authid-requests-service
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: authid-requests # Label untuk request
+      app: io.authid.core
+      __path__: /home/elhakimdev99/projects/core/logs/requests.json.log
+
+# Job #2: BARU! Membaca log aplikasi umum
+- job_name: authid-application-service
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: authid-application # Label untuk aplikasi umum
+      app: io.authid.core
+      __path__: /home/elhakimdev99/projects/core/logs/application.json.log # Path ke file baru

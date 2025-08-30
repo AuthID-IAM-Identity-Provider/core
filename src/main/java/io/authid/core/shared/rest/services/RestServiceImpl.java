@@ -7,6 +7,8 @@ import io.authid.core.shared.rest.services.commons.fetch.FetchAllQuery;
 import io.authid.core.shared.rest.services.commons.fetch.FetchAllQueryHandler;
 import io.authid.core.shared.rest.services.commons.find.FindByIdQuery;
 import io.authid.core.shared.rest.services.commons.find.FindByIdQueryHandler;
+import io.authid.core.shared.rest.services.commons.update.UpdateByIdCommand;
+import io.authid.core.shared.rest.services.commons.update.UpdateByIdCommandHandler;
 import io.authid.core.shared.utils.UniPaginatedResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -28,24 +30,23 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
 
     @Override
     public UniPaginatedResult<T> fetchAll(String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor) {
-        FetchAllQuery<T> allQuery = new FetchAllQuery<>(
-            searchTerm,
-            filters,
-            pageable,
-            cursor,
-            getRepository(),
-            getHooks()
+        return new FetchAllQueryHandler<T>().handle(
+            new FetchAllQuery<>(
+                searchTerm,
+                filters,
+                pageable,
+                cursor,
+                getRepository(),
+                getHooks()
+            )
         );
-
-        return new FetchAllQueryHandler<T>().handle(allQuery);
     }
 
     @Override
     public T findById(ID id) {
-
-        FindByIdQuery<T, ID> byIdQuery = new FindByIdQuery<>(id, getRepository(), getHooks());
-
-        return new FindByIdQueryHandler<T, ID>().handle(byIdQuery);
+        return new FindByIdQueryHandler<T, ID>().handle(
+            new FindByIdQuery<>(id, getRepository(), getHooks())
+        );
     }
 
     @Override
@@ -58,8 +59,14 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
 
     @Override
     public T update(ID id, U updateRequest) {
-        T entity = findById(id);
-        return getRepository().save(entity);
+        return new UpdateByIdCommandHandler<T, ID, C, U>().handle(
+            new UpdateByIdCommand<T, ID, C, U>(
+                id,
+                updateRequest,
+                getRepository(),
+                getHooks()
+            )
+        );
     }
 
     @Override

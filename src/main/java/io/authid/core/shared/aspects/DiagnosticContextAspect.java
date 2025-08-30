@@ -1,6 +1,6 @@
 package io.authid.core.shared.aspects;
 
-import io.authid.core.shared.aspects.stringifiers.*;
+import io.authid.core.shared.aspects.stringifiers.StringifierManager;
 import io.authid.core.shared.constants.DiagnosticContextConstant;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -9,25 +9,24 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/**
- * Aspect untuk logging terstruktur dan pengisian MDC pada layer Controller dan Service.
- * Menggunakan satu advice untuk mengurangi duplikasi kode.
- */
+import static net.logstash.logback.argument.StructuredArguments.kv;
+
 @Aspect
 @Component
 public class DiagnosticContextAspect {
 
     private static final Logger log = LoggerFactory.getLogger(DiagnosticContextAspect.class);
 
-    // --- Konfigurasi Stringifier (Sama seperti sebelumnya) ---
     private static final int MAX_STRING_LENGTH_TO_LOG = 100;
     private static final int MAX_MAP_ENTRIES_TO_LOG = 5;
     private static final int MAX_COLLECTION_ELEMENTS_TO_LOG = 5;
@@ -43,56 +42,89 @@ public class DiagnosticContextAspect {
                     SENSITIVE_KEY_PATTERN
             );
 
-    // --- Definisi Pointcut ---
     @Pointcut("within(io.authid.core..*.controllers.*Controller)")
     public void controllerLayer() {}
 
     @Pointcut("within(io.authid.core..*.services.*Service*)")
     public void serviceLayer() {}
 
-    /**
-     * Advice tunggal yang menangani logging untuk Controller dan Service.
-     */
+    private record LogDetails(String layer, String className, String methodName) {}
+
     @Around("controllerLayer() || serviceLayer()")
     public Object logMethodExecution(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
-        String layer = getLayerType(joinPoint); // Mendapatkan tipe layer: "CONTROLLER" atau "SERVICE"
-        String concreteClassName = joinPoint.getTarget().getClass().getSimpleName();
-        String concreteMethodName = joinPoint.getSignature().getName();
-        String abstractClassName = joinPoint.getSignature().getDeclaringType().getSimpleName();
-        String abstractMethodName = joinPoint.getSignature().getDeclaringType().getName();
+        
+        String layer = getLayerType(joinPoint);
+        String className = joinPoint.getTarget().getClass().getSimpleName();
+        String methodName = joinPoint.getSignature().getName();
+        LogDetails details = new LogDetails(layer, className, methodName);
 
-        // Mengisi MDC dengan konteks yang lebih spesifik
-        MDC.put(DiagnosticContextConstant.MDC_KEY_CONTEXT_CLASS, concreteClassName);
-        MDC.put(DiagnosticContextConstant.MDC_KEY_OPERATION_NAME, concreteMethodName);
+        MDC.put(DiagnosticContextConstant.MDC_KEY_CONTEXT_CLASS, className);
+        MDC.put(DiagnosticContextConstant.MDC_KEY_OPERATION_NAME, methodName);
 
         try {
-            String args = stringifyArguments(joinPoint.getArgs());
-            log.info("==> {}::{}({})", layer, abstractMethodName, args);
+            logEntry(details, joinPoint.getArgs());
 
-            // Eksekusi method asli
             Object result = joinPoint.proceed();
-
+            
             long duration = System.currentTimeMillis() - startTime;
-            log.info("<== [{}::{}] <== [{}::{}] <== {} returned [{}] in {}ms", concreteClassName, concreteMethodName, abstractClassName, abstractMethodName, layer, stringifierManager.stringifyArg(result), duration);
-
+            logExit(details, result, duration);
+            
             return result;
-
         } catch (Throwable e) {
             long duration = System.currentTimeMillis() - startTime;
-            log.error("<== {}::{} threw {} in {}ms", layer, abstractMethodName, e.getClass().getSimpleName(), duration, e);
-            throw e; // Lemparkan kembali exception setelah di-log
-
+            logError(details, e, duration);
+            throw e;
         } finally {
-            // Selalu bersihkan MDC yang ditambahkan oleh aspect ini
             MDC.remove(DiagnosticContextConstant.MDC_KEY_CONTEXT_CLASS);
             MDC.remove(DiagnosticContextConstant.MDC_KEY_OPERATION_NAME);
         }
     }
 
-    /**
-     * Metode bantuan untuk mengubah argumen method menjadi string.
-     */
+    private void logEntry(LogDetails details, Object[] args) {
+        log.info("Method execution started",
+                kv("event", "entry"),
+                kv("layer", details.layer),
+                kv("class", details.className),
+                kv("method", details.methodName),
+                kv("arguments", stringifyArguments(args))
+        );
+    }
+
+    private void logExit(LogDetails details, Object result, long duration) {
+        log.info("Method execution finished",
+                kv("event", "exit"),
+                kv("layer", details.layer),
+                kv("class", details.className),
+                kv("method", details.methodName),
+                kv("durationMs", duration),
+                kv("result", serializeResult(result)) // Menggunakan serializer khusus
+        );
+    }
+
+    private void logError(LogDetails details, Throwable error, long duration) {
+        log.error("Method execution failed",
+                kv("event", "error"),
+                kv("layer", details.layer),
+                kv("class", details.className),
+                kv("method", details.methodName),
+                kv("durationMs", duration),
+                kv("errorClass", error.getClass().getSimpleName()),
+                kv("errorMessage", error.getMessage()),
+                error
+        );
+    }
+    
+    private Object serializeResult(Object result) {
+        if (result instanceof ResponseEntity<?> entity) {
+            return Map.of(
+                "statusCode", entity.getStatusCode().toString(),
+                "body", entity.getBody() // Body akan di-serialize oleh Jackson
+            );
+        }
+        return result;
+    }
+
     private String stringifyArguments(Object[] args) {
         if (args == null || args.length == 0) {
             return "";
@@ -102,17 +134,12 @@ public class DiagnosticContextAspect {
                 .collect(Collectors.joining(", "));
     }
 
-    /**
-     * Metode bantuan untuk menentukan tipe layer berdasarkan anotasi atau nama kelas.
-     */
     private String getLayerType(ProceedingJoinPoint joinPoint) {
         Class<?> targetClass = joinPoint.getTarget().getClass();
         if (targetClass.isAnnotationPresent(RestController.class)) {
-            log.info("Found concrete controller class name : {}", targetClass.getSimpleName());
             return "CONTROLLER";
         }
         if (targetClass.isAnnotationPresent(Service.class) || targetClass.getSimpleName().endsWith("Service")) {
-            log.info("Found concrete service class name : {}", targetClass.getSimpleName());
             return "SERVICE";
         }
         return "UNKNOWN_LAYER";

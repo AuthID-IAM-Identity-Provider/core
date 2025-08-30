@@ -21,7 +21,9 @@ public class UniError {
     private final String cause;
     private final String action;
 
-    @JsonInclude(JsonInclude.Include.NON_EMPTY) // Hanya tampil jika list tidak kosong
-    // private final List<FieldErrorDetail> fieldErrors;
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Map<String, List<String>> fieldErrors;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Map<String, Object> debugInfo;
 }

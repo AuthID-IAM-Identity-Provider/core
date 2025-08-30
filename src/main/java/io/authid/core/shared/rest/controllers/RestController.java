@@ -55,7 +55,7 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
             .collect(Collectors.toList());
 
         UniPaginatedResult<IndexResponse> transformedResult = new UniPaginatedResult<>(response, result.getPagination());
-        return getResponseFactory().ok(transformedResult, "Success fetch all active records");
+        return getResponseFactory().ok(transformedResult);
     }
 
     @GetMapping("/count")
@@ -66,28 +66,28 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
         @RequestParam(required = false) Map<String, Object> filters
     ) {
         long count = getService().count(q, filters, pageable, cursor);
-        return getResponseFactory().ok(count, "Success fetch all");
+        return getResponseFactory().ok(count);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UniResponse<DetailResponse>> findById(@PathVariable ID id) {
         T resource = getService().findById(id);
         DetailResponse response = getTransformer().toDetail(resource);
-        return getResponseFactory().ok(response, "Successfully get by ID");
+        return getResponseFactory().ok(response);
     }
 
     @PostMapping
     public ResponseEntity<UniResponse<CreateResponse>> create(@Valid @RequestBody CreateRequest createRequest) {
         T resource = getService().create(createRequest);
         CreateResponse response = getTransformer().toCreateResponse(resource);
-        return getResponseFactory().created(URI.create("/"), response, "Create Success");
+        return getResponseFactory().created(URI.create("/"), response);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<UniResponse<UpdateResponse>> update(@PathVariable ID id, @RequestBody UpdateRequest updateRequest) {
         T resource = getService().update(id, updateRequest);
         UpdateResponse response = getTransformer().toUpdateResponse(resource);
-        return getResponseFactory().ok(response, "Update Success");
+        return getResponseFactory().ok(response);
     }
 
     @DeleteMapping("/{id}")
