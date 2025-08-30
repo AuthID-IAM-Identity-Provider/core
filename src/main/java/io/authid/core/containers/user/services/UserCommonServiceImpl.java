@@ -3,11 +3,11 @@ package io.authid.core.containers.user.services;
 import io.authid.core.containers.user.contracts.UserCommonService;
 import io.authid.core.containers.user.entities.UserEntity;
 import io.authid.core.containers.user.enums.UserStatus;
+import io.authid.core.containers.user.exceptions.UserNotFoundException;
 import io.authid.core.containers.user.repositories.UserRepository;
 import io.authid.core.containers.user.request.CreateUserRequest;
 import io.authid.core.containers.user.request.UpdateUserRequest;
-import io.authid.core.shared.components.exception.BaseApplicationException;
-import io.authid.core.shared.components.exception.ResourceNotFoundErrorException;
+import io.authid.core.shared.components.exception.BussinessApplicationException;
 import io.authid.core.shared.rest.contracts.hooks.RestServiceHooks;
 import io.authid.core.shared.rest.services.RestServiceImpl;
 import io.authid.core.shared.utils.UniPaginatedResult;
@@ -46,13 +46,13 @@ public class UserCommonServiceImpl extends RestServiceImpl<
         return new RestServiceHooks<UserEntity, UUID, CreateUserRequest, UpdateUserRequest>() {
 
             @Override
-            public void beforeUpdate(UpdateUserRequest request) {
-                log.info("Executing before update actions: {}", request);
+            public UserEntity onUpdating(UserEntity entity) {
+                throw new UnsupportedOperationException("Unimplemented method 'onUpdating'");
             }
 
             @Override
-            public UserEntity onUpdating(UpdateUserRequest request) {
-                return null;
+            public void beforeUpdate(UpdateUserRequest request) {
+                log.info("Executing before update actions: {}", request);
             }
 
             @Override
@@ -76,8 +76,8 @@ public class UserCommonServiceImpl extends RestServiceImpl<
             }
 
             @Override
-            public BaseApplicationException onNotFound(UUID uuid) {
-                throw new ResourceNotFoundErrorException(uuid);
+            public BussinessApplicationException onNotFound(UUID uuid) {
+                throw new UserNotFoundException(uuid);
             }
 
             @Override

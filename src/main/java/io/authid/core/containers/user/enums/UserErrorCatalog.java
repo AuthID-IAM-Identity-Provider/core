@@ -6,10 +6,10 @@ import io.authid.core.shared.components.i18n.annotations.ExtractableI18n;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+import static io.authid.core.exceptions.enums.SystemErrorCatalog.getStrings;
+
 import java.lang.reflect.Field;
 import java.util.*;
-
-import static io.authid.core.shared.enums.SystemErrorCatalog.getStrings;
 
 @Getter
 public enum UserErrorCatalog implements ErrorCatalog {
