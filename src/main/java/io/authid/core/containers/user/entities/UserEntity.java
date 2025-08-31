@@ -95,7 +95,6 @@ public class UserEntity extends BaseEntity<UUID> {
     @Default
     private Integer loginCount = 0;
 
-    // 1. ACCOUNT LIFECYCLE
     public boolean isNewUser() {
         return this.getCreatedAt() != null && Instant.now().minusSeconds(86400).isBefore(this.getCreatedAt());
     }
@@ -103,7 +102,6 @@ public class UserEntity extends BaseEntity<UUID> {
         return !isNewUser();
     }
 
-    // 2. STATUS CHECKS
     public boolean isActive() {
         return this.status == UserStatus.ACTIVE;
     }
@@ -135,7 +133,6 @@ public class UserEntity extends BaseEntity<UUID> {
         return this.status == UserStatus.DEACTIVATED;
     }
 
-    // 3. EMAIL HANDLING
     public boolean isVerified() {
         return this.emailVerifiedAt != null;
     }
@@ -149,13 +146,14 @@ public class UserEntity extends BaseEntity<UUID> {
         this.emailVerifiedAt = null;
     }
 
-    // 4. PASSWORD HANDLING
     public boolean isPasswordChanged() {
         return passwordChangedAt != null;
     }
+
     public boolean isPasswordNotChanged() {
         return !isPasswordChanged();
     }
+
     public void markPasswordChanged() {
         this.passwordChangedAt = Instant.now();
     }

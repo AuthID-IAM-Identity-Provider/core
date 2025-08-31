@@ -79,8 +79,6 @@ public class UserDevice extends BaseEntity<UUID> {
     @Column(name = "first_seen_at", nullable = false)
     private String firstSeenAt;
 
-    // === Business Logic === //
-
     public void markAsCurrentDevice() {
         this.isCurrentDevice = true;
     }
