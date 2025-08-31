@@ -4,11 +4,13 @@ import io.authid.core.containers.user.contracts.UserCommonService;
 import io.authid.core.containers.user.entities.UserEntity;
 import io.authid.core.containers.user.enums.UserStatus;
 import io.authid.core.containers.user.exceptions.UserNotFoundException;
+import io.authid.core.containers.user.mapper.UserRestMapper;
 import io.authid.core.containers.user.repositories.UserRepository;
 import io.authid.core.containers.user.request.CreateUserRequest;
 import io.authid.core.containers.user.request.UpdateUserRequest;
 import io.authid.core.shared.components.exception.BussinessApplicationException;
 import io.authid.core.shared.rest.contracts.hooks.RestServiceHooks;
+import io.authid.core.shared.rest.mapper.RestMapper;
 import io.authid.core.shared.rest.services.RestServiceImpl;
 import io.authid.core.shared.utils.UniPaginatedResult;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +36,8 @@ public class UserCommonServiceImpl extends RestServiceImpl<
 
     private final UserRepository repository;
 
+    private final UserRestMapper mapper;
+
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -42,12 +46,17 @@ public class UserCommonServiceImpl extends RestServiceImpl<
     }
 
     @Override
+    public RestMapper<UserEntity, CreateUserRequest, UpdateUserRequest> getMapper() {
+        return this.mapper;
+    }
+
+    @Override
     protected RestServiceHooks<UserEntity, UUID, CreateUserRequest, UpdateUserRequest> getHooks() {
         return new RestServiceHooks<UserEntity, UUID, CreateUserRequest, UpdateUserRequest>() {
 
             @Override
-            public UserEntity onUpdating(UserEntity entity) {
-                throw new UnsupportedOperationException("Unimplemented method 'onUpdating'");
+            public UserEntity onUpdating(UserEntity entity, UpdateUserRequest request) {
+                return entity;
             }
 
             @Override

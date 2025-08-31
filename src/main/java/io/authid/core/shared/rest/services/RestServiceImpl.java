@@ -3,6 +3,7 @@ package io.authid.core.shared.rest.services;
 import io.authid.core.shared.rest.contracts.RestRequest;
 import io.authid.core.shared.rest.contracts.RestService;
 import io.authid.core.shared.rest.contracts.hooks.RestServiceHooks;
+import io.authid.core.shared.rest.mapper.RestMapper;
 import io.authid.core.shared.rest.services.commons.fetch.FetchAllQuery;
 import io.authid.core.shared.rest.services.commons.fetch.FetchAllQueryHandler;
 import io.authid.core.shared.rest.services.commons.find.FindByIdQuery;
@@ -22,6 +23,8 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
     protected abstract <R extends JpaRepository<T, ID> & JpaSpecificationExecutor<T>> R getRepository();
 
     protected abstract RestServiceHooks<T, ID, C, U> getHooks();
+
+    public abstract RestMapper<T, C, U> getMapper();
 
     @Override
     public long count(String searchTerm, Map<String, Object> filters, Pageable pageable, String cursor) {
@@ -64,6 +67,7 @@ public abstract class RestServiceImpl<T, ID, C extends RestRequest, U extends Re
                 id,
                 updateRequest,
                 getRepository(),
+                getMapper(),
                 getHooks()
             )
         );

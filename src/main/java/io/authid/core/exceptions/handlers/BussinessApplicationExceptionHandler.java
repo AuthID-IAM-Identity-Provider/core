@@ -30,7 +30,7 @@ public class BussinessApplicationExceptionHandler implements ExceptionHandlerStr
   public ResponseEntity<UniResponse<Object>> handle(Throwable throwable, Locale locale) {
     BussinessApplicationException ex = (BussinessApplicationException) throwable;
 
-    log.error("Business Application exception occurred", 
+    log.warn("Business Application exception occurred: handle", 
       kv("errorClass", ex.getClass().getSimpleName()),
       kv("errorMessage", ex.getMessage()),
       kv("errorCatalog", ex.getErrorCatalog()),

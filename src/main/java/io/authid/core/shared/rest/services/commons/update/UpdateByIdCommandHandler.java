@@ -40,7 +40,17 @@ public class UpdateByIdCommandHandler<T, ID, C, U> implements RestCommandHandler
     private T runCommand(T entity, UpdateByIdCommand<T, ID, C, U> command){
         command.hooks().afterFindById(entity);
         command.hooks().beforeUpdate(command.updateRequest());
-        T updated = command.repository().save(command.hooks().onUpdating(entity));
+
+        // patching with mapper here
+        command.mapper().update(command.updateRequest(), entity);
+
+        // Persisten phase and apply hooks before persisted
+        T updated = command.repository().save(
+            command.hooks().onUpdating(
+                entity, command.updateRequest()
+            )
+        );
+        
         command.hooks().afterUpdate(updated);
         return updated;
     }

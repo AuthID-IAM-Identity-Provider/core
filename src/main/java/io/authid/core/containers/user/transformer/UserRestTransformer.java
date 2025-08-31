@@ -74,7 +74,11 @@ public class UserRestTransformer implements RestTransformer<
 
     @Override
     public CreateUserResponse toCreateResponse(UserEntity entity) {
-        return CreateUserResponse.builder().build();
+        return CreateUserResponse.builder()
+            .id(entity.getId().toString())
+            .firstName(entity.getName())
+            .email(entity.getEmail())
+            .build();
     }
 
     @Override

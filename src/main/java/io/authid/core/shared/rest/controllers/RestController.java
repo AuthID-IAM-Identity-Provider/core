@@ -1,6 +1,7 @@
 package io.authid.core.shared.rest.controllers;
 
 import io.authid.core.shared.rest.contracts.RestService;
+import io.authid.core.shared.rest.mapper.RestMapper;
 import io.authid.core.shared.rest.transformer.RestTransformer;
 import io.authid.core.shared.utils.UniPaginatedResult;
 import io.authid.core.shared.utils.UniResponse;
@@ -26,7 +27,7 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
     private static final int PAGINATION_THRESHOLD = 100;
 
     public abstract RestService<T, ID, CreateRequest, UpdateRequest> getService();
-
+    
     public abstract RestTransformer<T, IndexResponse, DetailResponse, CreateResponse, UpdateResponse, DeleteResponse> getTransformer();
 
     public abstract UniResponseFactory getResponseFactory();
@@ -84,7 +85,7 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UniResponse<UpdateResponse>> update(@PathVariable ID id, @RequestBody UpdateRequest updateRequest) {
+    public ResponseEntity<UniResponse<UpdateResponse>> update(@PathVariable ID id, @Valid @RequestBody UpdateRequest updateRequest) {
         T resource = getService().update(id, updateRequest);
         UpdateResponse response = getTransformer().toUpdateResponse(resource);
         return getResponseFactory().ok(response);
@@ -95,5 +96,4 @@ public abstract class RestController<T, ID, CreateRequest, UpdateRequest, Delete
         getService().deleteById(id);
         return ResponseEntity.noContent().build();
     }
-
 }

@@ -50,7 +50,7 @@ public class DefaultExceptionHandler implements ExceptionHandlerStrategy {
         final String traceId = MDC.get(DiagnosticContextConstant.MDC_KEY_TRACE_ID);
         final String requestId = MDC.get(DiagnosticContextConstant.MDC_KEY_REQUEST_ID);
         final String correlationId = MDC.get(DiagnosticContextConstant.MDC_KEY_CORRELATION_ID);
-        log.error("An unexpected internal server error occurred",
+        log.warn("An unexpected internal server error occurred: handleGenericServerError",
             kv("requesId", requestId),
             kv("traceId", traceId),
             kv("correlationId", correlationId),
