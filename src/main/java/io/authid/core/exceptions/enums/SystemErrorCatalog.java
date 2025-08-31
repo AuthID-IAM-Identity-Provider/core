@@ -34,7 +34,7 @@ public enum SystemErrorCatalog implements ErrorCatalog {
 
     // --- VALIDATION ERRORS (VAL) ---
     @ExtractableI18n(value = "error.validation.general", suffixes = {".title", ".cause", ".action"})
-    VALIDATION_ERROR("VAL-4001", "Validation", "Core", HttpStatus.BAD_REQUEST, "ALL"),
+    VALIDATION_ERROR("VAL-4001", "Validation", "Core", HttpStatus.UNPROCESSABLE_ENTITY, "ALL"),
 
     // --- DATA ACCESS & PERSISTENCE ERRORS (DAT) ---
     @ExtractableI18n(value = "error.data.integrity.violation", suffixes = {".title", ".cause", ".action"})

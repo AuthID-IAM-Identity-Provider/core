@@ -32,14 +32,12 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
     @Convert(converter = InstantTimestampConverter.class)
     private Instant expiresAt;
 
-    // Request tracking
     @Column(name = "ip_address_request", length = 45)
     private String ipAddressRequest;
 
     @Column(name = "user_agent_request", columnDefinition = "TEXT")
     private String userAgentRequest;
 
-    // Completion tracking
     @Column(name = "ip_address_completion", length = 45)
     private String ipAddressCompletion;
 
@@ -50,7 +48,6 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
     @Convert(converter = InstantTimestampConverter.class)
     private Instant completedAt;
 
-    // Security fields
     @Column(name = "attempt_count", nullable = false)
     private Integer attemptCount = 0;
 
@@ -79,10 +76,6 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
     @Column(name = "hash_tag", columnDefinition = "TEXT")
     private String hashTag;
 
-    // ----------------------------
-    // Business Logic - Token Status
-    // ----------------------------
-
     public boolean isExpired() {
         return Instant.now().isAfter(expiresAt) || attemptCount >= maxAttempts;
     }
@@ -101,10 +94,6 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
         }
     }
 
-    // ----------------------------
-    // Business Logic - Completion
-    // ----------------------------
-
     public void complete(String ipAddress, String userAgent) {
         if (!isUsable()) {
             throw new IllegalStateException("Cannot complete an unusable token");
@@ -114,10 +103,6 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
         this.userAgentCompletion = userAgent;
         this.completedAt = Instant.now();
     }
-
-    // ----------------------------
-    // Business Logic - Attempts
-    // ----------------------------
 
     public void incrementAttempt() {
         this.attemptCount++;
@@ -132,17 +117,10 @@ public class PasswordResetTokenEntity extends BaseEntity<UUID> {
         }
     }
 
-    // ----------------------------
-    // Business Logic - Blocking
-    // ----------------------------
-
     public void blockTemporarily(int minutes) {
         this.blockedUntil = Instant.now().plusSeconds(minutes * 60L);
     }
 
-    // ----------------------------
-    // Business Logic - Expiration
-    // ----------------------------
     public void expire() {
         this.status = PasswordResetTokenStatus.EXPIRED;
     }

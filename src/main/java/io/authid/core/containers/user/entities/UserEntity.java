@@ -167,7 +167,6 @@ public class UserEntity extends BaseEntity<UUID> {
         this.passwordChangedAt = Instant.now();
     }
 
-    // 5. TWO-FACTOR AUTHENTICATION
     public boolean hasTwoFactor() {
         return hasConfirmedTwoFactor();
     }
@@ -193,14 +192,12 @@ public class UserEntity extends BaseEntity<UUID> {
         return !hasTwoFactorEnabled();
     }
     public void markTwoFactorEnabled() {
-        // Usually would generate and set secret
         this.twoFactorSecret = null;
     }
     public void markTwoFactorDisabled() {
         this.twoFactorSecret = null;
     }
 
-    // 6. LOGIN & ACTIVITY TRACKING
     public void recordLogin(String ipAddress) {
         this.lastLoginAt = Instant.now();
         this.lastLoginIp = ipAddress;
@@ -210,7 +207,6 @@ public class UserEntity extends BaseEntity<UUID> {
         this.lastActivityAt = Instant.now();
     }
 
-    // 7. LOCKING & SECURITY
     public boolean isAccountLocked() {
         return lockedUntil != null && lockedUntil.isAfter(Instant.now());
     }
@@ -233,7 +229,6 @@ public class UserEntity extends BaseEntity<UUID> {
         this.lockedUntil = null;
     }
 
-    // 8. FIELD PRESENCE CHECKS
     public boolean hasEmail() {
         return this.email != null && !this.email.isEmpty();
     }
@@ -265,7 +260,6 @@ public class UserEntity extends BaseEntity<UUID> {
         return !hasRememberToken();
     }
 
-    // 9. BOOLEAN STATE ACCESSORS
     public boolean canLogin() {
         return isActive() || isIncompleteProfile();
     }
@@ -279,7 +273,6 @@ public class UserEntity extends BaseEntity<UUID> {
         return !canPerformActions();
     }
 
-    // 10. MUTATORS / ACTIONS
     public void activate() {
         this.status = UserStatus.ACTIVE;
     }
