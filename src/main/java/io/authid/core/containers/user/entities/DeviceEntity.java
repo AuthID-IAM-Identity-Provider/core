@@ -6,6 +6,9 @@ import io.authid.core.shared.components.database.model.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,9 +33,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDevice extends BaseEntity<UUID> {
-    @Column(name = "user_id", nullable = false)
-    private UUID userId;
+public class DeviceEntity extends BaseEntity<UUID> {
 
     @Column(name = "device_name", length = 255)
     private String deviceName;
@@ -78,6 +79,10 @@ public class UserDevice extends BaseEntity<UUID> {
 
     @Column(name = "first_seen_at", nullable = false)
     private String firstSeenAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserEntity user;
 
     public void markAsCurrentDevice() {
         this.isCurrentDevice = true;

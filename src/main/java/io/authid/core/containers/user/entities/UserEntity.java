@@ -8,6 +8,8 @@ import lombok.*;
 import lombok.Builder.Default;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -95,9 +97,17 @@ public class UserEntity extends BaseEntity<UUID> {
     @Default
     private Integer loginCount = 0;
 
+    @OneToMany(
+        mappedBy = "user",
+        cascade = CascadeType.ALL,
+        fetch = FetchType.EAGER
+    )
+    private List<DeviceEntity> devices = new ArrayList<DeviceEntity>();
+
     public boolean isNewUser() {
         return this.getCreatedAt() != null && Instant.now().minusSeconds(86400).isBefore(this.getCreatedAt());
     }
+
     public boolean isOldUser() {
         return !isNewUser();
     }
@@ -105,9 +115,11 @@ public class UserEntity extends BaseEntity<UUID> {
     public boolean isActive() {
         return this.status == UserStatus.ACTIVE;
     }
+
     public boolean isInactive() {
         return this.status == UserStatus.INACTIVE;
     }
+    
     public boolean isPendingVerification() {
         return this.status == UserStatus.PENDING_VERIFICATION;
     }
